@@ -37,19 +37,19 @@ createResourceGroup (Inspector.Service serviceImpl) = AWS.request serviceImpl me
 
 
 -- | <p>Deletes the assessment run that is specified by the ARN of the assessment run.</p>
-deleteAssessmentRun :: forall eff. Inspector.Service -> InspectorTypes.DeleteAssessmentRunRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+deleteAssessmentRun :: forall eff. Inspector.Service -> InspectorTypes.DeleteAssessmentRunRequest -> Aff (exception :: EXCEPTION | eff) Unit
 deleteAssessmentRun (Inspector.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "deleteAssessmentRun"
 
 
 -- | <p>Deletes the assessment target that is specified by the ARN of the assessment target.</p>
-deleteAssessmentTarget :: forall eff. Inspector.Service -> InspectorTypes.DeleteAssessmentTargetRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+deleteAssessmentTarget :: forall eff. Inspector.Service -> InspectorTypes.DeleteAssessmentTargetRequest -> Aff (exception :: EXCEPTION | eff) Unit
 deleteAssessmentTarget (Inspector.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "deleteAssessmentTarget"
 
 
 -- | <p>Deletes the assessment template that is specified by the ARN of the assessment template.</p>
-deleteAssessmentTemplate :: forall eff. Inspector.Service -> InspectorTypes.DeleteAssessmentTemplateRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+deleteAssessmentTemplate :: forall eff. Inspector.Service -> InspectorTypes.DeleteAssessmentTemplateRequest -> Aff (exception :: EXCEPTION | eff) Unit
 deleteAssessmentTemplate (Inspector.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "deleteAssessmentTemplate"
 
@@ -74,7 +74,7 @@ describeAssessmentTemplates (Inspector.Service serviceImpl) = AWS.request servic
 
 -- | <p>Describes the IAM role that enables Amazon Inspector to access your AWS account.</p>
 describeCrossAccountAccessRole :: forall eff. Inspector.Service ->  Aff (exception :: EXCEPTION | eff) InspectorTypes.DescribeCrossAccountAccessRoleResponse
-describeCrossAccountAccessRole (Inspector.Service serviceImpl) = AWS.request serviceImpl method (Types.NoInput unit) where
+describeCrossAccountAccessRole (Inspector.Service serviceImpl) = AWS.request serviceImpl method unit where
     method = AWS.MethodName "describeCrossAccountAccessRole"
 
 
@@ -163,7 +163,7 @@ previewAgents (Inspector.Service serviceImpl) = AWS.request serviceImpl method  
 
 
 -- | <p>Registers the IAM role that grants Amazon Inspector access to AWS Services needed to perform security assessments.</p>
-registerCrossAccountAccessRole :: forall eff. Inspector.Service -> InspectorTypes.RegisterCrossAccountAccessRoleRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+registerCrossAccountAccessRole :: forall eff. Inspector.Service -> InspectorTypes.RegisterCrossAccountAccessRoleRequest -> Aff (exception :: EXCEPTION | eff) Unit
 registerCrossAccountAccessRole (Inspector.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "registerCrossAccountAccessRole"
 
@@ -175,7 +175,7 @@ removeAttributesFromFindings (Inspector.Service serviceImpl) = AWS.request servi
 
 
 -- | <p>Sets tags (key and value pairs) to the assessment template that is specified by the ARN of the assessment template.</p>
-setTagsForResource :: forall eff. Inspector.Service -> InspectorTypes.SetTagsForResourceRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+setTagsForResource :: forall eff. Inspector.Service -> InspectorTypes.SetTagsForResourceRequest -> Aff (exception :: EXCEPTION | eff) Unit
 setTagsForResource (Inspector.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "setTagsForResource"
 
@@ -187,24 +187,24 @@ startAssessmentRun (Inspector.Service serviceImpl) = AWS.request serviceImpl met
 
 
 -- | <p>Stops the assessment run that is specified by the ARN of the assessment run.</p>
-stopAssessmentRun :: forall eff. Inspector.Service -> InspectorTypes.StopAssessmentRunRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+stopAssessmentRun :: forall eff. Inspector.Service -> InspectorTypes.StopAssessmentRunRequest -> Aff (exception :: EXCEPTION | eff) Unit
 stopAssessmentRun (Inspector.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "stopAssessmentRun"
 
 
 -- | <p>Enables the process of sending Amazon Simple Notification Service (SNS) notifications about a specified event to a specified SNS topic.</p>
-subscribeToEvent :: forall eff. Inspector.Service -> InspectorTypes.SubscribeToEventRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+subscribeToEvent :: forall eff. Inspector.Service -> InspectorTypes.SubscribeToEventRequest -> Aff (exception :: EXCEPTION | eff) Unit
 subscribeToEvent (Inspector.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "subscribeToEvent"
 
 
 -- | <p>Disables the process of sending Amazon Simple Notification Service (SNS) notifications about a specified event to a specified SNS topic.</p>
-unsubscribeFromEvent :: forall eff. Inspector.Service -> InspectorTypes.UnsubscribeFromEventRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+unsubscribeFromEvent :: forall eff. Inspector.Service -> InspectorTypes.UnsubscribeFromEventRequest -> Aff (exception :: EXCEPTION | eff) Unit
 unsubscribeFromEvent (Inspector.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "unsubscribeFromEvent"
 
 
 -- | <p>Updates the assessment target that is specified by the ARN of the assessment target.</p>
-updateAssessmentTarget :: forall eff. Inspector.Service -> InspectorTypes.UpdateAssessmentTargetRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+updateAssessmentTarget :: forall eff. Inspector.Service -> InspectorTypes.UpdateAssessmentTargetRequest -> Aff (exception :: EXCEPTION | eff) Unit
 updateAssessmentTarget (Inspector.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "updateAssessmentTarget"

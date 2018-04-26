@@ -320,7 +320,7 @@ Encode AgentIdList
 
 ``` purescript
 newtype AgentPreview
-  = AgentPreview { hostname :: NullOrUndefined (Hostname), agentId :: AgentId, autoScalingGroup :: NullOrUndefined (AutoScalingGroup), agentHealth :: NullOrUndefined (AgentHealth), agentVersion :: NullOrUndefined (AgentVersion), operatingSystem :: NullOrUndefined (OperatingSystem), kernelVersion :: NullOrUndefined (KernelVersion), ipv4Address :: NullOrUndefined (Ipv4Address) }
+  = AgentPreview { hostname :: Maybe (Hostname), agentId :: AgentId, autoScalingGroup :: Maybe (AutoScalingGroup), agentHealth :: Maybe (AgentHealth), agentVersion :: Maybe (AgentVersion), operatingSystem :: Maybe (OperatingSystem), kernelVersion :: Maybe (KernelVersion), ipv4Address :: Maybe (Ipv4Address) }
 ```
 
 <p>Used as a response element in the <a>PreviewAgents</a> action.</p>
@@ -345,7 +345,7 @@ Constructs AgentPreview from required parameters
 #### `newAgentPreview'`
 
 ``` purescript
-newAgentPreview' :: AgentId -> ({ hostname :: NullOrUndefined (Hostname), agentId :: AgentId, autoScalingGroup :: NullOrUndefined (AutoScalingGroup), agentHealth :: NullOrUndefined (AgentHealth), agentVersion :: NullOrUndefined (AgentVersion), operatingSystem :: NullOrUndefined (OperatingSystem), kernelVersion :: NullOrUndefined (KernelVersion), ipv4Address :: NullOrUndefined (Ipv4Address) } -> { hostname :: NullOrUndefined (Hostname), agentId :: AgentId, autoScalingGroup :: NullOrUndefined (AutoScalingGroup), agentHealth :: NullOrUndefined (AgentHealth), agentVersion :: NullOrUndefined (AgentVersion), operatingSystem :: NullOrUndefined (OperatingSystem), kernelVersion :: NullOrUndefined (KernelVersion), ipv4Address :: NullOrUndefined (Ipv4Address) }) -> AgentPreview
+newAgentPreview' :: AgentId -> ({ hostname :: Maybe (Hostname), agentId :: AgentId, autoScalingGroup :: Maybe (AutoScalingGroup), agentHealth :: Maybe (AgentHealth), agentVersion :: Maybe (AgentVersion), operatingSystem :: Maybe (OperatingSystem), kernelVersion :: Maybe (KernelVersion), ipv4Address :: Maybe (Ipv4Address) } -> { hostname :: Maybe (Hostname), agentId :: AgentId, autoScalingGroup :: Maybe (AutoScalingGroup), agentHealth :: Maybe (AgentHealth), agentVersion :: Maybe (AgentVersion), operatingSystem :: Maybe (OperatingSystem), kernelVersion :: Maybe (KernelVersion), ipv4Address :: Maybe (Ipv4Address) }) -> AgentPreview
 ```
 
 Constructs AgentPreview's fields from required parameters
@@ -484,7 +484,7 @@ Encode AssessmentRulesPackageArnList
 
 ``` purescript
 newtype AssessmentRun
-  = AssessmentRun { arn :: Arn, name :: AssessmentRunName, assessmentTemplateArn :: Arn, state :: AssessmentRunState, durationInSeconds :: AssessmentRunDuration, rulesPackageArns :: AssessmentRulesPackageArnList, userAttributesForFindings :: UserAttributeList, createdAt :: Timestamp, startedAt :: NullOrUndefined (Timestamp), completedAt :: NullOrUndefined (Timestamp), stateChangedAt :: Timestamp, dataCollected :: Bool, stateChanges :: AssessmentRunStateChangeList, notifications :: AssessmentRunNotificationList, findingCounts :: AssessmentRunFindingCounts }
+  = AssessmentRun { arn :: Arn, name :: AssessmentRunName, assessmentTemplateArn :: Arn, state :: AssessmentRunState, durationInSeconds :: AssessmentRunDuration, rulesPackageArns :: AssessmentRulesPackageArnList, userAttributesForFindings :: UserAttributeList, createdAt :: Timestamp, startedAt :: Maybe (Timestamp), completedAt :: Maybe (Timestamp), stateChangedAt :: Timestamp, dataCollected :: Bool, stateChanges :: AssessmentRunStateChangeList, notifications :: AssessmentRunNotificationList, findingCounts :: AssessmentRunFindingCounts }
 ```
 
 <p>A snapshot of an Amazon Inspector assessment run that contains the findings of the assessment run .</p> <p>Used as the response element in the <a>DescribeAssessmentRuns</a> action.</p>
@@ -509,7 +509,7 @@ Constructs AssessmentRun from required parameters
 #### `newAssessmentRun'`
 
 ``` purescript
-newAssessmentRun' :: Arn -> Arn -> Timestamp -> Bool -> AssessmentRunDuration -> AssessmentRunFindingCounts -> AssessmentRunName -> AssessmentRunNotificationList -> AssessmentRulesPackageArnList -> AssessmentRunState -> Timestamp -> AssessmentRunStateChangeList -> UserAttributeList -> ({ arn :: Arn, name :: AssessmentRunName, assessmentTemplateArn :: Arn, state :: AssessmentRunState, durationInSeconds :: AssessmentRunDuration, rulesPackageArns :: AssessmentRulesPackageArnList, userAttributesForFindings :: UserAttributeList, createdAt :: Timestamp, startedAt :: NullOrUndefined (Timestamp), completedAt :: NullOrUndefined (Timestamp), stateChangedAt :: Timestamp, dataCollected :: Bool, stateChanges :: AssessmentRunStateChangeList, notifications :: AssessmentRunNotificationList, findingCounts :: AssessmentRunFindingCounts } -> { arn :: Arn, name :: AssessmentRunName, assessmentTemplateArn :: Arn, state :: AssessmentRunState, durationInSeconds :: AssessmentRunDuration, rulesPackageArns :: AssessmentRulesPackageArnList, userAttributesForFindings :: UserAttributeList, createdAt :: Timestamp, startedAt :: NullOrUndefined (Timestamp), completedAt :: NullOrUndefined (Timestamp), stateChangedAt :: Timestamp, dataCollected :: Bool, stateChanges :: AssessmentRunStateChangeList, notifications :: AssessmentRunNotificationList, findingCounts :: AssessmentRunFindingCounts }) -> AssessmentRun
+newAssessmentRun' :: Arn -> Arn -> Timestamp -> Bool -> AssessmentRunDuration -> AssessmentRunFindingCounts -> AssessmentRunName -> AssessmentRunNotificationList -> AssessmentRulesPackageArnList -> AssessmentRunState -> Timestamp -> AssessmentRunStateChangeList -> UserAttributeList -> ({ arn :: Arn, name :: AssessmentRunName, assessmentTemplateArn :: Arn, state :: AssessmentRunState, durationInSeconds :: AssessmentRunDuration, rulesPackageArns :: AssessmentRulesPackageArnList, userAttributesForFindings :: UserAttributeList, createdAt :: Timestamp, startedAt :: Maybe (Timestamp), completedAt :: Maybe (Timestamp), stateChangedAt :: Timestamp, dataCollected :: Bool, stateChanges :: AssessmentRunStateChangeList, notifications :: AssessmentRunNotificationList, findingCounts :: AssessmentRunFindingCounts } -> { arn :: Arn, name :: AssessmentRunName, assessmentTemplateArn :: Arn, state :: AssessmentRunState, durationInSeconds :: AssessmentRunDuration, rulesPackageArns :: AssessmentRulesPackageArnList, userAttributesForFindings :: UserAttributeList, createdAt :: Timestamp, startedAt :: Maybe (Timestamp), completedAt :: Maybe (Timestamp), stateChangedAt :: Timestamp, dataCollected :: Bool, stateChanges :: AssessmentRunStateChangeList, notifications :: AssessmentRunNotificationList, findingCounts :: AssessmentRunFindingCounts }) -> AssessmentRun
 ```
 
 Constructs AssessmentRun's fields from required parameters
@@ -518,7 +518,7 @@ Constructs AssessmentRun's fields from required parameters
 
 ``` purescript
 newtype AssessmentRunAgent
-  = AssessmentRunAgent { agentId :: AgentId, assessmentRunArn :: Arn, agentHealth :: AgentHealth, agentHealthCode :: AgentHealthCode, agentHealthDetails :: NullOrUndefined (Message), autoScalingGroup :: NullOrUndefined (AutoScalingGroup), telemetryMetadata :: TelemetryMetadataList }
+  = AssessmentRunAgent { agentId :: AgentId, assessmentRunArn :: Arn, agentHealth :: AgentHealth, agentHealthCode :: AgentHealthCode, agentHealthDetails :: Maybe (Message), autoScalingGroup :: Maybe (AutoScalingGroup), telemetryMetadata :: TelemetryMetadataList }
 ```
 
 <p>Contains information about an Amazon Inspector agent. This data type is used as a response element in the <a>ListAssessmentRunAgents</a> action.</p>
@@ -543,7 +543,7 @@ Constructs AssessmentRunAgent from required parameters
 #### `newAssessmentRunAgent'`
 
 ``` purescript
-newAssessmentRunAgent' :: AgentHealth -> AgentHealthCode -> AgentId -> Arn -> TelemetryMetadataList -> ({ agentId :: AgentId, assessmentRunArn :: Arn, agentHealth :: AgentHealth, agentHealthCode :: AgentHealthCode, agentHealthDetails :: NullOrUndefined (Message), autoScalingGroup :: NullOrUndefined (AutoScalingGroup), telemetryMetadata :: TelemetryMetadataList } -> { agentId :: AgentId, assessmentRunArn :: Arn, agentHealth :: AgentHealth, agentHealthCode :: AgentHealthCode, agentHealthDetails :: NullOrUndefined (Message), autoScalingGroup :: NullOrUndefined (AutoScalingGroup), telemetryMetadata :: TelemetryMetadataList }) -> AssessmentRunAgent
+newAssessmentRunAgent' :: AgentHealth -> AgentHealthCode -> AgentId -> Arn -> TelemetryMetadataList -> ({ agentId :: AgentId, assessmentRunArn :: Arn, agentHealth :: AgentHealth, agentHealthCode :: AgentHealthCode, agentHealthDetails :: Maybe (Message), autoScalingGroup :: Maybe (AutoScalingGroup), telemetryMetadata :: TelemetryMetadataList } -> { agentId :: AgentId, assessmentRunArn :: Arn, agentHealth :: AgentHealth, agentHealthCode :: AgentHealthCode, agentHealthDetails :: Maybe (Message), autoScalingGroup :: Maybe (AutoScalingGroup), telemetryMetadata :: TelemetryMetadataList }) -> AssessmentRunAgent
 ```
 
 Constructs AssessmentRunAgent's fields from required parameters
@@ -584,7 +584,7 @@ Encode AssessmentRunDuration
 
 ``` purescript
 newtype AssessmentRunFilter
-  = AssessmentRunFilter { namePattern :: NullOrUndefined (NamePattern), states :: NullOrUndefined (AssessmentRunStateList), durationRange :: NullOrUndefined (DurationRange), rulesPackageArns :: NullOrUndefined (FilterRulesPackageArnList), startTimeRange :: NullOrUndefined (TimestampRange), completionTimeRange :: NullOrUndefined (TimestampRange), stateChangeTimeRange :: NullOrUndefined (TimestampRange) }
+  = AssessmentRunFilter { namePattern :: Maybe (NamePattern), states :: Maybe (AssessmentRunStateList), durationRange :: Maybe (DurationRange), rulesPackageArns :: Maybe (FilterRulesPackageArnList), startTimeRange :: Maybe (TimestampRange), completionTimeRange :: Maybe (TimestampRange), stateChangeTimeRange :: Maybe (TimestampRange) }
 ```
 
 <p>Used as the request parameter in the <a>ListAssessmentRuns</a> action.</p>
@@ -609,7 +609,7 @@ Constructs AssessmentRunFilter from required parameters
 #### `newAssessmentRunFilter'`
 
 ``` purescript
-newAssessmentRunFilter' :: ({ namePattern :: NullOrUndefined (NamePattern), states :: NullOrUndefined (AssessmentRunStateList), durationRange :: NullOrUndefined (DurationRange), rulesPackageArns :: NullOrUndefined (FilterRulesPackageArnList), startTimeRange :: NullOrUndefined (TimestampRange), completionTimeRange :: NullOrUndefined (TimestampRange), stateChangeTimeRange :: NullOrUndefined (TimestampRange) } -> { namePattern :: NullOrUndefined (NamePattern), states :: NullOrUndefined (AssessmentRunStateList), durationRange :: NullOrUndefined (DurationRange), rulesPackageArns :: NullOrUndefined (FilterRulesPackageArnList), startTimeRange :: NullOrUndefined (TimestampRange), completionTimeRange :: NullOrUndefined (TimestampRange), stateChangeTimeRange :: NullOrUndefined (TimestampRange) }) -> AssessmentRunFilter
+newAssessmentRunFilter' :: ({ namePattern :: Maybe (NamePattern), states :: Maybe (AssessmentRunStateList), durationRange :: Maybe (DurationRange), rulesPackageArns :: Maybe (FilterRulesPackageArnList), startTimeRange :: Maybe (TimestampRange), completionTimeRange :: Maybe (TimestampRange), stateChangeTimeRange :: Maybe (TimestampRange) } -> { namePattern :: Maybe (NamePattern), states :: Maybe (AssessmentRunStateList), durationRange :: Maybe (DurationRange), rulesPackageArns :: Maybe (FilterRulesPackageArnList), startTimeRange :: Maybe (TimestampRange), completionTimeRange :: Maybe (TimestampRange), stateChangeTimeRange :: Maybe (TimestampRange) }) -> AssessmentRunFilter
 ```
 
 Constructs AssessmentRunFilter's fields from required parameters
@@ -716,7 +716,7 @@ Encode AssessmentRunName
 
 ``` purescript
 newtype AssessmentRunNotification
-  = AssessmentRunNotification { date :: Timestamp, event :: InspectorEvent, message :: NullOrUndefined (Message), error :: Bool, snsTopicArn :: NullOrUndefined (Arn), snsPublishStatusCode :: NullOrUndefined (AssessmentRunNotificationSnsStatusCode) }
+  = AssessmentRunNotification { date :: Timestamp, event :: InspectorEvent, message :: Maybe (Message), error :: Bool, snsTopicArn :: Maybe (Arn), snsPublishStatusCode :: Maybe (AssessmentRunNotificationSnsStatusCode) }
 ```
 
 <p>Used as one of the elements of the <a>AssessmentRun</a> data type.</p>
@@ -741,7 +741,7 @@ Constructs AssessmentRunNotification from required parameters
 #### `newAssessmentRunNotification'`
 
 ``` purescript
-newAssessmentRunNotification' :: Timestamp -> Bool -> InspectorEvent -> ({ date :: Timestamp, event :: InspectorEvent, message :: NullOrUndefined (Message), error :: Bool, snsTopicArn :: NullOrUndefined (Arn), snsPublishStatusCode :: NullOrUndefined (AssessmentRunNotificationSnsStatusCode) } -> { date :: Timestamp, event :: InspectorEvent, message :: NullOrUndefined (Message), error :: Bool, snsTopicArn :: NullOrUndefined (Arn), snsPublishStatusCode :: NullOrUndefined (AssessmentRunNotificationSnsStatusCode) }) -> AssessmentRunNotification
+newAssessmentRunNotification' :: Timestamp -> Bool -> InspectorEvent -> ({ date :: Timestamp, event :: InspectorEvent, message :: Maybe (Message), error :: Bool, snsTopicArn :: Maybe (Arn), snsPublishStatusCode :: Maybe (AssessmentRunNotificationSnsStatusCode) } -> { date :: Timestamp, event :: InspectorEvent, message :: Maybe (Message), error :: Bool, snsTopicArn :: Maybe (Arn), snsPublishStatusCode :: Maybe (AssessmentRunNotificationSnsStatusCode) }) -> AssessmentRunNotification
 ```
 
 Constructs AssessmentRunNotification's fields from required parameters
@@ -898,7 +898,7 @@ Constructs AssessmentTarget's fields from required parameters
 
 ``` purescript
 newtype AssessmentTargetFilter
-  = AssessmentTargetFilter { assessmentTargetNamePattern :: NullOrUndefined (NamePattern) }
+  = AssessmentTargetFilter { assessmentTargetNamePattern :: Maybe (NamePattern) }
 ```
 
 <p>Used as the request parameter in the <a>ListAssessmentTargets</a> action.</p>
@@ -923,7 +923,7 @@ Constructs AssessmentTargetFilter from required parameters
 #### `newAssessmentTargetFilter'`
 
 ``` purescript
-newAssessmentTargetFilter' :: ({ assessmentTargetNamePattern :: NullOrUndefined (NamePattern) } -> { assessmentTargetNamePattern :: NullOrUndefined (NamePattern) }) -> AssessmentTargetFilter
+newAssessmentTargetFilter' :: ({ assessmentTargetNamePattern :: Maybe (NamePattern) } -> { assessmentTargetNamePattern :: Maybe (NamePattern) }) -> AssessmentTargetFilter
 ```
 
 Constructs AssessmentTargetFilter's fields from required parameters
@@ -964,7 +964,7 @@ Encode AssessmentTargetName
 
 ``` purescript
 newtype AssessmentTemplate
-  = AssessmentTemplate { arn :: Arn, name :: AssessmentTemplateName, assessmentTargetArn :: Arn, durationInSeconds :: AssessmentRunDuration, rulesPackageArns :: AssessmentTemplateRulesPackageArnList, userAttributesForFindings :: UserAttributeList, lastAssessmentRunArn :: NullOrUndefined (Arn), assessmentRunCount :: ArnCount, createdAt :: Timestamp }
+  = AssessmentTemplate { arn :: Arn, name :: AssessmentTemplateName, assessmentTargetArn :: Arn, durationInSeconds :: AssessmentRunDuration, rulesPackageArns :: AssessmentTemplateRulesPackageArnList, userAttributesForFindings :: UserAttributeList, lastAssessmentRunArn :: Maybe (Arn), assessmentRunCount :: ArnCount, createdAt :: Timestamp }
 ```
 
 <p>Contains information about an Amazon Inspector assessment template. This data type is used as the response element in the <a>DescribeAssessmentTemplates</a> action.</p>
@@ -989,7 +989,7 @@ Constructs AssessmentTemplate from required parameters
 #### `newAssessmentTemplate'`
 
 ``` purescript
-newAssessmentTemplate' :: Arn -> ArnCount -> Arn -> Timestamp -> AssessmentRunDuration -> AssessmentTemplateName -> AssessmentTemplateRulesPackageArnList -> UserAttributeList -> ({ arn :: Arn, name :: AssessmentTemplateName, assessmentTargetArn :: Arn, durationInSeconds :: AssessmentRunDuration, rulesPackageArns :: AssessmentTemplateRulesPackageArnList, userAttributesForFindings :: UserAttributeList, lastAssessmentRunArn :: NullOrUndefined (Arn), assessmentRunCount :: ArnCount, createdAt :: Timestamp } -> { arn :: Arn, name :: AssessmentTemplateName, assessmentTargetArn :: Arn, durationInSeconds :: AssessmentRunDuration, rulesPackageArns :: AssessmentTemplateRulesPackageArnList, userAttributesForFindings :: UserAttributeList, lastAssessmentRunArn :: NullOrUndefined (Arn), assessmentRunCount :: ArnCount, createdAt :: Timestamp }) -> AssessmentTemplate
+newAssessmentTemplate' :: Arn -> ArnCount -> Arn -> Timestamp -> AssessmentRunDuration -> AssessmentTemplateName -> AssessmentTemplateRulesPackageArnList -> UserAttributeList -> ({ arn :: Arn, name :: AssessmentTemplateName, assessmentTargetArn :: Arn, durationInSeconds :: AssessmentRunDuration, rulesPackageArns :: AssessmentTemplateRulesPackageArnList, userAttributesForFindings :: UserAttributeList, lastAssessmentRunArn :: Maybe (Arn), assessmentRunCount :: ArnCount, createdAt :: Timestamp } -> { arn :: Arn, name :: AssessmentTemplateName, assessmentTargetArn :: Arn, durationInSeconds :: AssessmentRunDuration, rulesPackageArns :: AssessmentTemplateRulesPackageArnList, userAttributesForFindings :: UserAttributeList, lastAssessmentRunArn :: Maybe (Arn), assessmentRunCount :: ArnCount, createdAt :: Timestamp }) -> AssessmentTemplate
 ```
 
 Constructs AssessmentTemplate's fields from required parameters
@@ -998,7 +998,7 @@ Constructs AssessmentTemplate's fields from required parameters
 
 ``` purescript
 newtype AssessmentTemplateFilter
-  = AssessmentTemplateFilter { namePattern :: NullOrUndefined (NamePattern), durationRange :: NullOrUndefined (DurationRange), rulesPackageArns :: NullOrUndefined (FilterRulesPackageArnList) }
+  = AssessmentTemplateFilter { namePattern :: Maybe (NamePattern), durationRange :: Maybe (DurationRange), rulesPackageArns :: Maybe (FilterRulesPackageArnList) }
 ```
 
 <p>Used as the request parameter in the <a>ListAssessmentTemplates</a> action.</p>
@@ -1023,7 +1023,7 @@ Constructs AssessmentTemplateFilter from required parameters
 #### `newAssessmentTemplateFilter'`
 
 ``` purescript
-newAssessmentTemplateFilter' :: ({ namePattern :: NullOrUndefined (NamePattern), durationRange :: NullOrUndefined (DurationRange), rulesPackageArns :: NullOrUndefined (FilterRulesPackageArnList) } -> { namePattern :: NullOrUndefined (NamePattern), durationRange :: NullOrUndefined (DurationRange), rulesPackageArns :: NullOrUndefined (FilterRulesPackageArnList) }) -> AssessmentTemplateFilter
+newAssessmentTemplateFilter' :: ({ namePattern :: Maybe (NamePattern), durationRange :: Maybe (DurationRange), rulesPackageArns :: Maybe (FilterRulesPackageArnList) } -> { namePattern :: Maybe (NamePattern), durationRange :: Maybe (DurationRange), rulesPackageArns :: Maybe (FilterRulesPackageArnList) }) -> AssessmentTemplateFilter
 ```
 
 Constructs AssessmentTemplateFilter's fields from required parameters
@@ -1080,7 +1080,7 @@ Encode AssessmentTemplateRulesPackageArnList
 
 ``` purescript
 newtype AssetAttributes
-  = AssetAttributes { schemaVersion :: NumericVersion, agentId :: NullOrUndefined (AgentId), autoScalingGroup :: NullOrUndefined (AutoScalingGroup), amiId :: NullOrUndefined (AmiId), hostname :: NullOrUndefined (Hostname), ipv4Addresses :: NullOrUndefined (Ipv4AddressList) }
+  = AssetAttributes { schemaVersion :: NumericVersion, agentId :: Maybe (AgentId), autoScalingGroup :: Maybe (AutoScalingGroup), amiId :: Maybe (AmiId), hostname :: Maybe (Hostname), ipv4Addresses :: Maybe (Ipv4AddressList) }
 ```
 
 <p>A collection of attributes of the host from which the finding is generated.</p>
@@ -1105,7 +1105,7 @@ Constructs AssetAttributes from required parameters
 #### `newAssetAttributes'`
 
 ``` purescript
-newAssetAttributes' :: NumericVersion -> ({ schemaVersion :: NumericVersion, agentId :: NullOrUndefined (AgentId), autoScalingGroup :: NullOrUndefined (AutoScalingGroup), amiId :: NullOrUndefined (AmiId), hostname :: NullOrUndefined (Hostname), ipv4Addresses :: NullOrUndefined (Ipv4AddressList) } -> { schemaVersion :: NumericVersion, agentId :: NullOrUndefined (AgentId), autoScalingGroup :: NullOrUndefined (AutoScalingGroup), amiId :: NullOrUndefined (AmiId), hostname :: NullOrUndefined (Hostname), ipv4Addresses :: NullOrUndefined (Ipv4AddressList) }) -> AssetAttributes
+newAssetAttributes' :: NumericVersion -> ({ schemaVersion :: NumericVersion, agentId :: Maybe (AgentId), autoScalingGroup :: Maybe (AutoScalingGroup), amiId :: Maybe (AmiId), hostname :: Maybe (Hostname), ipv4Addresses :: Maybe (Ipv4AddressList) } -> { schemaVersion :: NumericVersion, agentId :: Maybe (AgentId), autoScalingGroup :: Maybe (AutoScalingGroup), amiId :: Maybe (AmiId), hostname :: Maybe (Hostname), ipv4Addresses :: Maybe (Ipv4AddressList) }) -> AssetAttributes
 ```
 
 Constructs AssetAttributes's fields from required parameters
@@ -1130,7 +1130,7 @@ Encode AssetType
 
 ``` purescript
 newtype Attribute
-  = Attribute { key :: AttributeKey, value :: NullOrUndefined (AttributeValue) }
+  = Attribute { key :: AttributeKey, value :: Maybe (AttributeValue) }
 ```
 
 <p>This data type is used as a request parameter in the <a>AddAttributesToFindings</a> and <a>CreateAssessmentTemplate</a> actions.</p>
@@ -1155,7 +1155,7 @@ Constructs Attribute from required parameters
 #### `newAttribute'`
 
 ``` purescript
-newAttribute' :: AttributeKey -> ({ key :: AttributeKey, value :: NullOrUndefined (AttributeValue) } -> { key :: AttributeKey, value :: NullOrUndefined (AttributeValue) }) -> Attribute
+newAttribute' :: AttributeKey -> ({ key :: AttributeKey, value :: Maybe (AttributeValue) } -> { key :: AttributeKey, value :: Maybe (AttributeValue) }) -> Attribute
 ```
 
 Constructs Attribute's fields from required parameters
@@ -1340,7 +1340,7 @@ Constructs CreateAssessmentTargetResponse's fields from required parameters
 
 ``` purescript
 newtype CreateAssessmentTemplateRequest
-  = CreateAssessmentTemplateRequest { assessmentTargetArn :: Arn, assessmentTemplateName :: AssessmentTemplateName, durationInSeconds :: AssessmentRunDuration, rulesPackageArns :: AssessmentTemplateRulesPackageArnList, userAttributesForFindings :: NullOrUndefined (UserAttributeList) }
+  = CreateAssessmentTemplateRequest { assessmentTargetArn :: Arn, assessmentTemplateName :: AssessmentTemplateName, durationInSeconds :: AssessmentRunDuration, rulesPackageArns :: AssessmentTemplateRulesPackageArnList, userAttributesForFindings :: Maybe (UserAttributeList) }
 ```
 
 ##### Instances
@@ -1363,7 +1363,7 @@ Constructs CreateAssessmentTemplateRequest from required parameters
 #### `newCreateAssessmentTemplateRequest'`
 
 ``` purescript
-newCreateAssessmentTemplateRequest' :: Arn -> AssessmentTemplateName -> AssessmentRunDuration -> AssessmentTemplateRulesPackageArnList -> ({ assessmentTargetArn :: Arn, assessmentTemplateName :: AssessmentTemplateName, durationInSeconds :: AssessmentRunDuration, rulesPackageArns :: AssessmentTemplateRulesPackageArnList, userAttributesForFindings :: NullOrUndefined (UserAttributeList) } -> { assessmentTargetArn :: Arn, assessmentTemplateName :: AssessmentTemplateName, durationInSeconds :: AssessmentRunDuration, rulesPackageArns :: AssessmentTemplateRulesPackageArnList, userAttributesForFindings :: NullOrUndefined (UserAttributeList) }) -> CreateAssessmentTemplateRequest
+newCreateAssessmentTemplateRequest' :: Arn -> AssessmentTemplateName -> AssessmentRunDuration -> AssessmentTemplateRulesPackageArnList -> ({ assessmentTargetArn :: Arn, assessmentTemplateName :: AssessmentTemplateName, durationInSeconds :: AssessmentRunDuration, rulesPackageArns :: AssessmentTemplateRulesPackageArnList, userAttributesForFindings :: Maybe (UserAttributeList) } -> { assessmentTargetArn :: Arn, assessmentTemplateName :: AssessmentTemplateName, durationInSeconds :: AssessmentRunDuration, rulesPackageArns :: AssessmentTemplateRulesPackageArnList, userAttributesForFindings :: Maybe (UserAttributeList) }) -> CreateAssessmentTemplateRequest
 ```
 
 Constructs CreateAssessmentTemplateRequest's fields from required parameters
@@ -1788,7 +1788,7 @@ Constructs DescribeCrossAccountAccessRoleResponse's fields from required paramet
 
 ``` purescript
 newtype DescribeFindingsRequest
-  = DescribeFindingsRequest { findingArns :: BatchDescribeArnList, locale :: NullOrUndefined (Locale) }
+  = DescribeFindingsRequest { findingArns :: BatchDescribeArnList, locale :: Maybe (Locale) }
 ```
 
 ##### Instances
@@ -1811,7 +1811,7 @@ Constructs DescribeFindingsRequest from required parameters
 #### `newDescribeFindingsRequest'`
 
 ``` purescript
-newDescribeFindingsRequest' :: BatchDescribeArnList -> ({ findingArns :: BatchDescribeArnList, locale :: NullOrUndefined (Locale) } -> { findingArns :: BatchDescribeArnList, locale :: NullOrUndefined (Locale) }) -> DescribeFindingsRequest
+newDescribeFindingsRequest' :: BatchDescribeArnList -> ({ findingArns :: BatchDescribeArnList, locale :: Maybe (Locale) } -> { findingArns :: BatchDescribeArnList, locale :: Maybe (Locale) }) -> DescribeFindingsRequest
 ```
 
 Constructs DescribeFindingsRequest's fields from required parameters
@@ -1916,7 +1916,7 @@ Constructs DescribeResourceGroupsResponse's fields from required parameters
 
 ``` purescript
 newtype DescribeRulesPackagesRequest
-  = DescribeRulesPackagesRequest { rulesPackageArns :: BatchDescribeArnList, locale :: NullOrUndefined (Locale) }
+  = DescribeRulesPackagesRequest { rulesPackageArns :: BatchDescribeArnList, locale :: Maybe (Locale) }
 ```
 
 ##### Instances
@@ -1939,7 +1939,7 @@ Constructs DescribeRulesPackagesRequest from required parameters
 #### `newDescribeRulesPackagesRequest'`
 
 ``` purescript
-newDescribeRulesPackagesRequest' :: BatchDescribeArnList -> ({ rulesPackageArns :: BatchDescribeArnList, locale :: NullOrUndefined (Locale) } -> { rulesPackageArns :: BatchDescribeArnList, locale :: NullOrUndefined (Locale) }) -> DescribeRulesPackagesRequest
+newDescribeRulesPackagesRequest' :: BatchDescribeArnList -> ({ rulesPackageArns :: BatchDescribeArnList, locale :: Maybe (Locale) } -> { rulesPackageArns :: BatchDescribeArnList, locale :: Maybe (Locale) }) -> DescribeRulesPackagesRequest
 ```
 
 Constructs DescribeRulesPackagesRequest's fields from required parameters
@@ -1980,7 +1980,7 @@ Constructs DescribeRulesPackagesResponse's fields from required parameters
 
 ``` purescript
 newtype DurationRange
-  = DurationRange { minSeconds :: NullOrUndefined (AssessmentRunDuration), maxSeconds :: NullOrUndefined (AssessmentRunDuration) }
+  = DurationRange { minSeconds :: Maybe (AssessmentRunDuration), maxSeconds :: Maybe (AssessmentRunDuration) }
 ```
 
 <p>This data type is used in the <a>AssessmentTemplateFilter</a> data type.</p>
@@ -2005,7 +2005,7 @@ Constructs DurationRange from required parameters
 #### `newDurationRange'`
 
 ``` purescript
-newDurationRange' :: ({ minSeconds :: NullOrUndefined (AssessmentRunDuration), maxSeconds :: NullOrUndefined (AssessmentRunDuration) } -> { minSeconds :: NullOrUndefined (AssessmentRunDuration), maxSeconds :: NullOrUndefined (AssessmentRunDuration) }) -> DurationRange
+newDurationRange' :: ({ minSeconds :: Maybe (AssessmentRunDuration), maxSeconds :: Maybe (AssessmentRunDuration) } -> { minSeconds :: Maybe (AssessmentRunDuration), maxSeconds :: Maybe (AssessmentRunDuration) }) -> DurationRange
 ```
 
 Constructs DurationRange's fields from required parameters
@@ -2162,7 +2162,7 @@ Encode FilterRulesPackageArnList
 
 ``` purescript
 newtype Finding
-  = Finding { arn :: Arn, schemaVersion :: NullOrUndefined (NumericVersion), service :: NullOrUndefined (ServiceName), serviceAttributes :: NullOrUndefined (InspectorServiceAttributes), assetType :: NullOrUndefined (AssetType), assetAttributes :: NullOrUndefined (AssetAttributes), id :: NullOrUndefined (FindingId), title :: NullOrUndefined (Text), description :: NullOrUndefined (Text), recommendation :: NullOrUndefined (Text), severity :: NullOrUndefined (Severity), numericSeverity :: NullOrUndefined (NumericSeverity), confidence :: NullOrUndefined (IocConfidence), indicatorOfCompromise :: NullOrUndefined (Bool), attributes :: AttributeList, userAttributes :: UserAttributeList, createdAt :: Timestamp, updatedAt :: Timestamp }
+  = Finding { arn :: Arn, schemaVersion :: Maybe (NumericVersion), service :: Maybe (ServiceName), serviceAttributes :: Maybe (InspectorServiceAttributes), assetType :: Maybe (AssetType), assetAttributes :: Maybe (AssetAttributes), id :: Maybe (FindingId), title :: Maybe (Text), description :: Maybe (Text), recommendation :: Maybe (Text), severity :: Maybe (Severity), numericSeverity :: Maybe (NumericSeverity), confidence :: Maybe (IocConfidence), indicatorOfCompromise :: Maybe (Bool), attributes :: AttributeList, userAttributes :: UserAttributeList, createdAt :: Timestamp, updatedAt :: Timestamp }
 ```
 
 <p>Contains information about an Amazon Inspector finding. This data type is used as the response element in the <a>DescribeFindings</a> action.</p>
@@ -2187,7 +2187,7 @@ Constructs Finding from required parameters
 #### `newFinding'`
 
 ``` purescript
-newFinding' :: Arn -> AttributeList -> Timestamp -> Timestamp -> UserAttributeList -> ({ arn :: Arn, schemaVersion :: NullOrUndefined (NumericVersion), service :: NullOrUndefined (ServiceName), serviceAttributes :: NullOrUndefined (InspectorServiceAttributes), assetType :: NullOrUndefined (AssetType), assetAttributes :: NullOrUndefined (AssetAttributes), id :: NullOrUndefined (FindingId), title :: NullOrUndefined (Text), description :: NullOrUndefined (Text), recommendation :: NullOrUndefined (Text), severity :: NullOrUndefined (Severity), numericSeverity :: NullOrUndefined (NumericSeverity), confidence :: NullOrUndefined (IocConfidence), indicatorOfCompromise :: NullOrUndefined (Bool), attributes :: AttributeList, userAttributes :: UserAttributeList, createdAt :: Timestamp, updatedAt :: Timestamp } -> { arn :: Arn, schemaVersion :: NullOrUndefined (NumericVersion), service :: NullOrUndefined (ServiceName), serviceAttributes :: NullOrUndefined (InspectorServiceAttributes), assetType :: NullOrUndefined (AssetType), assetAttributes :: NullOrUndefined (AssetAttributes), id :: NullOrUndefined (FindingId), title :: NullOrUndefined (Text), description :: NullOrUndefined (Text), recommendation :: NullOrUndefined (Text), severity :: NullOrUndefined (Severity), numericSeverity :: NullOrUndefined (NumericSeverity), confidence :: NullOrUndefined (IocConfidence), indicatorOfCompromise :: NullOrUndefined (Bool), attributes :: AttributeList, userAttributes :: UserAttributeList, createdAt :: Timestamp, updatedAt :: Timestamp }) -> Finding
+newFinding' :: Arn -> AttributeList -> Timestamp -> Timestamp -> UserAttributeList -> ({ arn :: Arn, schemaVersion :: Maybe (NumericVersion), service :: Maybe (ServiceName), serviceAttributes :: Maybe (InspectorServiceAttributes), assetType :: Maybe (AssetType), assetAttributes :: Maybe (AssetAttributes), id :: Maybe (FindingId), title :: Maybe (Text), description :: Maybe (Text), recommendation :: Maybe (Text), severity :: Maybe (Severity), numericSeverity :: Maybe (NumericSeverity), confidence :: Maybe (IocConfidence), indicatorOfCompromise :: Maybe (Bool), attributes :: AttributeList, userAttributes :: UserAttributeList, createdAt :: Timestamp, updatedAt :: Timestamp } -> { arn :: Arn, schemaVersion :: Maybe (NumericVersion), service :: Maybe (ServiceName), serviceAttributes :: Maybe (InspectorServiceAttributes), assetType :: Maybe (AssetType), assetAttributes :: Maybe (AssetAttributes), id :: Maybe (FindingId), title :: Maybe (Text), description :: Maybe (Text), recommendation :: Maybe (Text), severity :: Maybe (Severity), numericSeverity :: Maybe (NumericSeverity), confidence :: Maybe (IocConfidence), indicatorOfCompromise :: Maybe (Bool), attributes :: AttributeList, userAttributes :: UserAttributeList, createdAt :: Timestamp, updatedAt :: Timestamp }) -> Finding
 ```
 
 Constructs Finding's fields from required parameters
@@ -2212,7 +2212,7 @@ Encode FindingCount
 
 ``` purescript
 newtype FindingFilter
-  = FindingFilter { agentIds :: NullOrUndefined (AgentIdList), autoScalingGroups :: NullOrUndefined (AutoScalingGroupList), ruleNames :: NullOrUndefined (RuleNameList), severities :: NullOrUndefined (SeverityList), rulesPackageArns :: NullOrUndefined (FilterRulesPackageArnList), attributes :: NullOrUndefined (AttributeList), userAttributes :: NullOrUndefined (AttributeList), creationTimeRange :: NullOrUndefined (TimestampRange) }
+  = FindingFilter { agentIds :: Maybe (AgentIdList), autoScalingGroups :: Maybe (AutoScalingGroupList), ruleNames :: Maybe (RuleNameList), severities :: Maybe (SeverityList), rulesPackageArns :: Maybe (FilterRulesPackageArnList), attributes :: Maybe (AttributeList), userAttributes :: Maybe (AttributeList), creationTimeRange :: Maybe (TimestampRange) }
 ```
 
 <p>This data type is used as a request parameter in the <a>ListFindings</a> action.</p>
@@ -2237,7 +2237,7 @@ Constructs FindingFilter from required parameters
 #### `newFindingFilter'`
 
 ``` purescript
-newFindingFilter' :: ({ agentIds :: NullOrUndefined (AgentIdList), autoScalingGroups :: NullOrUndefined (AutoScalingGroupList), ruleNames :: NullOrUndefined (RuleNameList), severities :: NullOrUndefined (SeverityList), rulesPackageArns :: NullOrUndefined (FilterRulesPackageArnList), attributes :: NullOrUndefined (AttributeList), userAttributes :: NullOrUndefined (AttributeList), creationTimeRange :: NullOrUndefined (TimestampRange) } -> { agentIds :: NullOrUndefined (AgentIdList), autoScalingGroups :: NullOrUndefined (AutoScalingGroupList), ruleNames :: NullOrUndefined (RuleNameList), severities :: NullOrUndefined (SeverityList), rulesPackageArns :: NullOrUndefined (FilterRulesPackageArnList), attributes :: NullOrUndefined (AttributeList), userAttributes :: NullOrUndefined (AttributeList), creationTimeRange :: NullOrUndefined (TimestampRange) }) -> FindingFilter
+newFindingFilter' :: ({ agentIds :: Maybe (AgentIdList), autoScalingGroups :: Maybe (AutoScalingGroupList), ruleNames :: Maybe (RuleNameList), severities :: Maybe (SeverityList), rulesPackageArns :: Maybe (FilterRulesPackageArnList), attributes :: Maybe (AttributeList), userAttributes :: Maybe (AttributeList), creationTimeRange :: Maybe (TimestampRange) } -> { agentIds :: Maybe (AgentIdList), autoScalingGroups :: Maybe (AutoScalingGroupList), ruleNames :: Maybe (RuleNameList), severities :: Maybe (SeverityList), rulesPackageArns :: Maybe (FilterRulesPackageArnList), attributes :: Maybe (AttributeList), userAttributes :: Maybe (AttributeList), creationTimeRange :: Maybe (TimestampRange) }) -> FindingFilter
 ```
 
 Constructs FindingFilter's fields from required parameters
@@ -2310,7 +2310,7 @@ Constructs GetAssessmentReportRequest's fields from required parameters
 
 ``` purescript
 newtype GetAssessmentReportResponse
-  = GetAssessmentReportResponse { status :: ReportStatus, url :: NullOrUndefined (Url) }
+  = GetAssessmentReportResponse { status :: ReportStatus, url :: Maybe (Url) }
 ```
 
 ##### Instances
@@ -2333,7 +2333,7 @@ Constructs GetAssessmentReportResponse from required parameters
 #### `newGetAssessmentReportResponse'`
 
 ``` purescript
-newGetAssessmentReportResponse' :: ReportStatus -> ({ status :: ReportStatus, url :: NullOrUndefined (Url) } -> { status :: ReportStatus, url :: NullOrUndefined (Url) }) -> GetAssessmentReportResponse
+newGetAssessmentReportResponse' :: ReportStatus -> ({ status :: ReportStatus, url :: Maybe (Url) } -> { status :: ReportStatus, url :: Maybe (Url) }) -> GetAssessmentReportResponse
 ```
 
 Constructs GetAssessmentReportResponse's fields from required parameters
@@ -2438,7 +2438,7 @@ Encode InspectorEvent
 
 ``` purescript
 newtype InspectorServiceAttributes
-  = InspectorServiceAttributes { schemaVersion :: NumericVersion, assessmentRunArn :: NullOrUndefined (Arn), rulesPackageArn :: NullOrUndefined (Arn) }
+  = InspectorServiceAttributes { schemaVersion :: NumericVersion, assessmentRunArn :: Maybe (Arn), rulesPackageArn :: Maybe (Arn) }
 ```
 
 <p>This data type is used in the <a>Finding</a> data type.</p>
@@ -2463,7 +2463,7 @@ Constructs InspectorServiceAttributes from required parameters
 #### `newInspectorServiceAttributes'`
 
 ``` purescript
-newInspectorServiceAttributes' :: NumericVersion -> ({ schemaVersion :: NumericVersion, assessmentRunArn :: NullOrUndefined (Arn), rulesPackageArn :: NullOrUndefined (Arn) } -> { schemaVersion :: NumericVersion, assessmentRunArn :: NullOrUndefined (Arn), rulesPackageArn :: NullOrUndefined (Arn) }) -> InspectorServiceAttributes
+newInspectorServiceAttributes' :: NumericVersion -> ({ schemaVersion :: NumericVersion, assessmentRunArn :: Maybe (Arn), rulesPackageArn :: Maybe (Arn) } -> { schemaVersion :: NumericVersion, assessmentRunArn :: Maybe (Arn), rulesPackageArn :: Maybe (Arn) }) -> InspectorServiceAttributes
 ```
 
 Constructs InspectorServiceAttributes's fields from required parameters
@@ -2720,7 +2720,7 @@ Constructs LimitExceededException's fields from required parameters
 
 ``` purescript
 newtype ListAssessmentRunAgentsRequest
-  = ListAssessmentRunAgentsRequest { assessmentRunArn :: Arn, filter :: NullOrUndefined (AgentFilter), nextToken :: NullOrUndefined (PaginationToken), maxResults :: NullOrUndefined (ListMaxResults) }
+  = ListAssessmentRunAgentsRequest { assessmentRunArn :: Arn, filter :: Maybe (AgentFilter), nextToken :: Maybe (PaginationToken), maxResults :: Maybe (ListMaxResults) }
 ```
 
 ##### Instances
@@ -2743,7 +2743,7 @@ Constructs ListAssessmentRunAgentsRequest from required parameters
 #### `newListAssessmentRunAgentsRequest'`
 
 ``` purescript
-newListAssessmentRunAgentsRequest' :: Arn -> ({ assessmentRunArn :: Arn, filter :: NullOrUndefined (AgentFilter), nextToken :: NullOrUndefined (PaginationToken), maxResults :: NullOrUndefined (ListMaxResults) } -> { assessmentRunArn :: Arn, filter :: NullOrUndefined (AgentFilter), nextToken :: NullOrUndefined (PaginationToken), maxResults :: NullOrUndefined (ListMaxResults) }) -> ListAssessmentRunAgentsRequest
+newListAssessmentRunAgentsRequest' :: Arn -> ({ assessmentRunArn :: Arn, filter :: Maybe (AgentFilter), nextToken :: Maybe (PaginationToken), maxResults :: Maybe (ListMaxResults) } -> { assessmentRunArn :: Arn, filter :: Maybe (AgentFilter), nextToken :: Maybe (PaginationToken), maxResults :: Maybe (ListMaxResults) }) -> ListAssessmentRunAgentsRequest
 ```
 
 Constructs ListAssessmentRunAgentsRequest's fields from required parameters
@@ -2752,7 +2752,7 @@ Constructs ListAssessmentRunAgentsRequest's fields from required parameters
 
 ``` purescript
 newtype ListAssessmentRunAgentsResponse
-  = ListAssessmentRunAgentsResponse { assessmentRunAgents :: AssessmentRunAgentList, nextToken :: NullOrUndefined (PaginationToken) }
+  = ListAssessmentRunAgentsResponse { assessmentRunAgents :: AssessmentRunAgentList, nextToken :: Maybe (PaginationToken) }
 ```
 
 ##### Instances
@@ -2775,7 +2775,7 @@ Constructs ListAssessmentRunAgentsResponse from required parameters
 #### `newListAssessmentRunAgentsResponse'`
 
 ``` purescript
-newListAssessmentRunAgentsResponse' :: AssessmentRunAgentList -> ({ assessmentRunAgents :: AssessmentRunAgentList, nextToken :: NullOrUndefined (PaginationToken) } -> { assessmentRunAgents :: AssessmentRunAgentList, nextToken :: NullOrUndefined (PaginationToken) }) -> ListAssessmentRunAgentsResponse
+newListAssessmentRunAgentsResponse' :: AssessmentRunAgentList -> ({ assessmentRunAgents :: AssessmentRunAgentList, nextToken :: Maybe (PaginationToken) } -> { assessmentRunAgents :: AssessmentRunAgentList, nextToken :: Maybe (PaginationToken) }) -> ListAssessmentRunAgentsResponse
 ```
 
 Constructs ListAssessmentRunAgentsResponse's fields from required parameters
@@ -2784,7 +2784,7 @@ Constructs ListAssessmentRunAgentsResponse's fields from required parameters
 
 ``` purescript
 newtype ListAssessmentRunsRequest
-  = ListAssessmentRunsRequest { assessmentTemplateArns :: NullOrUndefined (ListParentArnList), filter :: NullOrUndefined (AssessmentRunFilter), nextToken :: NullOrUndefined (PaginationToken), maxResults :: NullOrUndefined (ListMaxResults) }
+  = ListAssessmentRunsRequest { assessmentTemplateArns :: Maybe (ListParentArnList), filter :: Maybe (AssessmentRunFilter), nextToken :: Maybe (PaginationToken), maxResults :: Maybe (ListMaxResults) }
 ```
 
 ##### Instances
@@ -2807,7 +2807,7 @@ Constructs ListAssessmentRunsRequest from required parameters
 #### `newListAssessmentRunsRequest'`
 
 ``` purescript
-newListAssessmentRunsRequest' :: ({ assessmentTemplateArns :: NullOrUndefined (ListParentArnList), filter :: NullOrUndefined (AssessmentRunFilter), nextToken :: NullOrUndefined (PaginationToken), maxResults :: NullOrUndefined (ListMaxResults) } -> { assessmentTemplateArns :: NullOrUndefined (ListParentArnList), filter :: NullOrUndefined (AssessmentRunFilter), nextToken :: NullOrUndefined (PaginationToken), maxResults :: NullOrUndefined (ListMaxResults) }) -> ListAssessmentRunsRequest
+newListAssessmentRunsRequest' :: ({ assessmentTemplateArns :: Maybe (ListParentArnList), filter :: Maybe (AssessmentRunFilter), nextToken :: Maybe (PaginationToken), maxResults :: Maybe (ListMaxResults) } -> { assessmentTemplateArns :: Maybe (ListParentArnList), filter :: Maybe (AssessmentRunFilter), nextToken :: Maybe (PaginationToken), maxResults :: Maybe (ListMaxResults) }) -> ListAssessmentRunsRequest
 ```
 
 Constructs ListAssessmentRunsRequest's fields from required parameters
@@ -2816,7 +2816,7 @@ Constructs ListAssessmentRunsRequest's fields from required parameters
 
 ``` purescript
 newtype ListAssessmentRunsResponse
-  = ListAssessmentRunsResponse { assessmentRunArns :: ListReturnedArnList, nextToken :: NullOrUndefined (PaginationToken) }
+  = ListAssessmentRunsResponse { assessmentRunArns :: ListReturnedArnList, nextToken :: Maybe (PaginationToken) }
 ```
 
 ##### Instances
@@ -2839,7 +2839,7 @@ Constructs ListAssessmentRunsResponse from required parameters
 #### `newListAssessmentRunsResponse'`
 
 ``` purescript
-newListAssessmentRunsResponse' :: ListReturnedArnList -> ({ assessmentRunArns :: ListReturnedArnList, nextToken :: NullOrUndefined (PaginationToken) } -> { assessmentRunArns :: ListReturnedArnList, nextToken :: NullOrUndefined (PaginationToken) }) -> ListAssessmentRunsResponse
+newListAssessmentRunsResponse' :: ListReturnedArnList -> ({ assessmentRunArns :: ListReturnedArnList, nextToken :: Maybe (PaginationToken) } -> { assessmentRunArns :: ListReturnedArnList, nextToken :: Maybe (PaginationToken) }) -> ListAssessmentRunsResponse
 ```
 
 Constructs ListAssessmentRunsResponse's fields from required parameters
@@ -2848,7 +2848,7 @@ Constructs ListAssessmentRunsResponse's fields from required parameters
 
 ``` purescript
 newtype ListAssessmentTargetsRequest
-  = ListAssessmentTargetsRequest { filter :: NullOrUndefined (AssessmentTargetFilter), nextToken :: NullOrUndefined (PaginationToken), maxResults :: NullOrUndefined (ListMaxResults) }
+  = ListAssessmentTargetsRequest { filter :: Maybe (AssessmentTargetFilter), nextToken :: Maybe (PaginationToken), maxResults :: Maybe (ListMaxResults) }
 ```
 
 ##### Instances
@@ -2871,7 +2871,7 @@ Constructs ListAssessmentTargetsRequest from required parameters
 #### `newListAssessmentTargetsRequest'`
 
 ``` purescript
-newListAssessmentTargetsRequest' :: ({ filter :: NullOrUndefined (AssessmentTargetFilter), nextToken :: NullOrUndefined (PaginationToken), maxResults :: NullOrUndefined (ListMaxResults) } -> { filter :: NullOrUndefined (AssessmentTargetFilter), nextToken :: NullOrUndefined (PaginationToken), maxResults :: NullOrUndefined (ListMaxResults) }) -> ListAssessmentTargetsRequest
+newListAssessmentTargetsRequest' :: ({ filter :: Maybe (AssessmentTargetFilter), nextToken :: Maybe (PaginationToken), maxResults :: Maybe (ListMaxResults) } -> { filter :: Maybe (AssessmentTargetFilter), nextToken :: Maybe (PaginationToken), maxResults :: Maybe (ListMaxResults) }) -> ListAssessmentTargetsRequest
 ```
 
 Constructs ListAssessmentTargetsRequest's fields from required parameters
@@ -2880,7 +2880,7 @@ Constructs ListAssessmentTargetsRequest's fields from required parameters
 
 ``` purescript
 newtype ListAssessmentTargetsResponse
-  = ListAssessmentTargetsResponse { assessmentTargetArns :: ListReturnedArnList, nextToken :: NullOrUndefined (PaginationToken) }
+  = ListAssessmentTargetsResponse { assessmentTargetArns :: ListReturnedArnList, nextToken :: Maybe (PaginationToken) }
 ```
 
 ##### Instances
@@ -2903,7 +2903,7 @@ Constructs ListAssessmentTargetsResponse from required parameters
 #### `newListAssessmentTargetsResponse'`
 
 ``` purescript
-newListAssessmentTargetsResponse' :: ListReturnedArnList -> ({ assessmentTargetArns :: ListReturnedArnList, nextToken :: NullOrUndefined (PaginationToken) } -> { assessmentTargetArns :: ListReturnedArnList, nextToken :: NullOrUndefined (PaginationToken) }) -> ListAssessmentTargetsResponse
+newListAssessmentTargetsResponse' :: ListReturnedArnList -> ({ assessmentTargetArns :: ListReturnedArnList, nextToken :: Maybe (PaginationToken) } -> { assessmentTargetArns :: ListReturnedArnList, nextToken :: Maybe (PaginationToken) }) -> ListAssessmentTargetsResponse
 ```
 
 Constructs ListAssessmentTargetsResponse's fields from required parameters
@@ -2912,7 +2912,7 @@ Constructs ListAssessmentTargetsResponse's fields from required parameters
 
 ``` purescript
 newtype ListAssessmentTemplatesRequest
-  = ListAssessmentTemplatesRequest { assessmentTargetArns :: NullOrUndefined (ListParentArnList), filter :: NullOrUndefined (AssessmentTemplateFilter), nextToken :: NullOrUndefined (PaginationToken), maxResults :: NullOrUndefined (ListMaxResults) }
+  = ListAssessmentTemplatesRequest { assessmentTargetArns :: Maybe (ListParentArnList), filter :: Maybe (AssessmentTemplateFilter), nextToken :: Maybe (PaginationToken), maxResults :: Maybe (ListMaxResults) }
 ```
 
 ##### Instances
@@ -2935,7 +2935,7 @@ Constructs ListAssessmentTemplatesRequest from required parameters
 #### `newListAssessmentTemplatesRequest'`
 
 ``` purescript
-newListAssessmentTemplatesRequest' :: ({ assessmentTargetArns :: NullOrUndefined (ListParentArnList), filter :: NullOrUndefined (AssessmentTemplateFilter), nextToken :: NullOrUndefined (PaginationToken), maxResults :: NullOrUndefined (ListMaxResults) } -> { assessmentTargetArns :: NullOrUndefined (ListParentArnList), filter :: NullOrUndefined (AssessmentTemplateFilter), nextToken :: NullOrUndefined (PaginationToken), maxResults :: NullOrUndefined (ListMaxResults) }) -> ListAssessmentTemplatesRequest
+newListAssessmentTemplatesRequest' :: ({ assessmentTargetArns :: Maybe (ListParentArnList), filter :: Maybe (AssessmentTemplateFilter), nextToken :: Maybe (PaginationToken), maxResults :: Maybe (ListMaxResults) } -> { assessmentTargetArns :: Maybe (ListParentArnList), filter :: Maybe (AssessmentTemplateFilter), nextToken :: Maybe (PaginationToken), maxResults :: Maybe (ListMaxResults) }) -> ListAssessmentTemplatesRequest
 ```
 
 Constructs ListAssessmentTemplatesRequest's fields from required parameters
@@ -2944,7 +2944,7 @@ Constructs ListAssessmentTemplatesRequest's fields from required parameters
 
 ``` purescript
 newtype ListAssessmentTemplatesResponse
-  = ListAssessmentTemplatesResponse { assessmentTemplateArns :: ListReturnedArnList, nextToken :: NullOrUndefined (PaginationToken) }
+  = ListAssessmentTemplatesResponse { assessmentTemplateArns :: ListReturnedArnList, nextToken :: Maybe (PaginationToken) }
 ```
 
 ##### Instances
@@ -2967,7 +2967,7 @@ Constructs ListAssessmentTemplatesResponse from required parameters
 #### `newListAssessmentTemplatesResponse'`
 
 ``` purescript
-newListAssessmentTemplatesResponse' :: ListReturnedArnList -> ({ assessmentTemplateArns :: ListReturnedArnList, nextToken :: NullOrUndefined (PaginationToken) } -> { assessmentTemplateArns :: ListReturnedArnList, nextToken :: NullOrUndefined (PaginationToken) }) -> ListAssessmentTemplatesResponse
+newListAssessmentTemplatesResponse' :: ListReturnedArnList -> ({ assessmentTemplateArns :: ListReturnedArnList, nextToken :: Maybe (PaginationToken) } -> { assessmentTemplateArns :: ListReturnedArnList, nextToken :: Maybe (PaginationToken) }) -> ListAssessmentTemplatesResponse
 ```
 
 Constructs ListAssessmentTemplatesResponse's fields from required parameters
@@ -2992,7 +2992,7 @@ Encode ListEventSubscriptionsMaxResults
 
 ``` purescript
 newtype ListEventSubscriptionsRequest
-  = ListEventSubscriptionsRequest { resourceArn :: NullOrUndefined (Arn), nextToken :: NullOrUndefined (PaginationToken), maxResults :: NullOrUndefined (ListEventSubscriptionsMaxResults) }
+  = ListEventSubscriptionsRequest { resourceArn :: Maybe (Arn), nextToken :: Maybe (PaginationToken), maxResults :: Maybe (ListEventSubscriptionsMaxResults) }
 ```
 
 ##### Instances
@@ -3015,7 +3015,7 @@ Constructs ListEventSubscriptionsRequest from required parameters
 #### `newListEventSubscriptionsRequest'`
 
 ``` purescript
-newListEventSubscriptionsRequest' :: ({ resourceArn :: NullOrUndefined (Arn), nextToken :: NullOrUndefined (PaginationToken), maxResults :: NullOrUndefined (ListEventSubscriptionsMaxResults) } -> { resourceArn :: NullOrUndefined (Arn), nextToken :: NullOrUndefined (PaginationToken), maxResults :: NullOrUndefined (ListEventSubscriptionsMaxResults) }) -> ListEventSubscriptionsRequest
+newListEventSubscriptionsRequest' :: ({ resourceArn :: Maybe (Arn), nextToken :: Maybe (PaginationToken), maxResults :: Maybe (ListEventSubscriptionsMaxResults) } -> { resourceArn :: Maybe (Arn), nextToken :: Maybe (PaginationToken), maxResults :: Maybe (ListEventSubscriptionsMaxResults) }) -> ListEventSubscriptionsRequest
 ```
 
 Constructs ListEventSubscriptionsRequest's fields from required parameters
@@ -3024,7 +3024,7 @@ Constructs ListEventSubscriptionsRequest's fields from required parameters
 
 ``` purescript
 newtype ListEventSubscriptionsResponse
-  = ListEventSubscriptionsResponse { subscriptions :: SubscriptionList, nextToken :: NullOrUndefined (PaginationToken) }
+  = ListEventSubscriptionsResponse { subscriptions :: SubscriptionList, nextToken :: Maybe (PaginationToken) }
 ```
 
 ##### Instances
@@ -3047,7 +3047,7 @@ Constructs ListEventSubscriptionsResponse from required parameters
 #### `newListEventSubscriptionsResponse'`
 
 ``` purescript
-newListEventSubscriptionsResponse' :: SubscriptionList -> ({ subscriptions :: SubscriptionList, nextToken :: NullOrUndefined (PaginationToken) } -> { subscriptions :: SubscriptionList, nextToken :: NullOrUndefined (PaginationToken) }) -> ListEventSubscriptionsResponse
+newListEventSubscriptionsResponse' :: SubscriptionList -> ({ subscriptions :: SubscriptionList, nextToken :: Maybe (PaginationToken) } -> { subscriptions :: SubscriptionList, nextToken :: Maybe (PaginationToken) }) -> ListEventSubscriptionsResponse
 ```
 
 Constructs ListEventSubscriptionsResponse's fields from required parameters
@@ -3056,7 +3056,7 @@ Constructs ListEventSubscriptionsResponse's fields from required parameters
 
 ``` purescript
 newtype ListFindingsRequest
-  = ListFindingsRequest { assessmentRunArns :: NullOrUndefined (ListParentArnList), filter :: NullOrUndefined (FindingFilter), nextToken :: NullOrUndefined (PaginationToken), maxResults :: NullOrUndefined (ListMaxResults) }
+  = ListFindingsRequest { assessmentRunArns :: Maybe (ListParentArnList), filter :: Maybe (FindingFilter), nextToken :: Maybe (PaginationToken), maxResults :: Maybe (ListMaxResults) }
 ```
 
 ##### Instances
@@ -3079,7 +3079,7 @@ Constructs ListFindingsRequest from required parameters
 #### `newListFindingsRequest'`
 
 ``` purescript
-newListFindingsRequest' :: ({ assessmentRunArns :: NullOrUndefined (ListParentArnList), filter :: NullOrUndefined (FindingFilter), nextToken :: NullOrUndefined (PaginationToken), maxResults :: NullOrUndefined (ListMaxResults) } -> { assessmentRunArns :: NullOrUndefined (ListParentArnList), filter :: NullOrUndefined (FindingFilter), nextToken :: NullOrUndefined (PaginationToken), maxResults :: NullOrUndefined (ListMaxResults) }) -> ListFindingsRequest
+newListFindingsRequest' :: ({ assessmentRunArns :: Maybe (ListParentArnList), filter :: Maybe (FindingFilter), nextToken :: Maybe (PaginationToken), maxResults :: Maybe (ListMaxResults) } -> { assessmentRunArns :: Maybe (ListParentArnList), filter :: Maybe (FindingFilter), nextToken :: Maybe (PaginationToken), maxResults :: Maybe (ListMaxResults) }) -> ListFindingsRequest
 ```
 
 Constructs ListFindingsRequest's fields from required parameters
@@ -3088,7 +3088,7 @@ Constructs ListFindingsRequest's fields from required parameters
 
 ``` purescript
 newtype ListFindingsResponse
-  = ListFindingsResponse { findingArns :: ListReturnedArnList, nextToken :: NullOrUndefined (PaginationToken) }
+  = ListFindingsResponse { findingArns :: ListReturnedArnList, nextToken :: Maybe (PaginationToken) }
 ```
 
 ##### Instances
@@ -3111,7 +3111,7 @@ Constructs ListFindingsResponse from required parameters
 #### `newListFindingsResponse'`
 
 ``` purescript
-newListFindingsResponse' :: ListReturnedArnList -> ({ findingArns :: ListReturnedArnList, nextToken :: NullOrUndefined (PaginationToken) } -> { findingArns :: ListReturnedArnList, nextToken :: NullOrUndefined (PaginationToken) }) -> ListFindingsResponse
+newListFindingsResponse' :: ListReturnedArnList -> ({ findingArns :: ListReturnedArnList, nextToken :: Maybe (PaginationToken) } -> { findingArns :: ListReturnedArnList, nextToken :: Maybe (PaginationToken) }) -> ListFindingsResponse
 ```
 
 Constructs ListFindingsResponse's fields from required parameters
@@ -3168,7 +3168,7 @@ Encode ListReturnedArnList
 
 ``` purescript
 newtype ListRulesPackagesRequest
-  = ListRulesPackagesRequest { nextToken :: NullOrUndefined (PaginationToken), maxResults :: NullOrUndefined (ListMaxResults) }
+  = ListRulesPackagesRequest { nextToken :: Maybe (PaginationToken), maxResults :: Maybe (ListMaxResults) }
 ```
 
 ##### Instances
@@ -3191,7 +3191,7 @@ Constructs ListRulesPackagesRequest from required parameters
 #### `newListRulesPackagesRequest'`
 
 ``` purescript
-newListRulesPackagesRequest' :: ({ nextToken :: NullOrUndefined (PaginationToken), maxResults :: NullOrUndefined (ListMaxResults) } -> { nextToken :: NullOrUndefined (PaginationToken), maxResults :: NullOrUndefined (ListMaxResults) }) -> ListRulesPackagesRequest
+newListRulesPackagesRequest' :: ({ nextToken :: Maybe (PaginationToken), maxResults :: Maybe (ListMaxResults) } -> { nextToken :: Maybe (PaginationToken), maxResults :: Maybe (ListMaxResults) }) -> ListRulesPackagesRequest
 ```
 
 Constructs ListRulesPackagesRequest's fields from required parameters
@@ -3200,7 +3200,7 @@ Constructs ListRulesPackagesRequest's fields from required parameters
 
 ``` purescript
 newtype ListRulesPackagesResponse
-  = ListRulesPackagesResponse { rulesPackageArns :: ListReturnedArnList, nextToken :: NullOrUndefined (PaginationToken) }
+  = ListRulesPackagesResponse { rulesPackageArns :: ListReturnedArnList, nextToken :: Maybe (PaginationToken) }
 ```
 
 ##### Instances
@@ -3223,7 +3223,7 @@ Constructs ListRulesPackagesResponse from required parameters
 #### `newListRulesPackagesResponse'`
 
 ``` purescript
-newListRulesPackagesResponse' :: ListReturnedArnList -> ({ rulesPackageArns :: ListReturnedArnList, nextToken :: NullOrUndefined (PaginationToken) } -> { rulesPackageArns :: ListReturnedArnList, nextToken :: NullOrUndefined (PaginationToken) }) -> ListRulesPackagesResponse
+newListRulesPackagesResponse' :: ListReturnedArnList -> ({ rulesPackageArns :: ListReturnedArnList, nextToken :: Maybe (PaginationToken) } -> { rulesPackageArns :: ListReturnedArnList, nextToken :: Maybe (PaginationToken) }) -> ListRulesPackagesResponse
 ```
 
 Constructs ListRulesPackagesResponse's fields from required parameters
@@ -3490,7 +3490,7 @@ Encode PreviewAgentsMaxResults
 
 ``` purescript
 newtype PreviewAgentsRequest
-  = PreviewAgentsRequest { previewAgentsArn :: Arn, nextToken :: NullOrUndefined (PaginationToken), maxResults :: NullOrUndefined (PreviewAgentsMaxResults) }
+  = PreviewAgentsRequest { previewAgentsArn :: Arn, nextToken :: Maybe (PaginationToken), maxResults :: Maybe (PreviewAgentsMaxResults) }
 ```
 
 ##### Instances
@@ -3513,7 +3513,7 @@ Constructs PreviewAgentsRequest from required parameters
 #### `newPreviewAgentsRequest'`
 
 ``` purescript
-newPreviewAgentsRequest' :: Arn -> ({ previewAgentsArn :: Arn, nextToken :: NullOrUndefined (PaginationToken), maxResults :: NullOrUndefined (PreviewAgentsMaxResults) } -> { previewAgentsArn :: Arn, nextToken :: NullOrUndefined (PaginationToken), maxResults :: NullOrUndefined (PreviewAgentsMaxResults) }) -> PreviewAgentsRequest
+newPreviewAgentsRequest' :: Arn -> ({ previewAgentsArn :: Arn, nextToken :: Maybe (PaginationToken), maxResults :: Maybe (PreviewAgentsMaxResults) } -> { previewAgentsArn :: Arn, nextToken :: Maybe (PaginationToken), maxResults :: Maybe (PreviewAgentsMaxResults) }) -> PreviewAgentsRequest
 ```
 
 Constructs PreviewAgentsRequest's fields from required parameters
@@ -3522,7 +3522,7 @@ Constructs PreviewAgentsRequest's fields from required parameters
 
 ``` purescript
 newtype PreviewAgentsResponse
-  = PreviewAgentsResponse { agentPreviews :: AgentPreviewList, nextToken :: NullOrUndefined (PaginationToken) }
+  = PreviewAgentsResponse { agentPreviews :: AgentPreviewList, nextToken :: Maybe (PaginationToken) }
 ```
 
 ##### Instances
@@ -3545,7 +3545,7 @@ Constructs PreviewAgentsResponse from required parameters
 #### `newPreviewAgentsResponse'`
 
 ``` purescript
-newPreviewAgentsResponse' :: AgentPreviewList -> ({ agentPreviews :: AgentPreviewList, nextToken :: NullOrUndefined (PaginationToken) } -> { agentPreviews :: AgentPreviewList, nextToken :: NullOrUndefined (PaginationToken) }) -> PreviewAgentsResponse
+newPreviewAgentsResponse' :: AgentPreviewList -> ({ agentPreviews :: AgentPreviewList, nextToken :: Maybe (PaginationToken) } -> { agentPreviews :: AgentPreviewList, nextToken :: Maybe (PaginationToken) }) -> PreviewAgentsResponse
 ```
 
 Constructs PreviewAgentsResponse's fields from required parameters
@@ -3764,7 +3764,7 @@ Encode ResourceGroupList
 
 ``` purescript
 newtype ResourceGroupTag
-  = ResourceGroupTag { key :: TagKey, value :: NullOrUndefined (TagValue) }
+  = ResourceGroupTag { key :: TagKey, value :: Maybe (TagValue) }
 ```
 
 <p>This data type is used as one of the elements of the <a>ResourceGroup</a> data type.</p>
@@ -3789,7 +3789,7 @@ Constructs ResourceGroupTag from required parameters
 #### `newResourceGroupTag'`
 
 ``` purescript
-newResourceGroupTag' :: TagKey -> ({ key :: TagKey, value :: NullOrUndefined (TagValue) } -> { key :: TagKey, value :: NullOrUndefined (TagValue) }) -> ResourceGroupTag
+newResourceGroupTag' :: TagKey -> ({ key :: TagKey, value :: Maybe (TagValue) } -> { key :: TagKey, value :: Maybe (TagValue) }) -> ResourceGroupTag
 ```
 
 Constructs ResourceGroupTag's fields from required parameters
@@ -3846,7 +3846,7 @@ Encode RuleNameList
 
 ``` purescript
 newtype RulesPackage
-  = RulesPackage { arn :: Arn, name :: RulesPackageName, version :: Version, provider :: ProviderName, description :: NullOrUndefined (Text) }
+  = RulesPackage { arn :: Arn, name :: RulesPackageName, version :: Version, provider :: ProviderName, description :: Maybe (Text) }
 ```
 
 <p>Contains information about an Amazon Inspector rules package. This data type is used as the response element in the <a>DescribeRulesPackages</a> action.</p>
@@ -3871,7 +3871,7 @@ Constructs RulesPackage from required parameters
 #### `newRulesPackage'`
 
 ``` purescript
-newRulesPackage' :: Arn -> RulesPackageName -> ProviderName -> Version -> ({ arn :: Arn, name :: RulesPackageName, version :: Version, provider :: ProviderName, description :: NullOrUndefined (Text) } -> { arn :: Arn, name :: RulesPackageName, version :: Version, provider :: ProviderName, description :: NullOrUndefined (Text) }) -> RulesPackage
+newRulesPackage' :: Arn -> RulesPackageName -> ProviderName -> Version -> ({ arn :: Arn, name :: RulesPackageName, version :: Version, provider :: ProviderName, description :: Maybe (Text) } -> { arn :: Arn, name :: RulesPackageName, version :: Version, provider :: ProviderName, description :: Maybe (Text) }) -> RulesPackage
 ```
 
 Constructs RulesPackage's fields from required parameters
@@ -3928,7 +3928,7 @@ Encode ServiceName
 
 ``` purescript
 newtype SetTagsForResourceRequest
-  = SetTagsForResourceRequest { resourceArn :: Arn, tags :: NullOrUndefined (TagList) }
+  = SetTagsForResourceRequest { resourceArn :: Arn, tags :: Maybe (TagList) }
 ```
 
 ##### Instances
@@ -3951,7 +3951,7 @@ Constructs SetTagsForResourceRequest from required parameters
 #### `newSetTagsForResourceRequest'`
 
 ``` purescript
-newSetTagsForResourceRequest' :: Arn -> ({ resourceArn :: Arn, tags :: NullOrUndefined (TagList) } -> { resourceArn :: Arn, tags :: NullOrUndefined (TagList) }) -> SetTagsForResourceRequest
+newSetTagsForResourceRequest' :: Arn -> ({ resourceArn :: Arn, tags :: Maybe (TagList) } -> { resourceArn :: Arn, tags :: Maybe (TagList) }) -> SetTagsForResourceRequest
 ```
 
 Constructs SetTagsForResourceRequest's fields from required parameters
@@ -3992,7 +3992,7 @@ Encode SeverityList
 
 ``` purescript
 newtype StartAssessmentRunRequest
-  = StartAssessmentRunRequest { assessmentTemplateArn :: Arn, assessmentRunName :: NullOrUndefined (AssessmentRunName) }
+  = StartAssessmentRunRequest { assessmentTemplateArn :: Arn, assessmentRunName :: Maybe (AssessmentRunName) }
 ```
 
 ##### Instances
@@ -4015,7 +4015,7 @@ Constructs StartAssessmentRunRequest from required parameters
 #### `newStartAssessmentRunRequest'`
 
 ``` purescript
-newStartAssessmentRunRequest' :: Arn -> ({ assessmentTemplateArn :: Arn, assessmentRunName :: NullOrUndefined (AssessmentRunName) } -> { assessmentTemplateArn :: Arn, assessmentRunName :: NullOrUndefined (AssessmentRunName) }) -> StartAssessmentRunRequest
+newStartAssessmentRunRequest' :: Arn -> ({ assessmentTemplateArn :: Arn, assessmentRunName :: Maybe (AssessmentRunName) } -> { assessmentTemplateArn :: Arn, assessmentRunName :: Maybe (AssessmentRunName) }) -> StartAssessmentRunRequest
 ```
 
 Constructs StartAssessmentRunRequest's fields from required parameters
@@ -4072,7 +4072,7 @@ Encode StopAction
 
 ``` purescript
 newtype StopAssessmentRunRequest
-  = StopAssessmentRunRequest { assessmentRunArn :: Arn, stopAction :: NullOrUndefined (StopAction) }
+  = StopAssessmentRunRequest { assessmentRunArn :: Arn, stopAction :: Maybe (StopAction) }
 ```
 
 ##### Instances
@@ -4095,7 +4095,7 @@ Constructs StopAssessmentRunRequest from required parameters
 #### `newStopAssessmentRunRequest'`
 
 ``` purescript
-newStopAssessmentRunRequest' :: Arn -> ({ assessmentRunArn :: Arn, stopAction :: NullOrUndefined (StopAction) } -> { assessmentRunArn :: Arn, stopAction :: NullOrUndefined (StopAction) }) -> StopAssessmentRunRequest
+newStopAssessmentRunRequest' :: Arn -> ({ assessmentRunArn :: Arn, stopAction :: Maybe (StopAction) } -> { assessmentRunArn :: Arn, stopAction :: Maybe (StopAction) }) -> StopAssessmentRunRequest
 ```
 
 Constructs StopAssessmentRunRequest's fields from required parameters
@@ -4186,7 +4186,7 @@ Encode SubscriptionList
 
 ``` purescript
 newtype Tag
-  = Tag { key :: TagKey, value :: NullOrUndefined (TagValue) }
+  = Tag { key :: TagKey, value :: Maybe (TagValue) }
 ```
 
 <p>A key and value pair. This data type is used as a request parameter in the <a>SetTagsForResource</a> action and a response element in the <a>ListTagsForResource</a> action.</p>
@@ -4211,7 +4211,7 @@ Constructs Tag from required parameters
 #### `newTag'`
 
 ``` purescript
-newTag' :: TagKey -> ({ key :: TagKey, value :: NullOrUndefined (TagValue) } -> { key :: TagKey, value :: NullOrUndefined (TagValue) }) -> Tag
+newTag' :: TagKey -> ({ key :: TagKey, value :: Maybe (TagValue) } -> { key :: TagKey, value :: Maybe (TagValue) }) -> Tag
 ```
 
 Constructs Tag's fields from required parameters
@@ -4268,7 +4268,7 @@ Encode TagValue
 
 ``` purescript
 newtype TelemetryMetadata
-  = TelemetryMetadata { messageType :: MessageType, count :: Number, dataSize :: NullOrUndefined (Number) }
+  = TelemetryMetadata { messageType :: MessageType, count :: Number, dataSize :: Maybe (Number) }
 ```
 
 <p>The metadata about the Amazon Inspector application data metrics collected by the agent. This data type is used as the response element in the <a>GetTelemetryMetadata</a> action.</p>
@@ -4293,7 +4293,7 @@ Constructs TelemetryMetadata from required parameters
 #### `newTelemetryMetadata'`
 
 ``` purescript
-newTelemetryMetadata' :: Number -> MessageType -> ({ messageType :: MessageType, count :: Number, dataSize :: NullOrUndefined (Number) } -> { messageType :: MessageType, count :: Number, dataSize :: NullOrUndefined (Number) }) -> TelemetryMetadata
+newTelemetryMetadata' :: Number -> MessageType -> ({ messageType :: MessageType, count :: Number, dataSize :: Maybe (Number) } -> { messageType :: MessageType, count :: Number, dataSize :: Maybe (Number) }) -> TelemetryMetadata
 ```
 
 Constructs TelemetryMetadata's fields from required parameters
@@ -4334,7 +4334,7 @@ Encode Text
 
 ``` purescript
 newtype TimestampRange
-  = TimestampRange { beginDate :: NullOrUndefined (Timestamp), endDate :: NullOrUndefined (Timestamp) }
+  = TimestampRange { beginDate :: Maybe (Timestamp), endDate :: Maybe (Timestamp) }
 ```
 
 <p>This data type is used in the <a>AssessmentRunFilter</a> data type.</p>
@@ -4359,7 +4359,7 @@ Constructs TimestampRange from required parameters
 #### `newTimestampRange'`
 
 ``` purescript
-newTimestampRange' :: ({ beginDate :: NullOrUndefined (Timestamp), endDate :: NullOrUndefined (Timestamp) } -> { beginDate :: NullOrUndefined (Timestamp), endDate :: NullOrUndefined (Timestamp) }) -> TimestampRange
+newTimestampRange' :: ({ beginDate :: Maybe (Timestamp), endDate :: Maybe (Timestamp) } -> { beginDate :: Maybe (Timestamp), endDate :: Maybe (Timestamp) }) -> TimestampRange
 ```
 
 Constructs TimestampRange's fields from required parameters

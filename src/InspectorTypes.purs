@@ -5,7 +5,6 @@ import Prelude
 import Data.Foreign.Class (class Decode, class Encode)
 import Data.Foreign.Generic (defaultOptions, genericDecode, genericEncode)
 import Data.Foreign.Generic.Types (Options)
-import Data.Foreign.NullOrUndefined (NullOrUndefined(..))
 import Data.Generic.Rep (class Generic)
 import Data.Generic.Rep.Show (genericShow)
 import Data.Maybe (Maybe(..))
@@ -209,14 +208,14 @@ instance encodeAgentIdList :: Encode AgentIdList where encode = genericEncode op
 
 -- | <p>Used as a response element in the <a>PreviewAgents</a> action.</p>
 newtype AgentPreview = AgentPreview 
-  { "hostname" :: NullOrUndefined (Hostname)
+  { "hostname" :: Maybe (Hostname)
   , "agentId" :: (AgentId)
-  , "autoScalingGroup" :: NullOrUndefined (AutoScalingGroup)
-  , "agentHealth" :: NullOrUndefined (AgentHealth)
-  , "agentVersion" :: NullOrUndefined (AgentVersion)
-  , "operatingSystem" :: NullOrUndefined (OperatingSystem)
-  , "kernelVersion" :: NullOrUndefined (KernelVersion)
-  , "ipv4Address" :: NullOrUndefined (Ipv4Address)
+  , "autoScalingGroup" :: Maybe (AutoScalingGroup)
+  , "agentHealth" :: Maybe (AgentHealth)
+  , "agentVersion" :: Maybe (AgentVersion)
+  , "operatingSystem" :: Maybe (OperatingSystem)
+  , "kernelVersion" :: Maybe (KernelVersion)
+  , "ipv4Address" :: Maybe (Ipv4Address)
   }
 derive instance newtypeAgentPreview :: Newtype AgentPreview _
 derive instance repGenericAgentPreview :: Generic AgentPreview _
@@ -226,12 +225,12 @@ instance encodeAgentPreview :: Encode AgentPreview where encode = genericEncode 
 
 -- | Constructs AgentPreview from required parameters
 newAgentPreview :: AgentId -> AgentPreview
-newAgentPreview _agentId = AgentPreview { "agentId": _agentId, "agentHealth": (NullOrUndefined Nothing), "agentVersion": (NullOrUndefined Nothing), "autoScalingGroup": (NullOrUndefined Nothing), "hostname": (NullOrUndefined Nothing), "ipv4Address": (NullOrUndefined Nothing), "kernelVersion": (NullOrUndefined Nothing), "operatingSystem": (NullOrUndefined Nothing) }
+newAgentPreview _agentId = AgentPreview { "agentId": _agentId, "agentHealth": Nothing, "agentVersion": Nothing, "autoScalingGroup": Nothing, "hostname": Nothing, "ipv4Address": Nothing, "kernelVersion": Nothing, "operatingSystem": Nothing }
 
 -- | Constructs AgentPreview's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newAgentPreview' :: AgentId -> ( { "hostname" :: NullOrUndefined (Hostname) , "agentId" :: (AgentId) , "autoScalingGroup" :: NullOrUndefined (AutoScalingGroup) , "agentHealth" :: NullOrUndefined (AgentHealth) , "agentVersion" :: NullOrUndefined (AgentVersion) , "operatingSystem" :: NullOrUndefined (OperatingSystem) , "kernelVersion" :: NullOrUndefined (KernelVersion) , "ipv4Address" :: NullOrUndefined (Ipv4Address) } -> {"hostname" :: NullOrUndefined (Hostname) , "agentId" :: (AgentId) , "autoScalingGroup" :: NullOrUndefined (AutoScalingGroup) , "agentHealth" :: NullOrUndefined (AgentHealth) , "agentVersion" :: NullOrUndefined (AgentVersion) , "operatingSystem" :: NullOrUndefined (OperatingSystem) , "kernelVersion" :: NullOrUndefined (KernelVersion) , "ipv4Address" :: NullOrUndefined (Ipv4Address) } ) -> AgentPreview
-newAgentPreview' _agentId customize = (AgentPreview <<< customize) { "agentId": _agentId, "agentHealth": (NullOrUndefined Nothing), "agentVersion": (NullOrUndefined Nothing), "autoScalingGroup": (NullOrUndefined Nothing), "hostname": (NullOrUndefined Nothing), "ipv4Address": (NullOrUndefined Nothing), "kernelVersion": (NullOrUndefined Nothing), "operatingSystem": (NullOrUndefined Nothing) }
+newAgentPreview' :: AgentId -> ( { "hostname" :: Maybe (Hostname) , "agentId" :: (AgentId) , "autoScalingGroup" :: Maybe (AutoScalingGroup) , "agentHealth" :: Maybe (AgentHealth) , "agentVersion" :: Maybe (AgentVersion) , "operatingSystem" :: Maybe (OperatingSystem) , "kernelVersion" :: Maybe (KernelVersion) , "ipv4Address" :: Maybe (Ipv4Address) } -> {"hostname" :: Maybe (Hostname) , "agentId" :: (AgentId) , "autoScalingGroup" :: Maybe (AutoScalingGroup) , "agentHealth" :: Maybe (AgentHealth) , "agentVersion" :: Maybe (AgentVersion) , "operatingSystem" :: Maybe (OperatingSystem) , "kernelVersion" :: Maybe (KernelVersion) , "ipv4Address" :: Maybe (Ipv4Address) } ) -> AgentPreview
+newAgentPreview' _agentId customize = (AgentPreview <<< customize) { "agentId": _agentId, "agentHealth": Nothing, "agentVersion": Nothing, "autoScalingGroup": Nothing, "hostname": Nothing, "ipv4Address": Nothing, "kernelVersion": Nothing, "operatingSystem": Nothing }
 
 
 
@@ -323,8 +322,8 @@ newtype AssessmentRun = AssessmentRun
   , "rulesPackageArns" :: (AssessmentRulesPackageArnList)
   , "userAttributesForFindings" :: (UserAttributeList)
   , "createdAt" :: (Types.Timestamp)
-  , "startedAt" :: NullOrUndefined (Types.Timestamp)
-  , "completedAt" :: NullOrUndefined (Types.Timestamp)
+  , "startedAt" :: Maybe (Types.Timestamp)
+  , "completedAt" :: Maybe (Types.Timestamp)
   , "stateChangedAt" :: (Types.Timestamp)
   , "dataCollected" :: (Bool)
   , "stateChanges" :: (AssessmentRunStateChangeList)
@@ -339,12 +338,12 @@ instance encodeAssessmentRun :: Encode AssessmentRun where encode = genericEncod
 
 -- | Constructs AssessmentRun from required parameters
 newAssessmentRun :: Arn -> Arn -> Types.Timestamp -> Bool -> AssessmentRunDuration -> AssessmentRunFindingCounts -> AssessmentRunName -> AssessmentRunNotificationList -> AssessmentRulesPackageArnList -> AssessmentRunState -> Types.Timestamp -> AssessmentRunStateChangeList -> UserAttributeList -> AssessmentRun
-newAssessmentRun _arn _assessmentTemplateArn _createdAt _dataCollected _durationInSeconds _findingCounts _name _notifications _rulesPackageArns _state _stateChangedAt _stateChanges _userAttributesForFindings = AssessmentRun { "arn": _arn, "assessmentTemplateArn": _assessmentTemplateArn, "createdAt": _createdAt, "dataCollected": _dataCollected, "durationInSeconds": _durationInSeconds, "findingCounts": _findingCounts, "name": _name, "notifications": _notifications, "rulesPackageArns": _rulesPackageArns, "state": _state, "stateChangedAt": _stateChangedAt, "stateChanges": _stateChanges, "userAttributesForFindings": _userAttributesForFindings, "completedAt": (NullOrUndefined Nothing), "startedAt": (NullOrUndefined Nothing) }
+newAssessmentRun _arn _assessmentTemplateArn _createdAt _dataCollected _durationInSeconds _findingCounts _name _notifications _rulesPackageArns _state _stateChangedAt _stateChanges _userAttributesForFindings = AssessmentRun { "arn": _arn, "assessmentTemplateArn": _assessmentTemplateArn, "createdAt": _createdAt, "dataCollected": _dataCollected, "durationInSeconds": _durationInSeconds, "findingCounts": _findingCounts, "name": _name, "notifications": _notifications, "rulesPackageArns": _rulesPackageArns, "state": _state, "stateChangedAt": _stateChangedAt, "stateChanges": _stateChanges, "userAttributesForFindings": _userAttributesForFindings, "completedAt": Nothing, "startedAt": Nothing }
 
 -- | Constructs AssessmentRun's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newAssessmentRun' :: Arn -> Arn -> Types.Timestamp -> Bool -> AssessmentRunDuration -> AssessmentRunFindingCounts -> AssessmentRunName -> AssessmentRunNotificationList -> AssessmentRulesPackageArnList -> AssessmentRunState -> Types.Timestamp -> AssessmentRunStateChangeList -> UserAttributeList -> ( { "arn" :: (Arn) , "name" :: (AssessmentRunName) , "assessmentTemplateArn" :: (Arn) , "state" :: (AssessmentRunState) , "durationInSeconds" :: (AssessmentRunDuration) , "rulesPackageArns" :: (AssessmentRulesPackageArnList) , "userAttributesForFindings" :: (UserAttributeList) , "createdAt" :: (Types.Timestamp) , "startedAt" :: NullOrUndefined (Types.Timestamp) , "completedAt" :: NullOrUndefined (Types.Timestamp) , "stateChangedAt" :: (Types.Timestamp) , "dataCollected" :: (Bool) , "stateChanges" :: (AssessmentRunStateChangeList) , "notifications" :: (AssessmentRunNotificationList) , "findingCounts" :: (AssessmentRunFindingCounts) } -> {"arn" :: (Arn) , "name" :: (AssessmentRunName) , "assessmentTemplateArn" :: (Arn) , "state" :: (AssessmentRunState) , "durationInSeconds" :: (AssessmentRunDuration) , "rulesPackageArns" :: (AssessmentRulesPackageArnList) , "userAttributesForFindings" :: (UserAttributeList) , "createdAt" :: (Types.Timestamp) , "startedAt" :: NullOrUndefined (Types.Timestamp) , "completedAt" :: NullOrUndefined (Types.Timestamp) , "stateChangedAt" :: (Types.Timestamp) , "dataCollected" :: (Bool) , "stateChanges" :: (AssessmentRunStateChangeList) , "notifications" :: (AssessmentRunNotificationList) , "findingCounts" :: (AssessmentRunFindingCounts) } ) -> AssessmentRun
-newAssessmentRun' _arn _assessmentTemplateArn _createdAt _dataCollected _durationInSeconds _findingCounts _name _notifications _rulesPackageArns _state _stateChangedAt _stateChanges _userAttributesForFindings customize = (AssessmentRun <<< customize) { "arn": _arn, "assessmentTemplateArn": _assessmentTemplateArn, "createdAt": _createdAt, "dataCollected": _dataCollected, "durationInSeconds": _durationInSeconds, "findingCounts": _findingCounts, "name": _name, "notifications": _notifications, "rulesPackageArns": _rulesPackageArns, "state": _state, "stateChangedAt": _stateChangedAt, "stateChanges": _stateChanges, "userAttributesForFindings": _userAttributesForFindings, "completedAt": (NullOrUndefined Nothing), "startedAt": (NullOrUndefined Nothing) }
+newAssessmentRun' :: Arn -> Arn -> Types.Timestamp -> Bool -> AssessmentRunDuration -> AssessmentRunFindingCounts -> AssessmentRunName -> AssessmentRunNotificationList -> AssessmentRulesPackageArnList -> AssessmentRunState -> Types.Timestamp -> AssessmentRunStateChangeList -> UserAttributeList -> ( { "arn" :: (Arn) , "name" :: (AssessmentRunName) , "assessmentTemplateArn" :: (Arn) , "state" :: (AssessmentRunState) , "durationInSeconds" :: (AssessmentRunDuration) , "rulesPackageArns" :: (AssessmentRulesPackageArnList) , "userAttributesForFindings" :: (UserAttributeList) , "createdAt" :: (Types.Timestamp) , "startedAt" :: Maybe (Types.Timestamp) , "completedAt" :: Maybe (Types.Timestamp) , "stateChangedAt" :: (Types.Timestamp) , "dataCollected" :: (Bool) , "stateChanges" :: (AssessmentRunStateChangeList) , "notifications" :: (AssessmentRunNotificationList) , "findingCounts" :: (AssessmentRunFindingCounts) } -> {"arn" :: (Arn) , "name" :: (AssessmentRunName) , "assessmentTemplateArn" :: (Arn) , "state" :: (AssessmentRunState) , "durationInSeconds" :: (AssessmentRunDuration) , "rulesPackageArns" :: (AssessmentRulesPackageArnList) , "userAttributesForFindings" :: (UserAttributeList) , "createdAt" :: (Types.Timestamp) , "startedAt" :: Maybe (Types.Timestamp) , "completedAt" :: Maybe (Types.Timestamp) , "stateChangedAt" :: (Types.Timestamp) , "dataCollected" :: (Bool) , "stateChanges" :: (AssessmentRunStateChangeList) , "notifications" :: (AssessmentRunNotificationList) , "findingCounts" :: (AssessmentRunFindingCounts) } ) -> AssessmentRun
+newAssessmentRun' _arn _assessmentTemplateArn _createdAt _dataCollected _durationInSeconds _findingCounts _name _notifications _rulesPackageArns _state _stateChangedAt _stateChanges _userAttributesForFindings customize = (AssessmentRun <<< customize) { "arn": _arn, "assessmentTemplateArn": _assessmentTemplateArn, "createdAt": _createdAt, "dataCollected": _dataCollected, "durationInSeconds": _durationInSeconds, "findingCounts": _findingCounts, "name": _name, "notifications": _notifications, "rulesPackageArns": _rulesPackageArns, "state": _state, "stateChangedAt": _stateChangedAt, "stateChanges": _stateChanges, "userAttributesForFindings": _userAttributesForFindings, "completedAt": Nothing, "startedAt": Nothing }
 
 
 
@@ -354,8 +353,8 @@ newtype AssessmentRunAgent = AssessmentRunAgent
   , "assessmentRunArn" :: (Arn)
   , "agentHealth" :: (AgentHealth)
   , "agentHealthCode" :: (AgentHealthCode)
-  , "agentHealthDetails" :: NullOrUndefined (Message)
-  , "autoScalingGroup" :: NullOrUndefined (AutoScalingGroup)
+  , "agentHealthDetails" :: Maybe (Message)
+  , "autoScalingGroup" :: Maybe (AutoScalingGroup)
   , "telemetryMetadata" :: (TelemetryMetadataList)
   }
 derive instance newtypeAssessmentRunAgent :: Newtype AssessmentRunAgent _
@@ -366,12 +365,12 @@ instance encodeAssessmentRunAgent :: Encode AssessmentRunAgent where encode = ge
 
 -- | Constructs AssessmentRunAgent from required parameters
 newAssessmentRunAgent :: AgentHealth -> AgentHealthCode -> AgentId -> Arn -> TelemetryMetadataList -> AssessmentRunAgent
-newAssessmentRunAgent _agentHealth _agentHealthCode _agentId _assessmentRunArn _telemetryMetadata = AssessmentRunAgent { "agentHealth": _agentHealth, "agentHealthCode": _agentHealthCode, "agentId": _agentId, "assessmentRunArn": _assessmentRunArn, "telemetryMetadata": _telemetryMetadata, "agentHealthDetails": (NullOrUndefined Nothing), "autoScalingGroup": (NullOrUndefined Nothing) }
+newAssessmentRunAgent _agentHealth _agentHealthCode _agentId _assessmentRunArn _telemetryMetadata = AssessmentRunAgent { "agentHealth": _agentHealth, "agentHealthCode": _agentHealthCode, "agentId": _agentId, "assessmentRunArn": _assessmentRunArn, "telemetryMetadata": _telemetryMetadata, "agentHealthDetails": Nothing, "autoScalingGroup": Nothing }
 
 -- | Constructs AssessmentRunAgent's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newAssessmentRunAgent' :: AgentHealth -> AgentHealthCode -> AgentId -> Arn -> TelemetryMetadataList -> ( { "agentId" :: (AgentId) , "assessmentRunArn" :: (Arn) , "agentHealth" :: (AgentHealth) , "agentHealthCode" :: (AgentHealthCode) , "agentHealthDetails" :: NullOrUndefined (Message) , "autoScalingGroup" :: NullOrUndefined (AutoScalingGroup) , "telemetryMetadata" :: (TelemetryMetadataList) } -> {"agentId" :: (AgentId) , "assessmentRunArn" :: (Arn) , "agentHealth" :: (AgentHealth) , "agentHealthCode" :: (AgentHealthCode) , "agentHealthDetails" :: NullOrUndefined (Message) , "autoScalingGroup" :: NullOrUndefined (AutoScalingGroup) , "telemetryMetadata" :: (TelemetryMetadataList) } ) -> AssessmentRunAgent
-newAssessmentRunAgent' _agentHealth _agentHealthCode _agentId _assessmentRunArn _telemetryMetadata customize = (AssessmentRunAgent <<< customize) { "agentHealth": _agentHealth, "agentHealthCode": _agentHealthCode, "agentId": _agentId, "assessmentRunArn": _assessmentRunArn, "telemetryMetadata": _telemetryMetadata, "agentHealthDetails": (NullOrUndefined Nothing), "autoScalingGroup": (NullOrUndefined Nothing) }
+newAssessmentRunAgent' :: AgentHealth -> AgentHealthCode -> AgentId -> Arn -> TelemetryMetadataList -> ( { "agentId" :: (AgentId) , "assessmentRunArn" :: (Arn) , "agentHealth" :: (AgentHealth) , "agentHealthCode" :: (AgentHealthCode) , "agentHealthDetails" :: Maybe (Message) , "autoScalingGroup" :: Maybe (AutoScalingGroup) , "telemetryMetadata" :: (TelemetryMetadataList) } -> {"agentId" :: (AgentId) , "assessmentRunArn" :: (Arn) , "agentHealth" :: (AgentHealth) , "agentHealthCode" :: (AgentHealthCode) , "agentHealthDetails" :: Maybe (Message) , "autoScalingGroup" :: Maybe (AutoScalingGroup) , "telemetryMetadata" :: (TelemetryMetadataList) } ) -> AssessmentRunAgent
+newAssessmentRunAgent' _agentHealth _agentHealthCode _agentId _assessmentRunArn _telemetryMetadata customize = (AssessmentRunAgent <<< customize) { "agentHealth": _agentHealth, "agentHealthCode": _agentHealthCode, "agentId": _agentId, "assessmentRunArn": _assessmentRunArn, "telemetryMetadata": _telemetryMetadata, "agentHealthDetails": Nothing, "autoScalingGroup": Nothing }
 
 
 
@@ -395,13 +394,13 @@ instance encodeAssessmentRunDuration :: Encode AssessmentRunDuration where encod
 
 -- | <p>Used as the request parameter in the <a>ListAssessmentRuns</a> action.</p>
 newtype AssessmentRunFilter = AssessmentRunFilter 
-  { "namePattern" :: NullOrUndefined (NamePattern)
-  , "states" :: NullOrUndefined (AssessmentRunStateList)
-  , "durationRange" :: NullOrUndefined (DurationRange)
-  , "rulesPackageArns" :: NullOrUndefined (FilterRulesPackageArnList)
-  , "startTimeRange" :: NullOrUndefined (TimestampRange)
-  , "completionTimeRange" :: NullOrUndefined (TimestampRange)
-  , "stateChangeTimeRange" :: NullOrUndefined (TimestampRange)
+  { "namePattern" :: Maybe (NamePattern)
+  , "states" :: Maybe (AssessmentRunStateList)
+  , "durationRange" :: Maybe (DurationRange)
+  , "rulesPackageArns" :: Maybe (FilterRulesPackageArnList)
+  , "startTimeRange" :: Maybe (TimestampRange)
+  , "completionTimeRange" :: Maybe (TimestampRange)
+  , "stateChangeTimeRange" :: Maybe (TimestampRange)
   }
 derive instance newtypeAssessmentRunFilter :: Newtype AssessmentRunFilter _
 derive instance repGenericAssessmentRunFilter :: Generic AssessmentRunFilter _
@@ -411,12 +410,12 @@ instance encodeAssessmentRunFilter :: Encode AssessmentRunFilter where encode = 
 
 -- | Constructs AssessmentRunFilter from required parameters
 newAssessmentRunFilter :: AssessmentRunFilter
-newAssessmentRunFilter  = AssessmentRunFilter { "completionTimeRange": (NullOrUndefined Nothing), "durationRange": (NullOrUndefined Nothing), "namePattern": (NullOrUndefined Nothing), "rulesPackageArns": (NullOrUndefined Nothing), "startTimeRange": (NullOrUndefined Nothing), "stateChangeTimeRange": (NullOrUndefined Nothing), "states": (NullOrUndefined Nothing) }
+newAssessmentRunFilter  = AssessmentRunFilter { "completionTimeRange": Nothing, "durationRange": Nothing, "namePattern": Nothing, "rulesPackageArns": Nothing, "startTimeRange": Nothing, "stateChangeTimeRange": Nothing, "states": Nothing }
 
 -- | Constructs AssessmentRunFilter's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newAssessmentRunFilter' :: ( { "namePattern" :: NullOrUndefined (NamePattern) , "states" :: NullOrUndefined (AssessmentRunStateList) , "durationRange" :: NullOrUndefined (DurationRange) , "rulesPackageArns" :: NullOrUndefined (FilterRulesPackageArnList) , "startTimeRange" :: NullOrUndefined (TimestampRange) , "completionTimeRange" :: NullOrUndefined (TimestampRange) , "stateChangeTimeRange" :: NullOrUndefined (TimestampRange) } -> {"namePattern" :: NullOrUndefined (NamePattern) , "states" :: NullOrUndefined (AssessmentRunStateList) , "durationRange" :: NullOrUndefined (DurationRange) , "rulesPackageArns" :: NullOrUndefined (FilterRulesPackageArnList) , "startTimeRange" :: NullOrUndefined (TimestampRange) , "completionTimeRange" :: NullOrUndefined (TimestampRange) , "stateChangeTimeRange" :: NullOrUndefined (TimestampRange) } ) -> AssessmentRunFilter
-newAssessmentRunFilter'  customize = (AssessmentRunFilter <<< customize) { "completionTimeRange": (NullOrUndefined Nothing), "durationRange": (NullOrUndefined Nothing), "namePattern": (NullOrUndefined Nothing), "rulesPackageArns": (NullOrUndefined Nothing), "startTimeRange": (NullOrUndefined Nothing), "stateChangeTimeRange": (NullOrUndefined Nothing), "states": (NullOrUndefined Nothing) }
+newAssessmentRunFilter' :: ( { "namePattern" :: Maybe (NamePattern) , "states" :: Maybe (AssessmentRunStateList) , "durationRange" :: Maybe (DurationRange) , "rulesPackageArns" :: Maybe (FilterRulesPackageArnList) , "startTimeRange" :: Maybe (TimestampRange) , "completionTimeRange" :: Maybe (TimestampRange) , "stateChangeTimeRange" :: Maybe (TimestampRange) } -> {"namePattern" :: Maybe (NamePattern) , "states" :: Maybe (AssessmentRunStateList) , "durationRange" :: Maybe (DurationRange) , "rulesPackageArns" :: Maybe (FilterRulesPackageArnList) , "startTimeRange" :: Maybe (TimestampRange) , "completionTimeRange" :: Maybe (TimestampRange) , "stateChangeTimeRange" :: Maybe (TimestampRange) } ) -> AssessmentRunFilter
+newAssessmentRunFilter'  customize = (AssessmentRunFilter <<< customize) { "completionTimeRange": Nothing, "durationRange": Nothing, "namePattern": Nothing, "rulesPackageArns": Nothing, "startTimeRange": Nothing, "stateChangeTimeRange": Nothing, "states": Nothing }
 
 
 
@@ -484,10 +483,10 @@ instance encodeAssessmentRunName :: Encode AssessmentRunName where encode = gene
 newtype AssessmentRunNotification = AssessmentRunNotification 
   { "date" :: (Types.Timestamp)
   , "event" :: (InspectorEvent)
-  , "message" :: NullOrUndefined (Message)
+  , "message" :: Maybe (Message)
   , "error" :: (Bool)
-  , "snsTopicArn" :: NullOrUndefined (Arn)
-  , "snsPublishStatusCode" :: NullOrUndefined (AssessmentRunNotificationSnsStatusCode)
+  , "snsTopicArn" :: Maybe (Arn)
+  , "snsPublishStatusCode" :: Maybe (AssessmentRunNotificationSnsStatusCode)
   }
 derive instance newtypeAssessmentRunNotification :: Newtype AssessmentRunNotification _
 derive instance repGenericAssessmentRunNotification :: Generic AssessmentRunNotification _
@@ -497,12 +496,12 @@ instance encodeAssessmentRunNotification :: Encode AssessmentRunNotification whe
 
 -- | Constructs AssessmentRunNotification from required parameters
 newAssessmentRunNotification :: Types.Timestamp -> Bool -> InspectorEvent -> AssessmentRunNotification
-newAssessmentRunNotification _date _error _event = AssessmentRunNotification { "date": _date, "error": _error, "event": _event, "message": (NullOrUndefined Nothing), "snsPublishStatusCode": (NullOrUndefined Nothing), "snsTopicArn": (NullOrUndefined Nothing) }
+newAssessmentRunNotification _date _error _event = AssessmentRunNotification { "date": _date, "error": _error, "event": _event, "message": Nothing, "snsPublishStatusCode": Nothing, "snsTopicArn": Nothing }
 
 -- | Constructs AssessmentRunNotification's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newAssessmentRunNotification' :: Types.Timestamp -> Bool -> InspectorEvent -> ( { "date" :: (Types.Timestamp) , "event" :: (InspectorEvent) , "message" :: NullOrUndefined (Message) , "error" :: (Bool) , "snsTopicArn" :: NullOrUndefined (Arn) , "snsPublishStatusCode" :: NullOrUndefined (AssessmentRunNotificationSnsStatusCode) } -> {"date" :: (Types.Timestamp) , "event" :: (InspectorEvent) , "message" :: NullOrUndefined (Message) , "error" :: (Bool) , "snsTopicArn" :: NullOrUndefined (Arn) , "snsPublishStatusCode" :: NullOrUndefined (AssessmentRunNotificationSnsStatusCode) } ) -> AssessmentRunNotification
-newAssessmentRunNotification' _date _error _event customize = (AssessmentRunNotification <<< customize) { "date": _date, "error": _error, "event": _event, "message": (NullOrUndefined Nothing), "snsPublishStatusCode": (NullOrUndefined Nothing), "snsTopicArn": (NullOrUndefined Nothing) }
+newAssessmentRunNotification' :: Types.Timestamp -> Bool -> InspectorEvent -> ( { "date" :: (Types.Timestamp) , "event" :: (InspectorEvent) , "message" :: Maybe (Message) , "error" :: (Bool) , "snsTopicArn" :: Maybe (Arn) , "snsPublishStatusCode" :: Maybe (AssessmentRunNotificationSnsStatusCode) } -> {"date" :: (Types.Timestamp) , "event" :: (InspectorEvent) , "message" :: Maybe (Message) , "error" :: (Bool) , "snsTopicArn" :: Maybe (Arn) , "snsPublishStatusCode" :: Maybe (AssessmentRunNotificationSnsStatusCode) } ) -> AssessmentRunNotification
+newAssessmentRunNotification' _date _error _event customize = (AssessmentRunNotification <<< customize) { "date": _date, "error": _error, "event": _event, "message": Nothing, "snsPublishStatusCode": Nothing, "snsTopicArn": Nothing }
 
 
 
@@ -600,7 +599,7 @@ newAssessmentTarget' _arn _createdAt _name _resourceGroupArn _updatedAt customiz
 
 -- | <p>Used as the request parameter in the <a>ListAssessmentTargets</a> action.</p>
 newtype AssessmentTargetFilter = AssessmentTargetFilter 
-  { "assessmentTargetNamePattern" :: NullOrUndefined (NamePattern)
+  { "assessmentTargetNamePattern" :: Maybe (NamePattern)
   }
 derive instance newtypeAssessmentTargetFilter :: Newtype AssessmentTargetFilter _
 derive instance repGenericAssessmentTargetFilter :: Generic AssessmentTargetFilter _
@@ -610,12 +609,12 @@ instance encodeAssessmentTargetFilter :: Encode AssessmentTargetFilter where enc
 
 -- | Constructs AssessmentTargetFilter from required parameters
 newAssessmentTargetFilter :: AssessmentTargetFilter
-newAssessmentTargetFilter  = AssessmentTargetFilter { "assessmentTargetNamePattern": (NullOrUndefined Nothing) }
+newAssessmentTargetFilter  = AssessmentTargetFilter { "assessmentTargetNamePattern": Nothing }
 
 -- | Constructs AssessmentTargetFilter's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newAssessmentTargetFilter' :: ( { "assessmentTargetNamePattern" :: NullOrUndefined (NamePattern) } -> {"assessmentTargetNamePattern" :: NullOrUndefined (NamePattern) } ) -> AssessmentTargetFilter
-newAssessmentTargetFilter'  customize = (AssessmentTargetFilter <<< customize) { "assessmentTargetNamePattern": (NullOrUndefined Nothing) }
+newAssessmentTargetFilter' :: ( { "assessmentTargetNamePattern" :: Maybe (NamePattern) } -> {"assessmentTargetNamePattern" :: Maybe (NamePattern) } ) -> AssessmentTargetFilter
+newAssessmentTargetFilter'  customize = (AssessmentTargetFilter <<< customize) { "assessmentTargetNamePattern": Nothing }
 
 
 
@@ -645,7 +644,7 @@ newtype AssessmentTemplate = AssessmentTemplate
   , "durationInSeconds" :: (AssessmentRunDuration)
   , "rulesPackageArns" :: (AssessmentTemplateRulesPackageArnList)
   , "userAttributesForFindings" :: (UserAttributeList)
-  , "lastAssessmentRunArn" :: NullOrUndefined (Arn)
+  , "lastAssessmentRunArn" :: Maybe (Arn)
   , "assessmentRunCount" :: (ArnCount)
   , "createdAt" :: (Types.Timestamp)
   }
@@ -657,20 +656,20 @@ instance encodeAssessmentTemplate :: Encode AssessmentTemplate where encode = ge
 
 -- | Constructs AssessmentTemplate from required parameters
 newAssessmentTemplate :: Arn -> ArnCount -> Arn -> Types.Timestamp -> AssessmentRunDuration -> AssessmentTemplateName -> AssessmentTemplateRulesPackageArnList -> UserAttributeList -> AssessmentTemplate
-newAssessmentTemplate _arn _assessmentRunCount _assessmentTargetArn _createdAt _durationInSeconds _name _rulesPackageArns _userAttributesForFindings = AssessmentTemplate { "arn": _arn, "assessmentRunCount": _assessmentRunCount, "assessmentTargetArn": _assessmentTargetArn, "createdAt": _createdAt, "durationInSeconds": _durationInSeconds, "name": _name, "rulesPackageArns": _rulesPackageArns, "userAttributesForFindings": _userAttributesForFindings, "lastAssessmentRunArn": (NullOrUndefined Nothing) }
+newAssessmentTemplate _arn _assessmentRunCount _assessmentTargetArn _createdAt _durationInSeconds _name _rulesPackageArns _userAttributesForFindings = AssessmentTemplate { "arn": _arn, "assessmentRunCount": _assessmentRunCount, "assessmentTargetArn": _assessmentTargetArn, "createdAt": _createdAt, "durationInSeconds": _durationInSeconds, "name": _name, "rulesPackageArns": _rulesPackageArns, "userAttributesForFindings": _userAttributesForFindings, "lastAssessmentRunArn": Nothing }
 
 -- | Constructs AssessmentTemplate's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newAssessmentTemplate' :: Arn -> ArnCount -> Arn -> Types.Timestamp -> AssessmentRunDuration -> AssessmentTemplateName -> AssessmentTemplateRulesPackageArnList -> UserAttributeList -> ( { "arn" :: (Arn) , "name" :: (AssessmentTemplateName) , "assessmentTargetArn" :: (Arn) , "durationInSeconds" :: (AssessmentRunDuration) , "rulesPackageArns" :: (AssessmentTemplateRulesPackageArnList) , "userAttributesForFindings" :: (UserAttributeList) , "lastAssessmentRunArn" :: NullOrUndefined (Arn) , "assessmentRunCount" :: (ArnCount) , "createdAt" :: (Types.Timestamp) } -> {"arn" :: (Arn) , "name" :: (AssessmentTemplateName) , "assessmentTargetArn" :: (Arn) , "durationInSeconds" :: (AssessmentRunDuration) , "rulesPackageArns" :: (AssessmentTemplateRulesPackageArnList) , "userAttributesForFindings" :: (UserAttributeList) , "lastAssessmentRunArn" :: NullOrUndefined (Arn) , "assessmentRunCount" :: (ArnCount) , "createdAt" :: (Types.Timestamp) } ) -> AssessmentTemplate
-newAssessmentTemplate' _arn _assessmentRunCount _assessmentTargetArn _createdAt _durationInSeconds _name _rulesPackageArns _userAttributesForFindings customize = (AssessmentTemplate <<< customize) { "arn": _arn, "assessmentRunCount": _assessmentRunCount, "assessmentTargetArn": _assessmentTargetArn, "createdAt": _createdAt, "durationInSeconds": _durationInSeconds, "name": _name, "rulesPackageArns": _rulesPackageArns, "userAttributesForFindings": _userAttributesForFindings, "lastAssessmentRunArn": (NullOrUndefined Nothing) }
+newAssessmentTemplate' :: Arn -> ArnCount -> Arn -> Types.Timestamp -> AssessmentRunDuration -> AssessmentTemplateName -> AssessmentTemplateRulesPackageArnList -> UserAttributeList -> ( { "arn" :: (Arn) , "name" :: (AssessmentTemplateName) , "assessmentTargetArn" :: (Arn) , "durationInSeconds" :: (AssessmentRunDuration) , "rulesPackageArns" :: (AssessmentTemplateRulesPackageArnList) , "userAttributesForFindings" :: (UserAttributeList) , "lastAssessmentRunArn" :: Maybe (Arn) , "assessmentRunCount" :: (ArnCount) , "createdAt" :: (Types.Timestamp) } -> {"arn" :: (Arn) , "name" :: (AssessmentTemplateName) , "assessmentTargetArn" :: (Arn) , "durationInSeconds" :: (AssessmentRunDuration) , "rulesPackageArns" :: (AssessmentTemplateRulesPackageArnList) , "userAttributesForFindings" :: (UserAttributeList) , "lastAssessmentRunArn" :: Maybe (Arn) , "assessmentRunCount" :: (ArnCount) , "createdAt" :: (Types.Timestamp) } ) -> AssessmentTemplate
+newAssessmentTemplate' _arn _assessmentRunCount _assessmentTargetArn _createdAt _durationInSeconds _name _rulesPackageArns _userAttributesForFindings customize = (AssessmentTemplate <<< customize) { "arn": _arn, "assessmentRunCount": _assessmentRunCount, "assessmentTargetArn": _assessmentTargetArn, "createdAt": _createdAt, "durationInSeconds": _durationInSeconds, "name": _name, "rulesPackageArns": _rulesPackageArns, "userAttributesForFindings": _userAttributesForFindings, "lastAssessmentRunArn": Nothing }
 
 
 
 -- | <p>Used as the request parameter in the <a>ListAssessmentTemplates</a> action.</p>
 newtype AssessmentTemplateFilter = AssessmentTemplateFilter 
-  { "namePattern" :: NullOrUndefined (NamePattern)
-  , "durationRange" :: NullOrUndefined (DurationRange)
-  , "rulesPackageArns" :: NullOrUndefined (FilterRulesPackageArnList)
+  { "namePattern" :: Maybe (NamePattern)
+  , "durationRange" :: Maybe (DurationRange)
+  , "rulesPackageArns" :: Maybe (FilterRulesPackageArnList)
   }
 derive instance newtypeAssessmentTemplateFilter :: Newtype AssessmentTemplateFilter _
 derive instance repGenericAssessmentTemplateFilter :: Generic AssessmentTemplateFilter _
@@ -680,12 +679,12 @@ instance encodeAssessmentTemplateFilter :: Encode AssessmentTemplateFilter where
 
 -- | Constructs AssessmentTemplateFilter from required parameters
 newAssessmentTemplateFilter :: AssessmentTemplateFilter
-newAssessmentTemplateFilter  = AssessmentTemplateFilter { "durationRange": (NullOrUndefined Nothing), "namePattern": (NullOrUndefined Nothing), "rulesPackageArns": (NullOrUndefined Nothing) }
+newAssessmentTemplateFilter  = AssessmentTemplateFilter { "durationRange": Nothing, "namePattern": Nothing, "rulesPackageArns": Nothing }
 
 -- | Constructs AssessmentTemplateFilter's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newAssessmentTemplateFilter' :: ( { "namePattern" :: NullOrUndefined (NamePattern) , "durationRange" :: NullOrUndefined (DurationRange) , "rulesPackageArns" :: NullOrUndefined (FilterRulesPackageArnList) } -> {"namePattern" :: NullOrUndefined (NamePattern) , "durationRange" :: NullOrUndefined (DurationRange) , "rulesPackageArns" :: NullOrUndefined (FilterRulesPackageArnList) } ) -> AssessmentTemplateFilter
-newAssessmentTemplateFilter'  customize = (AssessmentTemplateFilter <<< customize) { "durationRange": (NullOrUndefined Nothing), "namePattern": (NullOrUndefined Nothing), "rulesPackageArns": (NullOrUndefined Nothing) }
+newAssessmentTemplateFilter' :: ( { "namePattern" :: Maybe (NamePattern) , "durationRange" :: Maybe (DurationRange) , "rulesPackageArns" :: Maybe (FilterRulesPackageArnList) } -> {"namePattern" :: Maybe (NamePattern) , "durationRange" :: Maybe (DurationRange) , "rulesPackageArns" :: Maybe (FilterRulesPackageArnList) } ) -> AssessmentTemplateFilter
+newAssessmentTemplateFilter'  customize = (AssessmentTemplateFilter <<< customize) { "durationRange": Nothing, "namePattern": Nothing, "rulesPackageArns": Nothing }
 
 
 
@@ -719,11 +718,11 @@ instance encodeAssessmentTemplateRulesPackageArnList :: Encode AssessmentTemplat
 -- | <p>A collection of attributes of the host from which the finding is generated.</p>
 newtype AssetAttributes = AssetAttributes 
   { "schemaVersion" :: (NumericVersion)
-  , "agentId" :: NullOrUndefined (AgentId)
-  , "autoScalingGroup" :: NullOrUndefined (AutoScalingGroup)
-  , "amiId" :: NullOrUndefined (AmiId)
-  , "hostname" :: NullOrUndefined (Hostname)
-  , "ipv4Addresses" :: NullOrUndefined (Ipv4AddressList)
+  , "agentId" :: Maybe (AgentId)
+  , "autoScalingGroup" :: Maybe (AutoScalingGroup)
+  , "amiId" :: Maybe (AmiId)
+  , "hostname" :: Maybe (Hostname)
+  , "ipv4Addresses" :: Maybe (Ipv4AddressList)
   }
 derive instance newtypeAssetAttributes :: Newtype AssetAttributes _
 derive instance repGenericAssetAttributes :: Generic AssetAttributes _
@@ -733,12 +732,12 @@ instance encodeAssetAttributes :: Encode AssetAttributes where encode = genericE
 
 -- | Constructs AssetAttributes from required parameters
 newAssetAttributes :: NumericVersion -> AssetAttributes
-newAssetAttributes _schemaVersion = AssetAttributes { "schemaVersion": _schemaVersion, "agentId": (NullOrUndefined Nothing), "amiId": (NullOrUndefined Nothing), "autoScalingGroup": (NullOrUndefined Nothing), "hostname": (NullOrUndefined Nothing), "ipv4Addresses": (NullOrUndefined Nothing) }
+newAssetAttributes _schemaVersion = AssetAttributes { "schemaVersion": _schemaVersion, "agentId": Nothing, "amiId": Nothing, "autoScalingGroup": Nothing, "hostname": Nothing, "ipv4Addresses": Nothing }
 
 -- | Constructs AssetAttributes's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newAssetAttributes' :: NumericVersion -> ( { "schemaVersion" :: (NumericVersion) , "agentId" :: NullOrUndefined (AgentId) , "autoScalingGroup" :: NullOrUndefined (AutoScalingGroup) , "amiId" :: NullOrUndefined (AmiId) , "hostname" :: NullOrUndefined (Hostname) , "ipv4Addresses" :: NullOrUndefined (Ipv4AddressList) } -> {"schemaVersion" :: (NumericVersion) , "agentId" :: NullOrUndefined (AgentId) , "autoScalingGroup" :: NullOrUndefined (AutoScalingGroup) , "amiId" :: NullOrUndefined (AmiId) , "hostname" :: NullOrUndefined (Hostname) , "ipv4Addresses" :: NullOrUndefined (Ipv4AddressList) } ) -> AssetAttributes
-newAssetAttributes' _schemaVersion customize = (AssetAttributes <<< customize) { "schemaVersion": _schemaVersion, "agentId": (NullOrUndefined Nothing), "amiId": (NullOrUndefined Nothing), "autoScalingGroup": (NullOrUndefined Nothing), "hostname": (NullOrUndefined Nothing), "ipv4Addresses": (NullOrUndefined Nothing) }
+newAssetAttributes' :: NumericVersion -> ( { "schemaVersion" :: (NumericVersion) , "agentId" :: Maybe (AgentId) , "autoScalingGroup" :: Maybe (AutoScalingGroup) , "amiId" :: Maybe (AmiId) , "hostname" :: Maybe (Hostname) , "ipv4Addresses" :: Maybe (Ipv4AddressList) } -> {"schemaVersion" :: (NumericVersion) , "agentId" :: Maybe (AgentId) , "autoScalingGroup" :: Maybe (AutoScalingGroup) , "amiId" :: Maybe (AmiId) , "hostname" :: Maybe (Hostname) , "ipv4Addresses" :: Maybe (Ipv4AddressList) } ) -> AssetAttributes
+newAssetAttributes' _schemaVersion customize = (AssetAttributes <<< customize) { "schemaVersion": _schemaVersion, "agentId": Nothing, "amiId": Nothing, "autoScalingGroup": Nothing, "hostname": Nothing, "ipv4Addresses": Nothing }
 
 
 
@@ -754,7 +753,7 @@ instance encodeAssetType :: Encode AssetType where encode = genericEncode option
 -- | <p>This data type is used as a request parameter in the <a>AddAttributesToFindings</a> and <a>CreateAssessmentTemplate</a> actions.</p>
 newtype Attribute = Attribute 
   { "key" :: (AttributeKey)
-  , "value" :: NullOrUndefined (AttributeValue)
+  , "value" :: Maybe (AttributeValue)
   }
 derive instance newtypeAttribute :: Newtype Attribute _
 derive instance repGenericAttribute :: Generic Attribute _
@@ -764,12 +763,12 @@ instance encodeAttribute :: Encode Attribute where encode = genericEncode option
 
 -- | Constructs Attribute from required parameters
 newAttribute :: AttributeKey -> Attribute
-newAttribute _key = Attribute { "key": _key, "value": (NullOrUndefined Nothing) }
+newAttribute _key = Attribute { "key": _key, "value": Nothing }
 
 -- | Constructs Attribute's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newAttribute' :: AttributeKey -> ( { "key" :: (AttributeKey) , "value" :: NullOrUndefined (AttributeValue) } -> {"key" :: (AttributeKey) , "value" :: NullOrUndefined (AttributeValue) } ) -> Attribute
-newAttribute' _key customize = (Attribute <<< customize) { "key": _key, "value": (NullOrUndefined Nothing) }
+newAttribute' :: AttributeKey -> ( { "key" :: (AttributeKey) , "value" :: Maybe (AttributeValue) } -> {"key" :: (AttributeKey) , "value" :: Maybe (AttributeValue) } ) -> Attribute
+newAttribute' _key customize = (Attribute <<< customize) { "key": _key, "value": Nothing }
 
 
 
@@ -882,7 +881,7 @@ newtype CreateAssessmentTemplateRequest = CreateAssessmentTemplateRequest
   , "assessmentTemplateName" :: (AssessmentTemplateName)
   , "durationInSeconds" :: (AssessmentRunDuration)
   , "rulesPackageArns" :: (AssessmentTemplateRulesPackageArnList)
-  , "userAttributesForFindings" :: NullOrUndefined (UserAttributeList)
+  , "userAttributesForFindings" :: Maybe (UserAttributeList)
   }
 derive instance newtypeCreateAssessmentTemplateRequest :: Newtype CreateAssessmentTemplateRequest _
 derive instance repGenericCreateAssessmentTemplateRequest :: Generic CreateAssessmentTemplateRequest _
@@ -892,12 +891,12 @@ instance encodeCreateAssessmentTemplateRequest :: Encode CreateAssessmentTemplat
 
 -- | Constructs CreateAssessmentTemplateRequest from required parameters
 newCreateAssessmentTemplateRequest :: Arn -> AssessmentTemplateName -> AssessmentRunDuration -> AssessmentTemplateRulesPackageArnList -> CreateAssessmentTemplateRequest
-newCreateAssessmentTemplateRequest _assessmentTargetArn _assessmentTemplateName _durationInSeconds _rulesPackageArns = CreateAssessmentTemplateRequest { "assessmentTargetArn": _assessmentTargetArn, "assessmentTemplateName": _assessmentTemplateName, "durationInSeconds": _durationInSeconds, "rulesPackageArns": _rulesPackageArns, "userAttributesForFindings": (NullOrUndefined Nothing) }
+newCreateAssessmentTemplateRequest _assessmentTargetArn _assessmentTemplateName _durationInSeconds _rulesPackageArns = CreateAssessmentTemplateRequest { "assessmentTargetArn": _assessmentTargetArn, "assessmentTemplateName": _assessmentTemplateName, "durationInSeconds": _durationInSeconds, "rulesPackageArns": _rulesPackageArns, "userAttributesForFindings": Nothing }
 
 -- | Constructs CreateAssessmentTemplateRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCreateAssessmentTemplateRequest' :: Arn -> AssessmentTemplateName -> AssessmentRunDuration -> AssessmentTemplateRulesPackageArnList -> ( { "assessmentTargetArn" :: (Arn) , "assessmentTemplateName" :: (AssessmentTemplateName) , "durationInSeconds" :: (AssessmentRunDuration) , "rulesPackageArns" :: (AssessmentTemplateRulesPackageArnList) , "userAttributesForFindings" :: NullOrUndefined (UserAttributeList) } -> {"assessmentTargetArn" :: (Arn) , "assessmentTemplateName" :: (AssessmentTemplateName) , "durationInSeconds" :: (AssessmentRunDuration) , "rulesPackageArns" :: (AssessmentTemplateRulesPackageArnList) , "userAttributesForFindings" :: NullOrUndefined (UserAttributeList) } ) -> CreateAssessmentTemplateRequest
-newCreateAssessmentTemplateRequest' _assessmentTargetArn _assessmentTemplateName _durationInSeconds _rulesPackageArns customize = (CreateAssessmentTemplateRequest <<< customize) { "assessmentTargetArn": _assessmentTargetArn, "assessmentTemplateName": _assessmentTemplateName, "durationInSeconds": _durationInSeconds, "rulesPackageArns": _rulesPackageArns, "userAttributesForFindings": (NullOrUndefined Nothing) }
+newCreateAssessmentTemplateRequest' :: Arn -> AssessmentTemplateName -> AssessmentRunDuration -> AssessmentTemplateRulesPackageArnList -> ( { "assessmentTargetArn" :: (Arn) , "assessmentTemplateName" :: (AssessmentTemplateName) , "durationInSeconds" :: (AssessmentRunDuration) , "rulesPackageArns" :: (AssessmentTemplateRulesPackageArnList) , "userAttributesForFindings" :: Maybe (UserAttributeList) } -> {"assessmentTargetArn" :: (Arn) , "assessmentTemplateName" :: (AssessmentTemplateName) , "durationInSeconds" :: (AssessmentRunDuration) , "rulesPackageArns" :: (AssessmentTemplateRulesPackageArnList) , "userAttributesForFindings" :: Maybe (UserAttributeList) } ) -> CreateAssessmentTemplateRequest
+newCreateAssessmentTemplateRequest' _assessmentTargetArn _assessmentTemplateName _durationInSeconds _rulesPackageArns customize = (CreateAssessmentTemplateRequest <<< customize) { "assessmentTargetArn": _assessmentTargetArn, "assessmentTemplateName": _assessmentTemplateName, "durationInSeconds": _durationInSeconds, "rulesPackageArns": _rulesPackageArns, "userAttributesForFindings": Nothing }
 
 
 
@@ -1168,7 +1167,7 @@ newDescribeCrossAccountAccessRoleResponse' _registeredAt _roleArn _valid customi
 
 newtype DescribeFindingsRequest = DescribeFindingsRequest 
   { "findingArns" :: (BatchDescribeArnList)
-  , "locale" :: NullOrUndefined (Locale)
+  , "locale" :: Maybe (Locale)
   }
 derive instance newtypeDescribeFindingsRequest :: Newtype DescribeFindingsRequest _
 derive instance repGenericDescribeFindingsRequest :: Generic DescribeFindingsRequest _
@@ -1178,12 +1177,12 @@ instance encodeDescribeFindingsRequest :: Encode DescribeFindingsRequest where e
 
 -- | Constructs DescribeFindingsRequest from required parameters
 newDescribeFindingsRequest :: BatchDescribeArnList -> DescribeFindingsRequest
-newDescribeFindingsRequest _findingArns = DescribeFindingsRequest { "findingArns": _findingArns, "locale": (NullOrUndefined Nothing) }
+newDescribeFindingsRequest _findingArns = DescribeFindingsRequest { "findingArns": _findingArns, "locale": Nothing }
 
 -- | Constructs DescribeFindingsRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeFindingsRequest' :: BatchDescribeArnList -> ( { "findingArns" :: (BatchDescribeArnList) , "locale" :: NullOrUndefined (Locale) } -> {"findingArns" :: (BatchDescribeArnList) , "locale" :: NullOrUndefined (Locale) } ) -> DescribeFindingsRequest
-newDescribeFindingsRequest' _findingArns customize = (DescribeFindingsRequest <<< customize) { "findingArns": _findingArns, "locale": (NullOrUndefined Nothing) }
+newDescribeFindingsRequest' :: BatchDescribeArnList -> ( { "findingArns" :: (BatchDescribeArnList) , "locale" :: Maybe (Locale) } -> {"findingArns" :: (BatchDescribeArnList) , "locale" :: Maybe (Locale) } ) -> DescribeFindingsRequest
+newDescribeFindingsRequest' _findingArns customize = (DescribeFindingsRequest <<< customize) { "findingArns": _findingArns, "locale": Nothing }
 
 
 
@@ -1251,7 +1250,7 @@ newDescribeResourceGroupsResponse' _failedItems _resourceGroups customize = (Des
 
 newtype DescribeRulesPackagesRequest = DescribeRulesPackagesRequest 
   { "rulesPackageArns" :: (BatchDescribeArnList)
-  , "locale" :: NullOrUndefined (Locale)
+  , "locale" :: Maybe (Locale)
   }
 derive instance newtypeDescribeRulesPackagesRequest :: Newtype DescribeRulesPackagesRequest _
 derive instance repGenericDescribeRulesPackagesRequest :: Generic DescribeRulesPackagesRequest _
@@ -1261,12 +1260,12 @@ instance encodeDescribeRulesPackagesRequest :: Encode DescribeRulesPackagesReque
 
 -- | Constructs DescribeRulesPackagesRequest from required parameters
 newDescribeRulesPackagesRequest :: BatchDescribeArnList -> DescribeRulesPackagesRequest
-newDescribeRulesPackagesRequest _rulesPackageArns = DescribeRulesPackagesRequest { "rulesPackageArns": _rulesPackageArns, "locale": (NullOrUndefined Nothing) }
+newDescribeRulesPackagesRequest _rulesPackageArns = DescribeRulesPackagesRequest { "rulesPackageArns": _rulesPackageArns, "locale": Nothing }
 
 -- | Constructs DescribeRulesPackagesRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeRulesPackagesRequest' :: BatchDescribeArnList -> ( { "rulesPackageArns" :: (BatchDescribeArnList) , "locale" :: NullOrUndefined (Locale) } -> {"rulesPackageArns" :: (BatchDescribeArnList) , "locale" :: NullOrUndefined (Locale) } ) -> DescribeRulesPackagesRequest
-newDescribeRulesPackagesRequest' _rulesPackageArns customize = (DescribeRulesPackagesRequest <<< customize) { "rulesPackageArns": _rulesPackageArns, "locale": (NullOrUndefined Nothing) }
+newDescribeRulesPackagesRequest' :: BatchDescribeArnList -> ( { "rulesPackageArns" :: (BatchDescribeArnList) , "locale" :: Maybe (Locale) } -> {"rulesPackageArns" :: (BatchDescribeArnList) , "locale" :: Maybe (Locale) } ) -> DescribeRulesPackagesRequest
+newDescribeRulesPackagesRequest' _rulesPackageArns customize = (DescribeRulesPackagesRequest <<< customize) { "rulesPackageArns": _rulesPackageArns, "locale": Nothing }
 
 
 
@@ -1293,8 +1292,8 @@ newDescribeRulesPackagesResponse' _failedItems _rulesPackages customize = (Descr
 
 -- | <p>This data type is used in the <a>AssessmentTemplateFilter</a> data type.</p>
 newtype DurationRange = DurationRange 
-  { "minSeconds" :: NullOrUndefined (AssessmentRunDuration)
-  , "maxSeconds" :: NullOrUndefined (AssessmentRunDuration)
+  { "minSeconds" :: Maybe (AssessmentRunDuration)
+  , "maxSeconds" :: Maybe (AssessmentRunDuration)
   }
 derive instance newtypeDurationRange :: Newtype DurationRange _
 derive instance repGenericDurationRange :: Generic DurationRange _
@@ -1304,12 +1303,12 @@ instance encodeDurationRange :: Encode DurationRange where encode = genericEncod
 
 -- | Constructs DurationRange from required parameters
 newDurationRange :: DurationRange
-newDurationRange  = DurationRange { "maxSeconds": (NullOrUndefined Nothing), "minSeconds": (NullOrUndefined Nothing) }
+newDurationRange  = DurationRange { "maxSeconds": Nothing, "minSeconds": Nothing }
 
 -- | Constructs DurationRange's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDurationRange' :: ( { "minSeconds" :: NullOrUndefined (AssessmentRunDuration) , "maxSeconds" :: NullOrUndefined (AssessmentRunDuration) } -> {"minSeconds" :: NullOrUndefined (AssessmentRunDuration) , "maxSeconds" :: NullOrUndefined (AssessmentRunDuration) } ) -> DurationRange
-newDurationRange'  customize = (DurationRange <<< customize) { "maxSeconds": (NullOrUndefined Nothing), "minSeconds": (NullOrUndefined Nothing) }
+newDurationRange' :: ( { "minSeconds" :: Maybe (AssessmentRunDuration) , "maxSeconds" :: Maybe (AssessmentRunDuration) } -> {"minSeconds" :: Maybe (AssessmentRunDuration) , "maxSeconds" :: Maybe (AssessmentRunDuration) } ) -> DurationRange
+newDurationRange'  customize = (DurationRange <<< customize) { "maxSeconds": Nothing, "minSeconds": Nothing }
 
 
 
@@ -1405,19 +1404,19 @@ instance encodeFilterRulesPackageArnList :: Encode FilterRulesPackageArnList whe
 -- | <p>Contains information about an Amazon Inspector finding. This data type is used as the response element in the <a>DescribeFindings</a> action.</p>
 newtype Finding = Finding 
   { "arn" :: (Arn)
-  , "schemaVersion" :: NullOrUndefined (NumericVersion)
-  , "service" :: NullOrUndefined (ServiceName)
-  , "serviceAttributes" :: NullOrUndefined (InspectorServiceAttributes)
-  , "assetType" :: NullOrUndefined (AssetType)
-  , "assetAttributes" :: NullOrUndefined (AssetAttributes)
-  , "id" :: NullOrUndefined (FindingId)
-  , "title" :: NullOrUndefined (Text)
-  , "description" :: NullOrUndefined (Text)
-  , "recommendation" :: NullOrUndefined (Text)
-  , "severity" :: NullOrUndefined (Severity)
-  , "numericSeverity" :: NullOrUndefined (NumericSeverity)
-  , "confidence" :: NullOrUndefined (IocConfidence)
-  , "indicatorOfCompromise" :: NullOrUndefined (Bool)
+  , "schemaVersion" :: Maybe (NumericVersion)
+  , "service" :: Maybe (ServiceName)
+  , "serviceAttributes" :: Maybe (InspectorServiceAttributes)
+  , "assetType" :: Maybe (AssetType)
+  , "assetAttributes" :: Maybe (AssetAttributes)
+  , "id" :: Maybe (FindingId)
+  , "title" :: Maybe (Text)
+  , "description" :: Maybe (Text)
+  , "recommendation" :: Maybe (Text)
+  , "severity" :: Maybe (Severity)
+  , "numericSeverity" :: Maybe (NumericSeverity)
+  , "confidence" :: Maybe (IocConfidence)
+  , "indicatorOfCompromise" :: Maybe (Bool)
   , "attributes" :: (AttributeList)
   , "userAttributes" :: (UserAttributeList)
   , "createdAt" :: (Types.Timestamp)
@@ -1431,12 +1430,12 @@ instance encodeFinding :: Encode Finding where encode = genericEncode options
 
 -- | Constructs Finding from required parameters
 newFinding :: Arn -> AttributeList -> Types.Timestamp -> Types.Timestamp -> UserAttributeList -> Finding
-newFinding _arn _attributes _createdAt _updatedAt _userAttributes = Finding { "arn": _arn, "attributes": _attributes, "createdAt": _createdAt, "updatedAt": _updatedAt, "userAttributes": _userAttributes, "assetAttributes": (NullOrUndefined Nothing), "assetType": (NullOrUndefined Nothing), "confidence": (NullOrUndefined Nothing), "description": (NullOrUndefined Nothing), "id": (NullOrUndefined Nothing), "indicatorOfCompromise": (NullOrUndefined Nothing), "numericSeverity": (NullOrUndefined Nothing), "recommendation": (NullOrUndefined Nothing), "schemaVersion": (NullOrUndefined Nothing), "service": (NullOrUndefined Nothing), "serviceAttributes": (NullOrUndefined Nothing), "severity": (NullOrUndefined Nothing), "title": (NullOrUndefined Nothing) }
+newFinding _arn _attributes _createdAt _updatedAt _userAttributes = Finding { "arn": _arn, "attributes": _attributes, "createdAt": _createdAt, "updatedAt": _updatedAt, "userAttributes": _userAttributes, "assetAttributes": Nothing, "assetType": Nothing, "confidence": Nothing, "description": Nothing, "id": Nothing, "indicatorOfCompromise": Nothing, "numericSeverity": Nothing, "recommendation": Nothing, "schemaVersion": Nothing, "service": Nothing, "serviceAttributes": Nothing, "severity": Nothing, "title": Nothing }
 
 -- | Constructs Finding's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newFinding' :: Arn -> AttributeList -> Types.Timestamp -> Types.Timestamp -> UserAttributeList -> ( { "arn" :: (Arn) , "schemaVersion" :: NullOrUndefined (NumericVersion) , "service" :: NullOrUndefined (ServiceName) , "serviceAttributes" :: NullOrUndefined (InspectorServiceAttributes) , "assetType" :: NullOrUndefined (AssetType) , "assetAttributes" :: NullOrUndefined (AssetAttributes) , "id" :: NullOrUndefined (FindingId) , "title" :: NullOrUndefined (Text) , "description" :: NullOrUndefined (Text) , "recommendation" :: NullOrUndefined (Text) , "severity" :: NullOrUndefined (Severity) , "numericSeverity" :: NullOrUndefined (NumericSeverity) , "confidence" :: NullOrUndefined (IocConfidence) , "indicatorOfCompromise" :: NullOrUndefined (Bool) , "attributes" :: (AttributeList) , "userAttributes" :: (UserAttributeList) , "createdAt" :: (Types.Timestamp) , "updatedAt" :: (Types.Timestamp) } -> {"arn" :: (Arn) , "schemaVersion" :: NullOrUndefined (NumericVersion) , "service" :: NullOrUndefined (ServiceName) , "serviceAttributes" :: NullOrUndefined (InspectorServiceAttributes) , "assetType" :: NullOrUndefined (AssetType) , "assetAttributes" :: NullOrUndefined (AssetAttributes) , "id" :: NullOrUndefined (FindingId) , "title" :: NullOrUndefined (Text) , "description" :: NullOrUndefined (Text) , "recommendation" :: NullOrUndefined (Text) , "severity" :: NullOrUndefined (Severity) , "numericSeverity" :: NullOrUndefined (NumericSeverity) , "confidence" :: NullOrUndefined (IocConfidence) , "indicatorOfCompromise" :: NullOrUndefined (Bool) , "attributes" :: (AttributeList) , "userAttributes" :: (UserAttributeList) , "createdAt" :: (Types.Timestamp) , "updatedAt" :: (Types.Timestamp) } ) -> Finding
-newFinding' _arn _attributes _createdAt _updatedAt _userAttributes customize = (Finding <<< customize) { "arn": _arn, "attributes": _attributes, "createdAt": _createdAt, "updatedAt": _updatedAt, "userAttributes": _userAttributes, "assetAttributes": (NullOrUndefined Nothing), "assetType": (NullOrUndefined Nothing), "confidence": (NullOrUndefined Nothing), "description": (NullOrUndefined Nothing), "id": (NullOrUndefined Nothing), "indicatorOfCompromise": (NullOrUndefined Nothing), "numericSeverity": (NullOrUndefined Nothing), "recommendation": (NullOrUndefined Nothing), "schemaVersion": (NullOrUndefined Nothing), "service": (NullOrUndefined Nothing), "serviceAttributes": (NullOrUndefined Nothing), "severity": (NullOrUndefined Nothing), "title": (NullOrUndefined Nothing) }
+newFinding' :: Arn -> AttributeList -> Types.Timestamp -> Types.Timestamp -> UserAttributeList -> ( { "arn" :: (Arn) , "schemaVersion" :: Maybe (NumericVersion) , "service" :: Maybe (ServiceName) , "serviceAttributes" :: Maybe (InspectorServiceAttributes) , "assetType" :: Maybe (AssetType) , "assetAttributes" :: Maybe (AssetAttributes) , "id" :: Maybe (FindingId) , "title" :: Maybe (Text) , "description" :: Maybe (Text) , "recommendation" :: Maybe (Text) , "severity" :: Maybe (Severity) , "numericSeverity" :: Maybe (NumericSeverity) , "confidence" :: Maybe (IocConfidence) , "indicatorOfCompromise" :: Maybe (Bool) , "attributes" :: (AttributeList) , "userAttributes" :: (UserAttributeList) , "createdAt" :: (Types.Timestamp) , "updatedAt" :: (Types.Timestamp) } -> {"arn" :: (Arn) , "schemaVersion" :: Maybe (NumericVersion) , "service" :: Maybe (ServiceName) , "serviceAttributes" :: Maybe (InspectorServiceAttributes) , "assetType" :: Maybe (AssetType) , "assetAttributes" :: Maybe (AssetAttributes) , "id" :: Maybe (FindingId) , "title" :: Maybe (Text) , "description" :: Maybe (Text) , "recommendation" :: Maybe (Text) , "severity" :: Maybe (Severity) , "numericSeverity" :: Maybe (NumericSeverity) , "confidence" :: Maybe (IocConfidence) , "indicatorOfCompromise" :: Maybe (Bool) , "attributes" :: (AttributeList) , "userAttributes" :: (UserAttributeList) , "createdAt" :: (Types.Timestamp) , "updatedAt" :: (Types.Timestamp) } ) -> Finding
+newFinding' _arn _attributes _createdAt _updatedAt _userAttributes customize = (Finding <<< customize) { "arn": _arn, "attributes": _attributes, "createdAt": _createdAt, "updatedAt": _updatedAt, "userAttributes": _userAttributes, "assetAttributes": Nothing, "assetType": Nothing, "confidence": Nothing, "description": Nothing, "id": Nothing, "indicatorOfCompromise": Nothing, "numericSeverity": Nothing, "recommendation": Nothing, "schemaVersion": Nothing, "service": Nothing, "serviceAttributes": Nothing, "severity": Nothing, "title": Nothing }
 
 
 
@@ -1451,14 +1450,14 @@ instance encodeFindingCount :: Encode FindingCount where encode = genericEncode 
 
 -- | <p>This data type is used as a request parameter in the <a>ListFindings</a> action.</p>
 newtype FindingFilter = FindingFilter 
-  { "agentIds" :: NullOrUndefined (AgentIdList)
-  , "autoScalingGroups" :: NullOrUndefined (AutoScalingGroupList)
-  , "ruleNames" :: NullOrUndefined (RuleNameList)
-  , "severities" :: NullOrUndefined (SeverityList)
-  , "rulesPackageArns" :: NullOrUndefined (FilterRulesPackageArnList)
-  , "attributes" :: NullOrUndefined (AttributeList)
-  , "userAttributes" :: NullOrUndefined (AttributeList)
-  , "creationTimeRange" :: NullOrUndefined (TimestampRange)
+  { "agentIds" :: Maybe (AgentIdList)
+  , "autoScalingGroups" :: Maybe (AutoScalingGroupList)
+  , "ruleNames" :: Maybe (RuleNameList)
+  , "severities" :: Maybe (SeverityList)
+  , "rulesPackageArns" :: Maybe (FilterRulesPackageArnList)
+  , "attributes" :: Maybe (AttributeList)
+  , "userAttributes" :: Maybe (AttributeList)
+  , "creationTimeRange" :: Maybe (TimestampRange)
   }
 derive instance newtypeFindingFilter :: Newtype FindingFilter _
 derive instance repGenericFindingFilter :: Generic FindingFilter _
@@ -1468,12 +1467,12 @@ instance encodeFindingFilter :: Encode FindingFilter where encode = genericEncod
 
 -- | Constructs FindingFilter from required parameters
 newFindingFilter :: FindingFilter
-newFindingFilter  = FindingFilter { "agentIds": (NullOrUndefined Nothing), "attributes": (NullOrUndefined Nothing), "autoScalingGroups": (NullOrUndefined Nothing), "creationTimeRange": (NullOrUndefined Nothing), "ruleNames": (NullOrUndefined Nothing), "rulesPackageArns": (NullOrUndefined Nothing), "severities": (NullOrUndefined Nothing), "userAttributes": (NullOrUndefined Nothing) }
+newFindingFilter  = FindingFilter { "agentIds": Nothing, "attributes": Nothing, "autoScalingGroups": Nothing, "creationTimeRange": Nothing, "ruleNames": Nothing, "rulesPackageArns": Nothing, "severities": Nothing, "userAttributes": Nothing }
 
 -- | Constructs FindingFilter's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newFindingFilter' :: ( { "agentIds" :: NullOrUndefined (AgentIdList) , "autoScalingGroups" :: NullOrUndefined (AutoScalingGroupList) , "ruleNames" :: NullOrUndefined (RuleNameList) , "severities" :: NullOrUndefined (SeverityList) , "rulesPackageArns" :: NullOrUndefined (FilterRulesPackageArnList) , "attributes" :: NullOrUndefined (AttributeList) , "userAttributes" :: NullOrUndefined (AttributeList) , "creationTimeRange" :: NullOrUndefined (TimestampRange) } -> {"agentIds" :: NullOrUndefined (AgentIdList) , "autoScalingGroups" :: NullOrUndefined (AutoScalingGroupList) , "ruleNames" :: NullOrUndefined (RuleNameList) , "severities" :: NullOrUndefined (SeverityList) , "rulesPackageArns" :: NullOrUndefined (FilterRulesPackageArnList) , "attributes" :: NullOrUndefined (AttributeList) , "userAttributes" :: NullOrUndefined (AttributeList) , "creationTimeRange" :: NullOrUndefined (TimestampRange) } ) -> FindingFilter
-newFindingFilter'  customize = (FindingFilter <<< customize) { "agentIds": (NullOrUndefined Nothing), "attributes": (NullOrUndefined Nothing), "autoScalingGroups": (NullOrUndefined Nothing), "creationTimeRange": (NullOrUndefined Nothing), "ruleNames": (NullOrUndefined Nothing), "rulesPackageArns": (NullOrUndefined Nothing), "severities": (NullOrUndefined Nothing), "userAttributes": (NullOrUndefined Nothing) }
+newFindingFilter' :: ( { "agentIds" :: Maybe (AgentIdList) , "autoScalingGroups" :: Maybe (AutoScalingGroupList) , "ruleNames" :: Maybe (RuleNameList) , "severities" :: Maybe (SeverityList) , "rulesPackageArns" :: Maybe (FilterRulesPackageArnList) , "attributes" :: Maybe (AttributeList) , "userAttributes" :: Maybe (AttributeList) , "creationTimeRange" :: Maybe (TimestampRange) } -> {"agentIds" :: Maybe (AgentIdList) , "autoScalingGroups" :: Maybe (AutoScalingGroupList) , "ruleNames" :: Maybe (RuleNameList) , "severities" :: Maybe (SeverityList) , "rulesPackageArns" :: Maybe (FilterRulesPackageArnList) , "attributes" :: Maybe (AttributeList) , "userAttributes" :: Maybe (AttributeList) , "creationTimeRange" :: Maybe (TimestampRange) } ) -> FindingFilter
+newFindingFilter'  customize = (FindingFilter <<< customize) { "agentIds": Nothing, "attributes": Nothing, "autoScalingGroups": Nothing, "creationTimeRange": Nothing, "ruleNames": Nothing, "rulesPackageArns": Nothing, "severities": Nothing, "userAttributes": Nothing }
 
 
 
@@ -1519,7 +1518,7 @@ newGetAssessmentReportRequest' _assessmentRunArn _reportFileFormat _reportType c
 
 newtype GetAssessmentReportResponse = GetAssessmentReportResponse 
   { "status" :: (ReportStatus)
-  , "url" :: NullOrUndefined (Url)
+  , "url" :: Maybe (Url)
   }
 derive instance newtypeGetAssessmentReportResponse :: Newtype GetAssessmentReportResponse _
 derive instance repGenericGetAssessmentReportResponse :: Generic GetAssessmentReportResponse _
@@ -1529,12 +1528,12 @@ instance encodeGetAssessmentReportResponse :: Encode GetAssessmentReportResponse
 
 -- | Constructs GetAssessmentReportResponse from required parameters
 newGetAssessmentReportResponse :: ReportStatus -> GetAssessmentReportResponse
-newGetAssessmentReportResponse _status = GetAssessmentReportResponse { "status": _status, "url": (NullOrUndefined Nothing) }
+newGetAssessmentReportResponse _status = GetAssessmentReportResponse { "status": _status, "url": Nothing }
 
 -- | Constructs GetAssessmentReportResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetAssessmentReportResponse' :: ReportStatus -> ( { "status" :: (ReportStatus) , "url" :: NullOrUndefined (Url) } -> {"status" :: (ReportStatus) , "url" :: NullOrUndefined (Url) } ) -> GetAssessmentReportResponse
-newGetAssessmentReportResponse' _status customize = (GetAssessmentReportResponse <<< customize) { "status": _status, "url": (NullOrUndefined Nothing) }
+newGetAssessmentReportResponse' :: ReportStatus -> ( { "status" :: (ReportStatus) , "url" :: Maybe (Url) } -> {"status" :: (ReportStatus) , "url" :: Maybe (Url) } ) -> GetAssessmentReportResponse
+newGetAssessmentReportResponse' _status customize = (GetAssessmentReportResponse <<< customize) { "status": _status, "url": Nothing }
 
 
 
@@ -1599,8 +1598,8 @@ instance encodeInspectorEvent :: Encode InspectorEvent where encode = genericEnc
 -- | <p>This data type is used in the <a>Finding</a> data type.</p>
 newtype InspectorServiceAttributes = InspectorServiceAttributes 
   { "schemaVersion" :: (NumericVersion)
-  , "assessmentRunArn" :: NullOrUndefined (Arn)
-  , "rulesPackageArn" :: NullOrUndefined (Arn)
+  , "assessmentRunArn" :: Maybe (Arn)
+  , "rulesPackageArn" :: Maybe (Arn)
   }
 derive instance newtypeInspectorServiceAttributes :: Newtype InspectorServiceAttributes _
 derive instance repGenericInspectorServiceAttributes :: Generic InspectorServiceAttributes _
@@ -1610,12 +1609,12 @@ instance encodeInspectorServiceAttributes :: Encode InspectorServiceAttributes w
 
 -- | Constructs InspectorServiceAttributes from required parameters
 newInspectorServiceAttributes :: NumericVersion -> InspectorServiceAttributes
-newInspectorServiceAttributes _schemaVersion = InspectorServiceAttributes { "schemaVersion": _schemaVersion, "assessmentRunArn": (NullOrUndefined Nothing), "rulesPackageArn": (NullOrUndefined Nothing) }
+newInspectorServiceAttributes _schemaVersion = InspectorServiceAttributes { "schemaVersion": _schemaVersion, "assessmentRunArn": Nothing, "rulesPackageArn": Nothing }
 
 -- | Constructs InspectorServiceAttributes's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newInspectorServiceAttributes' :: NumericVersion -> ( { "schemaVersion" :: (NumericVersion) , "assessmentRunArn" :: NullOrUndefined (Arn) , "rulesPackageArn" :: NullOrUndefined (Arn) } -> {"schemaVersion" :: (NumericVersion) , "assessmentRunArn" :: NullOrUndefined (Arn) , "rulesPackageArn" :: NullOrUndefined (Arn) } ) -> InspectorServiceAttributes
-newInspectorServiceAttributes' _schemaVersion customize = (InspectorServiceAttributes <<< customize) { "schemaVersion": _schemaVersion, "assessmentRunArn": (NullOrUndefined Nothing), "rulesPackageArn": (NullOrUndefined Nothing) }
+newInspectorServiceAttributes' :: NumericVersion -> ( { "schemaVersion" :: (NumericVersion) , "assessmentRunArn" :: Maybe (Arn) , "rulesPackageArn" :: Maybe (Arn) } -> {"schemaVersion" :: (NumericVersion) , "assessmentRunArn" :: Maybe (Arn) , "rulesPackageArn" :: Maybe (Arn) } ) -> InspectorServiceAttributes
+newInspectorServiceAttributes' _schemaVersion customize = (InspectorServiceAttributes <<< customize) { "schemaVersion": _schemaVersion, "assessmentRunArn": Nothing, "rulesPackageArn": Nothing }
 
 
 
@@ -1775,9 +1774,9 @@ newLimitExceededException' _canRetry _errorCode _message customize = (LimitExcee
 
 newtype ListAssessmentRunAgentsRequest = ListAssessmentRunAgentsRequest 
   { "assessmentRunArn" :: (Arn)
-  , "filter" :: NullOrUndefined (AgentFilter)
-  , "nextToken" :: NullOrUndefined (PaginationToken)
-  , "maxResults" :: NullOrUndefined (ListMaxResults)
+  , "filter" :: Maybe (AgentFilter)
+  , "nextToken" :: Maybe (PaginationToken)
+  , "maxResults" :: Maybe (ListMaxResults)
   }
 derive instance newtypeListAssessmentRunAgentsRequest :: Newtype ListAssessmentRunAgentsRequest _
 derive instance repGenericListAssessmentRunAgentsRequest :: Generic ListAssessmentRunAgentsRequest _
@@ -1787,18 +1786,18 @@ instance encodeListAssessmentRunAgentsRequest :: Encode ListAssessmentRunAgentsR
 
 -- | Constructs ListAssessmentRunAgentsRequest from required parameters
 newListAssessmentRunAgentsRequest :: Arn -> ListAssessmentRunAgentsRequest
-newListAssessmentRunAgentsRequest _assessmentRunArn = ListAssessmentRunAgentsRequest { "assessmentRunArn": _assessmentRunArn, "filter": (NullOrUndefined Nothing), "maxResults": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing) }
+newListAssessmentRunAgentsRequest _assessmentRunArn = ListAssessmentRunAgentsRequest { "assessmentRunArn": _assessmentRunArn, "filter": Nothing, "maxResults": Nothing, "nextToken": Nothing }
 
 -- | Constructs ListAssessmentRunAgentsRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListAssessmentRunAgentsRequest' :: Arn -> ( { "assessmentRunArn" :: (Arn) , "filter" :: NullOrUndefined (AgentFilter) , "nextToken" :: NullOrUndefined (PaginationToken) , "maxResults" :: NullOrUndefined (ListMaxResults) } -> {"assessmentRunArn" :: (Arn) , "filter" :: NullOrUndefined (AgentFilter) , "nextToken" :: NullOrUndefined (PaginationToken) , "maxResults" :: NullOrUndefined (ListMaxResults) } ) -> ListAssessmentRunAgentsRequest
-newListAssessmentRunAgentsRequest' _assessmentRunArn customize = (ListAssessmentRunAgentsRequest <<< customize) { "assessmentRunArn": _assessmentRunArn, "filter": (NullOrUndefined Nothing), "maxResults": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing) }
+newListAssessmentRunAgentsRequest' :: Arn -> ( { "assessmentRunArn" :: (Arn) , "filter" :: Maybe (AgentFilter) , "nextToken" :: Maybe (PaginationToken) , "maxResults" :: Maybe (ListMaxResults) } -> {"assessmentRunArn" :: (Arn) , "filter" :: Maybe (AgentFilter) , "nextToken" :: Maybe (PaginationToken) , "maxResults" :: Maybe (ListMaxResults) } ) -> ListAssessmentRunAgentsRequest
+newListAssessmentRunAgentsRequest' _assessmentRunArn customize = (ListAssessmentRunAgentsRequest <<< customize) { "assessmentRunArn": _assessmentRunArn, "filter": Nothing, "maxResults": Nothing, "nextToken": Nothing }
 
 
 
 newtype ListAssessmentRunAgentsResponse = ListAssessmentRunAgentsResponse 
   { "assessmentRunAgents" :: (AssessmentRunAgentList)
-  , "nextToken" :: NullOrUndefined (PaginationToken)
+  , "nextToken" :: Maybe (PaginationToken)
   }
 derive instance newtypeListAssessmentRunAgentsResponse :: Newtype ListAssessmentRunAgentsResponse _
 derive instance repGenericListAssessmentRunAgentsResponse :: Generic ListAssessmentRunAgentsResponse _
@@ -1808,20 +1807,20 @@ instance encodeListAssessmentRunAgentsResponse :: Encode ListAssessmentRunAgents
 
 -- | Constructs ListAssessmentRunAgentsResponse from required parameters
 newListAssessmentRunAgentsResponse :: AssessmentRunAgentList -> ListAssessmentRunAgentsResponse
-newListAssessmentRunAgentsResponse _assessmentRunAgents = ListAssessmentRunAgentsResponse { "assessmentRunAgents": _assessmentRunAgents, "nextToken": (NullOrUndefined Nothing) }
+newListAssessmentRunAgentsResponse _assessmentRunAgents = ListAssessmentRunAgentsResponse { "assessmentRunAgents": _assessmentRunAgents, "nextToken": Nothing }
 
 -- | Constructs ListAssessmentRunAgentsResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListAssessmentRunAgentsResponse' :: AssessmentRunAgentList -> ( { "assessmentRunAgents" :: (AssessmentRunAgentList) , "nextToken" :: NullOrUndefined (PaginationToken) } -> {"assessmentRunAgents" :: (AssessmentRunAgentList) , "nextToken" :: NullOrUndefined (PaginationToken) } ) -> ListAssessmentRunAgentsResponse
-newListAssessmentRunAgentsResponse' _assessmentRunAgents customize = (ListAssessmentRunAgentsResponse <<< customize) { "assessmentRunAgents": _assessmentRunAgents, "nextToken": (NullOrUndefined Nothing) }
+newListAssessmentRunAgentsResponse' :: AssessmentRunAgentList -> ( { "assessmentRunAgents" :: (AssessmentRunAgentList) , "nextToken" :: Maybe (PaginationToken) } -> {"assessmentRunAgents" :: (AssessmentRunAgentList) , "nextToken" :: Maybe (PaginationToken) } ) -> ListAssessmentRunAgentsResponse
+newListAssessmentRunAgentsResponse' _assessmentRunAgents customize = (ListAssessmentRunAgentsResponse <<< customize) { "assessmentRunAgents": _assessmentRunAgents, "nextToken": Nothing }
 
 
 
 newtype ListAssessmentRunsRequest = ListAssessmentRunsRequest 
-  { "assessmentTemplateArns" :: NullOrUndefined (ListParentArnList)
-  , "filter" :: NullOrUndefined (AssessmentRunFilter)
-  , "nextToken" :: NullOrUndefined (PaginationToken)
-  , "maxResults" :: NullOrUndefined (ListMaxResults)
+  { "assessmentTemplateArns" :: Maybe (ListParentArnList)
+  , "filter" :: Maybe (AssessmentRunFilter)
+  , "nextToken" :: Maybe (PaginationToken)
+  , "maxResults" :: Maybe (ListMaxResults)
   }
 derive instance newtypeListAssessmentRunsRequest :: Newtype ListAssessmentRunsRequest _
 derive instance repGenericListAssessmentRunsRequest :: Generic ListAssessmentRunsRequest _
@@ -1831,18 +1830,18 @@ instance encodeListAssessmentRunsRequest :: Encode ListAssessmentRunsRequest whe
 
 -- | Constructs ListAssessmentRunsRequest from required parameters
 newListAssessmentRunsRequest :: ListAssessmentRunsRequest
-newListAssessmentRunsRequest  = ListAssessmentRunsRequest { "assessmentTemplateArns": (NullOrUndefined Nothing), "filter": (NullOrUndefined Nothing), "maxResults": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing) }
+newListAssessmentRunsRequest  = ListAssessmentRunsRequest { "assessmentTemplateArns": Nothing, "filter": Nothing, "maxResults": Nothing, "nextToken": Nothing }
 
 -- | Constructs ListAssessmentRunsRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListAssessmentRunsRequest' :: ( { "assessmentTemplateArns" :: NullOrUndefined (ListParentArnList) , "filter" :: NullOrUndefined (AssessmentRunFilter) , "nextToken" :: NullOrUndefined (PaginationToken) , "maxResults" :: NullOrUndefined (ListMaxResults) } -> {"assessmentTemplateArns" :: NullOrUndefined (ListParentArnList) , "filter" :: NullOrUndefined (AssessmentRunFilter) , "nextToken" :: NullOrUndefined (PaginationToken) , "maxResults" :: NullOrUndefined (ListMaxResults) } ) -> ListAssessmentRunsRequest
-newListAssessmentRunsRequest'  customize = (ListAssessmentRunsRequest <<< customize) { "assessmentTemplateArns": (NullOrUndefined Nothing), "filter": (NullOrUndefined Nothing), "maxResults": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing) }
+newListAssessmentRunsRequest' :: ( { "assessmentTemplateArns" :: Maybe (ListParentArnList) , "filter" :: Maybe (AssessmentRunFilter) , "nextToken" :: Maybe (PaginationToken) , "maxResults" :: Maybe (ListMaxResults) } -> {"assessmentTemplateArns" :: Maybe (ListParentArnList) , "filter" :: Maybe (AssessmentRunFilter) , "nextToken" :: Maybe (PaginationToken) , "maxResults" :: Maybe (ListMaxResults) } ) -> ListAssessmentRunsRequest
+newListAssessmentRunsRequest'  customize = (ListAssessmentRunsRequest <<< customize) { "assessmentTemplateArns": Nothing, "filter": Nothing, "maxResults": Nothing, "nextToken": Nothing }
 
 
 
 newtype ListAssessmentRunsResponse = ListAssessmentRunsResponse 
   { "assessmentRunArns" :: (ListReturnedArnList)
-  , "nextToken" :: NullOrUndefined (PaginationToken)
+  , "nextToken" :: Maybe (PaginationToken)
   }
 derive instance newtypeListAssessmentRunsResponse :: Newtype ListAssessmentRunsResponse _
 derive instance repGenericListAssessmentRunsResponse :: Generic ListAssessmentRunsResponse _
@@ -1852,19 +1851,19 @@ instance encodeListAssessmentRunsResponse :: Encode ListAssessmentRunsResponse w
 
 -- | Constructs ListAssessmentRunsResponse from required parameters
 newListAssessmentRunsResponse :: ListReturnedArnList -> ListAssessmentRunsResponse
-newListAssessmentRunsResponse _assessmentRunArns = ListAssessmentRunsResponse { "assessmentRunArns": _assessmentRunArns, "nextToken": (NullOrUndefined Nothing) }
+newListAssessmentRunsResponse _assessmentRunArns = ListAssessmentRunsResponse { "assessmentRunArns": _assessmentRunArns, "nextToken": Nothing }
 
 -- | Constructs ListAssessmentRunsResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListAssessmentRunsResponse' :: ListReturnedArnList -> ( { "assessmentRunArns" :: (ListReturnedArnList) , "nextToken" :: NullOrUndefined (PaginationToken) } -> {"assessmentRunArns" :: (ListReturnedArnList) , "nextToken" :: NullOrUndefined (PaginationToken) } ) -> ListAssessmentRunsResponse
-newListAssessmentRunsResponse' _assessmentRunArns customize = (ListAssessmentRunsResponse <<< customize) { "assessmentRunArns": _assessmentRunArns, "nextToken": (NullOrUndefined Nothing) }
+newListAssessmentRunsResponse' :: ListReturnedArnList -> ( { "assessmentRunArns" :: (ListReturnedArnList) , "nextToken" :: Maybe (PaginationToken) } -> {"assessmentRunArns" :: (ListReturnedArnList) , "nextToken" :: Maybe (PaginationToken) } ) -> ListAssessmentRunsResponse
+newListAssessmentRunsResponse' _assessmentRunArns customize = (ListAssessmentRunsResponse <<< customize) { "assessmentRunArns": _assessmentRunArns, "nextToken": Nothing }
 
 
 
 newtype ListAssessmentTargetsRequest = ListAssessmentTargetsRequest 
-  { "filter" :: NullOrUndefined (AssessmentTargetFilter)
-  , "nextToken" :: NullOrUndefined (PaginationToken)
-  , "maxResults" :: NullOrUndefined (ListMaxResults)
+  { "filter" :: Maybe (AssessmentTargetFilter)
+  , "nextToken" :: Maybe (PaginationToken)
+  , "maxResults" :: Maybe (ListMaxResults)
   }
 derive instance newtypeListAssessmentTargetsRequest :: Newtype ListAssessmentTargetsRequest _
 derive instance repGenericListAssessmentTargetsRequest :: Generic ListAssessmentTargetsRequest _
@@ -1874,18 +1873,18 @@ instance encodeListAssessmentTargetsRequest :: Encode ListAssessmentTargetsReque
 
 -- | Constructs ListAssessmentTargetsRequest from required parameters
 newListAssessmentTargetsRequest :: ListAssessmentTargetsRequest
-newListAssessmentTargetsRequest  = ListAssessmentTargetsRequest { "filter": (NullOrUndefined Nothing), "maxResults": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing) }
+newListAssessmentTargetsRequest  = ListAssessmentTargetsRequest { "filter": Nothing, "maxResults": Nothing, "nextToken": Nothing }
 
 -- | Constructs ListAssessmentTargetsRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListAssessmentTargetsRequest' :: ( { "filter" :: NullOrUndefined (AssessmentTargetFilter) , "nextToken" :: NullOrUndefined (PaginationToken) , "maxResults" :: NullOrUndefined (ListMaxResults) } -> {"filter" :: NullOrUndefined (AssessmentTargetFilter) , "nextToken" :: NullOrUndefined (PaginationToken) , "maxResults" :: NullOrUndefined (ListMaxResults) } ) -> ListAssessmentTargetsRequest
-newListAssessmentTargetsRequest'  customize = (ListAssessmentTargetsRequest <<< customize) { "filter": (NullOrUndefined Nothing), "maxResults": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing) }
+newListAssessmentTargetsRequest' :: ( { "filter" :: Maybe (AssessmentTargetFilter) , "nextToken" :: Maybe (PaginationToken) , "maxResults" :: Maybe (ListMaxResults) } -> {"filter" :: Maybe (AssessmentTargetFilter) , "nextToken" :: Maybe (PaginationToken) , "maxResults" :: Maybe (ListMaxResults) } ) -> ListAssessmentTargetsRequest
+newListAssessmentTargetsRequest'  customize = (ListAssessmentTargetsRequest <<< customize) { "filter": Nothing, "maxResults": Nothing, "nextToken": Nothing }
 
 
 
 newtype ListAssessmentTargetsResponse = ListAssessmentTargetsResponse 
   { "assessmentTargetArns" :: (ListReturnedArnList)
-  , "nextToken" :: NullOrUndefined (PaginationToken)
+  , "nextToken" :: Maybe (PaginationToken)
   }
 derive instance newtypeListAssessmentTargetsResponse :: Newtype ListAssessmentTargetsResponse _
 derive instance repGenericListAssessmentTargetsResponse :: Generic ListAssessmentTargetsResponse _
@@ -1895,20 +1894,20 @@ instance encodeListAssessmentTargetsResponse :: Encode ListAssessmentTargetsResp
 
 -- | Constructs ListAssessmentTargetsResponse from required parameters
 newListAssessmentTargetsResponse :: ListReturnedArnList -> ListAssessmentTargetsResponse
-newListAssessmentTargetsResponse _assessmentTargetArns = ListAssessmentTargetsResponse { "assessmentTargetArns": _assessmentTargetArns, "nextToken": (NullOrUndefined Nothing) }
+newListAssessmentTargetsResponse _assessmentTargetArns = ListAssessmentTargetsResponse { "assessmentTargetArns": _assessmentTargetArns, "nextToken": Nothing }
 
 -- | Constructs ListAssessmentTargetsResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListAssessmentTargetsResponse' :: ListReturnedArnList -> ( { "assessmentTargetArns" :: (ListReturnedArnList) , "nextToken" :: NullOrUndefined (PaginationToken) } -> {"assessmentTargetArns" :: (ListReturnedArnList) , "nextToken" :: NullOrUndefined (PaginationToken) } ) -> ListAssessmentTargetsResponse
-newListAssessmentTargetsResponse' _assessmentTargetArns customize = (ListAssessmentTargetsResponse <<< customize) { "assessmentTargetArns": _assessmentTargetArns, "nextToken": (NullOrUndefined Nothing) }
+newListAssessmentTargetsResponse' :: ListReturnedArnList -> ( { "assessmentTargetArns" :: (ListReturnedArnList) , "nextToken" :: Maybe (PaginationToken) } -> {"assessmentTargetArns" :: (ListReturnedArnList) , "nextToken" :: Maybe (PaginationToken) } ) -> ListAssessmentTargetsResponse
+newListAssessmentTargetsResponse' _assessmentTargetArns customize = (ListAssessmentTargetsResponse <<< customize) { "assessmentTargetArns": _assessmentTargetArns, "nextToken": Nothing }
 
 
 
 newtype ListAssessmentTemplatesRequest = ListAssessmentTemplatesRequest 
-  { "assessmentTargetArns" :: NullOrUndefined (ListParentArnList)
-  , "filter" :: NullOrUndefined (AssessmentTemplateFilter)
-  , "nextToken" :: NullOrUndefined (PaginationToken)
-  , "maxResults" :: NullOrUndefined (ListMaxResults)
+  { "assessmentTargetArns" :: Maybe (ListParentArnList)
+  , "filter" :: Maybe (AssessmentTemplateFilter)
+  , "nextToken" :: Maybe (PaginationToken)
+  , "maxResults" :: Maybe (ListMaxResults)
   }
 derive instance newtypeListAssessmentTemplatesRequest :: Newtype ListAssessmentTemplatesRequest _
 derive instance repGenericListAssessmentTemplatesRequest :: Generic ListAssessmentTemplatesRequest _
@@ -1918,18 +1917,18 @@ instance encodeListAssessmentTemplatesRequest :: Encode ListAssessmentTemplatesR
 
 -- | Constructs ListAssessmentTemplatesRequest from required parameters
 newListAssessmentTemplatesRequest :: ListAssessmentTemplatesRequest
-newListAssessmentTemplatesRequest  = ListAssessmentTemplatesRequest { "assessmentTargetArns": (NullOrUndefined Nothing), "filter": (NullOrUndefined Nothing), "maxResults": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing) }
+newListAssessmentTemplatesRequest  = ListAssessmentTemplatesRequest { "assessmentTargetArns": Nothing, "filter": Nothing, "maxResults": Nothing, "nextToken": Nothing }
 
 -- | Constructs ListAssessmentTemplatesRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListAssessmentTemplatesRequest' :: ( { "assessmentTargetArns" :: NullOrUndefined (ListParentArnList) , "filter" :: NullOrUndefined (AssessmentTemplateFilter) , "nextToken" :: NullOrUndefined (PaginationToken) , "maxResults" :: NullOrUndefined (ListMaxResults) } -> {"assessmentTargetArns" :: NullOrUndefined (ListParentArnList) , "filter" :: NullOrUndefined (AssessmentTemplateFilter) , "nextToken" :: NullOrUndefined (PaginationToken) , "maxResults" :: NullOrUndefined (ListMaxResults) } ) -> ListAssessmentTemplatesRequest
-newListAssessmentTemplatesRequest'  customize = (ListAssessmentTemplatesRequest <<< customize) { "assessmentTargetArns": (NullOrUndefined Nothing), "filter": (NullOrUndefined Nothing), "maxResults": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing) }
+newListAssessmentTemplatesRequest' :: ( { "assessmentTargetArns" :: Maybe (ListParentArnList) , "filter" :: Maybe (AssessmentTemplateFilter) , "nextToken" :: Maybe (PaginationToken) , "maxResults" :: Maybe (ListMaxResults) } -> {"assessmentTargetArns" :: Maybe (ListParentArnList) , "filter" :: Maybe (AssessmentTemplateFilter) , "nextToken" :: Maybe (PaginationToken) , "maxResults" :: Maybe (ListMaxResults) } ) -> ListAssessmentTemplatesRequest
+newListAssessmentTemplatesRequest'  customize = (ListAssessmentTemplatesRequest <<< customize) { "assessmentTargetArns": Nothing, "filter": Nothing, "maxResults": Nothing, "nextToken": Nothing }
 
 
 
 newtype ListAssessmentTemplatesResponse = ListAssessmentTemplatesResponse 
   { "assessmentTemplateArns" :: (ListReturnedArnList)
-  , "nextToken" :: NullOrUndefined (PaginationToken)
+  , "nextToken" :: Maybe (PaginationToken)
   }
 derive instance newtypeListAssessmentTemplatesResponse :: Newtype ListAssessmentTemplatesResponse _
 derive instance repGenericListAssessmentTemplatesResponse :: Generic ListAssessmentTemplatesResponse _
@@ -1939,12 +1938,12 @@ instance encodeListAssessmentTemplatesResponse :: Encode ListAssessmentTemplates
 
 -- | Constructs ListAssessmentTemplatesResponse from required parameters
 newListAssessmentTemplatesResponse :: ListReturnedArnList -> ListAssessmentTemplatesResponse
-newListAssessmentTemplatesResponse _assessmentTemplateArns = ListAssessmentTemplatesResponse { "assessmentTemplateArns": _assessmentTemplateArns, "nextToken": (NullOrUndefined Nothing) }
+newListAssessmentTemplatesResponse _assessmentTemplateArns = ListAssessmentTemplatesResponse { "assessmentTemplateArns": _assessmentTemplateArns, "nextToken": Nothing }
 
 -- | Constructs ListAssessmentTemplatesResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListAssessmentTemplatesResponse' :: ListReturnedArnList -> ( { "assessmentTemplateArns" :: (ListReturnedArnList) , "nextToken" :: NullOrUndefined (PaginationToken) } -> {"assessmentTemplateArns" :: (ListReturnedArnList) , "nextToken" :: NullOrUndefined (PaginationToken) } ) -> ListAssessmentTemplatesResponse
-newListAssessmentTemplatesResponse' _assessmentTemplateArns customize = (ListAssessmentTemplatesResponse <<< customize) { "assessmentTemplateArns": _assessmentTemplateArns, "nextToken": (NullOrUndefined Nothing) }
+newListAssessmentTemplatesResponse' :: ListReturnedArnList -> ( { "assessmentTemplateArns" :: (ListReturnedArnList) , "nextToken" :: Maybe (PaginationToken) } -> {"assessmentTemplateArns" :: (ListReturnedArnList) , "nextToken" :: Maybe (PaginationToken) } ) -> ListAssessmentTemplatesResponse
+newListAssessmentTemplatesResponse' _assessmentTemplateArns customize = (ListAssessmentTemplatesResponse <<< customize) { "assessmentTemplateArns": _assessmentTemplateArns, "nextToken": Nothing }
 
 
 
@@ -1958,9 +1957,9 @@ instance encodeListEventSubscriptionsMaxResults :: Encode ListEventSubscriptions
 
 
 newtype ListEventSubscriptionsRequest = ListEventSubscriptionsRequest 
-  { "resourceArn" :: NullOrUndefined (Arn)
-  , "nextToken" :: NullOrUndefined (PaginationToken)
-  , "maxResults" :: NullOrUndefined (ListEventSubscriptionsMaxResults)
+  { "resourceArn" :: Maybe (Arn)
+  , "nextToken" :: Maybe (PaginationToken)
+  , "maxResults" :: Maybe (ListEventSubscriptionsMaxResults)
   }
 derive instance newtypeListEventSubscriptionsRequest :: Newtype ListEventSubscriptionsRequest _
 derive instance repGenericListEventSubscriptionsRequest :: Generic ListEventSubscriptionsRequest _
@@ -1970,18 +1969,18 @@ instance encodeListEventSubscriptionsRequest :: Encode ListEventSubscriptionsReq
 
 -- | Constructs ListEventSubscriptionsRequest from required parameters
 newListEventSubscriptionsRequest :: ListEventSubscriptionsRequest
-newListEventSubscriptionsRequest  = ListEventSubscriptionsRequest { "maxResults": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing), "resourceArn": (NullOrUndefined Nothing) }
+newListEventSubscriptionsRequest  = ListEventSubscriptionsRequest { "maxResults": Nothing, "nextToken": Nothing, "resourceArn": Nothing }
 
 -- | Constructs ListEventSubscriptionsRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListEventSubscriptionsRequest' :: ( { "resourceArn" :: NullOrUndefined (Arn) , "nextToken" :: NullOrUndefined (PaginationToken) , "maxResults" :: NullOrUndefined (ListEventSubscriptionsMaxResults) } -> {"resourceArn" :: NullOrUndefined (Arn) , "nextToken" :: NullOrUndefined (PaginationToken) , "maxResults" :: NullOrUndefined (ListEventSubscriptionsMaxResults) } ) -> ListEventSubscriptionsRequest
-newListEventSubscriptionsRequest'  customize = (ListEventSubscriptionsRequest <<< customize) { "maxResults": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing), "resourceArn": (NullOrUndefined Nothing) }
+newListEventSubscriptionsRequest' :: ( { "resourceArn" :: Maybe (Arn) , "nextToken" :: Maybe (PaginationToken) , "maxResults" :: Maybe (ListEventSubscriptionsMaxResults) } -> {"resourceArn" :: Maybe (Arn) , "nextToken" :: Maybe (PaginationToken) , "maxResults" :: Maybe (ListEventSubscriptionsMaxResults) } ) -> ListEventSubscriptionsRequest
+newListEventSubscriptionsRequest'  customize = (ListEventSubscriptionsRequest <<< customize) { "maxResults": Nothing, "nextToken": Nothing, "resourceArn": Nothing }
 
 
 
 newtype ListEventSubscriptionsResponse = ListEventSubscriptionsResponse 
   { "subscriptions" :: (SubscriptionList)
-  , "nextToken" :: NullOrUndefined (PaginationToken)
+  , "nextToken" :: Maybe (PaginationToken)
   }
 derive instance newtypeListEventSubscriptionsResponse :: Newtype ListEventSubscriptionsResponse _
 derive instance repGenericListEventSubscriptionsResponse :: Generic ListEventSubscriptionsResponse _
@@ -1991,20 +1990,20 @@ instance encodeListEventSubscriptionsResponse :: Encode ListEventSubscriptionsRe
 
 -- | Constructs ListEventSubscriptionsResponse from required parameters
 newListEventSubscriptionsResponse :: SubscriptionList -> ListEventSubscriptionsResponse
-newListEventSubscriptionsResponse _subscriptions = ListEventSubscriptionsResponse { "subscriptions": _subscriptions, "nextToken": (NullOrUndefined Nothing) }
+newListEventSubscriptionsResponse _subscriptions = ListEventSubscriptionsResponse { "subscriptions": _subscriptions, "nextToken": Nothing }
 
 -- | Constructs ListEventSubscriptionsResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListEventSubscriptionsResponse' :: SubscriptionList -> ( { "subscriptions" :: (SubscriptionList) , "nextToken" :: NullOrUndefined (PaginationToken) } -> {"subscriptions" :: (SubscriptionList) , "nextToken" :: NullOrUndefined (PaginationToken) } ) -> ListEventSubscriptionsResponse
-newListEventSubscriptionsResponse' _subscriptions customize = (ListEventSubscriptionsResponse <<< customize) { "subscriptions": _subscriptions, "nextToken": (NullOrUndefined Nothing) }
+newListEventSubscriptionsResponse' :: SubscriptionList -> ( { "subscriptions" :: (SubscriptionList) , "nextToken" :: Maybe (PaginationToken) } -> {"subscriptions" :: (SubscriptionList) , "nextToken" :: Maybe (PaginationToken) } ) -> ListEventSubscriptionsResponse
+newListEventSubscriptionsResponse' _subscriptions customize = (ListEventSubscriptionsResponse <<< customize) { "subscriptions": _subscriptions, "nextToken": Nothing }
 
 
 
 newtype ListFindingsRequest = ListFindingsRequest 
-  { "assessmentRunArns" :: NullOrUndefined (ListParentArnList)
-  , "filter" :: NullOrUndefined (FindingFilter)
-  , "nextToken" :: NullOrUndefined (PaginationToken)
-  , "maxResults" :: NullOrUndefined (ListMaxResults)
+  { "assessmentRunArns" :: Maybe (ListParentArnList)
+  , "filter" :: Maybe (FindingFilter)
+  , "nextToken" :: Maybe (PaginationToken)
+  , "maxResults" :: Maybe (ListMaxResults)
   }
 derive instance newtypeListFindingsRequest :: Newtype ListFindingsRequest _
 derive instance repGenericListFindingsRequest :: Generic ListFindingsRequest _
@@ -2014,18 +2013,18 @@ instance encodeListFindingsRequest :: Encode ListFindingsRequest where encode = 
 
 -- | Constructs ListFindingsRequest from required parameters
 newListFindingsRequest :: ListFindingsRequest
-newListFindingsRequest  = ListFindingsRequest { "assessmentRunArns": (NullOrUndefined Nothing), "filter": (NullOrUndefined Nothing), "maxResults": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing) }
+newListFindingsRequest  = ListFindingsRequest { "assessmentRunArns": Nothing, "filter": Nothing, "maxResults": Nothing, "nextToken": Nothing }
 
 -- | Constructs ListFindingsRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListFindingsRequest' :: ( { "assessmentRunArns" :: NullOrUndefined (ListParentArnList) , "filter" :: NullOrUndefined (FindingFilter) , "nextToken" :: NullOrUndefined (PaginationToken) , "maxResults" :: NullOrUndefined (ListMaxResults) } -> {"assessmentRunArns" :: NullOrUndefined (ListParentArnList) , "filter" :: NullOrUndefined (FindingFilter) , "nextToken" :: NullOrUndefined (PaginationToken) , "maxResults" :: NullOrUndefined (ListMaxResults) } ) -> ListFindingsRequest
-newListFindingsRequest'  customize = (ListFindingsRequest <<< customize) { "assessmentRunArns": (NullOrUndefined Nothing), "filter": (NullOrUndefined Nothing), "maxResults": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing) }
+newListFindingsRequest' :: ( { "assessmentRunArns" :: Maybe (ListParentArnList) , "filter" :: Maybe (FindingFilter) , "nextToken" :: Maybe (PaginationToken) , "maxResults" :: Maybe (ListMaxResults) } -> {"assessmentRunArns" :: Maybe (ListParentArnList) , "filter" :: Maybe (FindingFilter) , "nextToken" :: Maybe (PaginationToken) , "maxResults" :: Maybe (ListMaxResults) } ) -> ListFindingsRequest
+newListFindingsRequest'  customize = (ListFindingsRequest <<< customize) { "assessmentRunArns": Nothing, "filter": Nothing, "maxResults": Nothing, "nextToken": Nothing }
 
 
 
 newtype ListFindingsResponse = ListFindingsResponse 
   { "findingArns" :: (ListReturnedArnList)
-  , "nextToken" :: NullOrUndefined (PaginationToken)
+  , "nextToken" :: Maybe (PaginationToken)
   }
 derive instance newtypeListFindingsResponse :: Newtype ListFindingsResponse _
 derive instance repGenericListFindingsResponse :: Generic ListFindingsResponse _
@@ -2035,12 +2034,12 @@ instance encodeListFindingsResponse :: Encode ListFindingsResponse where encode 
 
 -- | Constructs ListFindingsResponse from required parameters
 newListFindingsResponse :: ListReturnedArnList -> ListFindingsResponse
-newListFindingsResponse _findingArns = ListFindingsResponse { "findingArns": _findingArns, "nextToken": (NullOrUndefined Nothing) }
+newListFindingsResponse _findingArns = ListFindingsResponse { "findingArns": _findingArns, "nextToken": Nothing }
 
 -- | Constructs ListFindingsResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListFindingsResponse' :: ListReturnedArnList -> ( { "findingArns" :: (ListReturnedArnList) , "nextToken" :: NullOrUndefined (PaginationToken) } -> {"findingArns" :: (ListReturnedArnList) , "nextToken" :: NullOrUndefined (PaginationToken) } ) -> ListFindingsResponse
-newListFindingsResponse' _findingArns customize = (ListFindingsResponse <<< customize) { "findingArns": _findingArns, "nextToken": (NullOrUndefined Nothing) }
+newListFindingsResponse' :: ListReturnedArnList -> ( { "findingArns" :: (ListReturnedArnList) , "nextToken" :: Maybe (PaginationToken) } -> {"findingArns" :: (ListReturnedArnList) , "nextToken" :: Maybe (PaginationToken) } ) -> ListFindingsResponse
+newListFindingsResponse' _findingArns customize = (ListFindingsResponse <<< customize) { "findingArns": _findingArns, "nextToken": Nothing }
 
 
 
@@ -2072,8 +2071,8 @@ instance encodeListReturnedArnList :: Encode ListReturnedArnList where encode = 
 
 
 newtype ListRulesPackagesRequest = ListRulesPackagesRequest 
-  { "nextToken" :: NullOrUndefined (PaginationToken)
-  , "maxResults" :: NullOrUndefined (ListMaxResults)
+  { "nextToken" :: Maybe (PaginationToken)
+  , "maxResults" :: Maybe (ListMaxResults)
   }
 derive instance newtypeListRulesPackagesRequest :: Newtype ListRulesPackagesRequest _
 derive instance repGenericListRulesPackagesRequest :: Generic ListRulesPackagesRequest _
@@ -2083,18 +2082,18 @@ instance encodeListRulesPackagesRequest :: Encode ListRulesPackagesRequest where
 
 -- | Constructs ListRulesPackagesRequest from required parameters
 newListRulesPackagesRequest :: ListRulesPackagesRequest
-newListRulesPackagesRequest  = ListRulesPackagesRequest { "maxResults": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing) }
+newListRulesPackagesRequest  = ListRulesPackagesRequest { "maxResults": Nothing, "nextToken": Nothing }
 
 -- | Constructs ListRulesPackagesRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListRulesPackagesRequest' :: ( { "nextToken" :: NullOrUndefined (PaginationToken) , "maxResults" :: NullOrUndefined (ListMaxResults) } -> {"nextToken" :: NullOrUndefined (PaginationToken) , "maxResults" :: NullOrUndefined (ListMaxResults) } ) -> ListRulesPackagesRequest
-newListRulesPackagesRequest'  customize = (ListRulesPackagesRequest <<< customize) { "maxResults": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing) }
+newListRulesPackagesRequest' :: ( { "nextToken" :: Maybe (PaginationToken) , "maxResults" :: Maybe (ListMaxResults) } -> {"nextToken" :: Maybe (PaginationToken) , "maxResults" :: Maybe (ListMaxResults) } ) -> ListRulesPackagesRequest
+newListRulesPackagesRequest'  customize = (ListRulesPackagesRequest <<< customize) { "maxResults": Nothing, "nextToken": Nothing }
 
 
 
 newtype ListRulesPackagesResponse = ListRulesPackagesResponse 
   { "rulesPackageArns" :: (ListReturnedArnList)
-  , "nextToken" :: NullOrUndefined (PaginationToken)
+  , "nextToken" :: Maybe (PaginationToken)
   }
 derive instance newtypeListRulesPackagesResponse :: Newtype ListRulesPackagesResponse _
 derive instance repGenericListRulesPackagesResponse :: Generic ListRulesPackagesResponse _
@@ -2104,12 +2103,12 @@ instance encodeListRulesPackagesResponse :: Encode ListRulesPackagesResponse whe
 
 -- | Constructs ListRulesPackagesResponse from required parameters
 newListRulesPackagesResponse :: ListReturnedArnList -> ListRulesPackagesResponse
-newListRulesPackagesResponse _rulesPackageArns = ListRulesPackagesResponse { "rulesPackageArns": _rulesPackageArns, "nextToken": (NullOrUndefined Nothing) }
+newListRulesPackagesResponse _rulesPackageArns = ListRulesPackagesResponse { "rulesPackageArns": _rulesPackageArns, "nextToken": Nothing }
 
 -- | Constructs ListRulesPackagesResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListRulesPackagesResponse' :: ListReturnedArnList -> ( { "rulesPackageArns" :: (ListReturnedArnList) , "nextToken" :: NullOrUndefined (PaginationToken) } -> {"rulesPackageArns" :: (ListReturnedArnList) , "nextToken" :: NullOrUndefined (PaginationToken) } ) -> ListRulesPackagesResponse
-newListRulesPackagesResponse' _rulesPackageArns customize = (ListRulesPackagesResponse <<< customize) { "rulesPackageArns": _rulesPackageArns, "nextToken": (NullOrUndefined Nothing) }
+newListRulesPackagesResponse' :: ListReturnedArnList -> ( { "rulesPackageArns" :: (ListReturnedArnList) , "nextToken" :: Maybe (PaginationToken) } -> {"rulesPackageArns" :: (ListReturnedArnList) , "nextToken" :: Maybe (PaginationToken) } ) -> ListRulesPackagesResponse
+newListRulesPackagesResponse' _rulesPackageArns customize = (ListRulesPackagesResponse <<< customize) { "rulesPackageArns": _rulesPackageArns, "nextToken": Nothing }
 
 
 
@@ -2268,8 +2267,8 @@ instance encodePreviewAgentsMaxResults :: Encode PreviewAgentsMaxResults where e
 
 newtype PreviewAgentsRequest = PreviewAgentsRequest 
   { "previewAgentsArn" :: (Arn)
-  , "nextToken" :: NullOrUndefined (PaginationToken)
-  , "maxResults" :: NullOrUndefined (PreviewAgentsMaxResults)
+  , "nextToken" :: Maybe (PaginationToken)
+  , "maxResults" :: Maybe (PreviewAgentsMaxResults)
   }
 derive instance newtypePreviewAgentsRequest :: Newtype PreviewAgentsRequest _
 derive instance repGenericPreviewAgentsRequest :: Generic PreviewAgentsRequest _
@@ -2279,18 +2278,18 @@ instance encodePreviewAgentsRequest :: Encode PreviewAgentsRequest where encode 
 
 -- | Constructs PreviewAgentsRequest from required parameters
 newPreviewAgentsRequest :: Arn -> PreviewAgentsRequest
-newPreviewAgentsRequest _previewAgentsArn = PreviewAgentsRequest { "previewAgentsArn": _previewAgentsArn, "maxResults": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing) }
+newPreviewAgentsRequest _previewAgentsArn = PreviewAgentsRequest { "previewAgentsArn": _previewAgentsArn, "maxResults": Nothing, "nextToken": Nothing }
 
 -- | Constructs PreviewAgentsRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newPreviewAgentsRequest' :: Arn -> ( { "previewAgentsArn" :: (Arn) , "nextToken" :: NullOrUndefined (PaginationToken) , "maxResults" :: NullOrUndefined (PreviewAgentsMaxResults) } -> {"previewAgentsArn" :: (Arn) , "nextToken" :: NullOrUndefined (PaginationToken) , "maxResults" :: NullOrUndefined (PreviewAgentsMaxResults) } ) -> PreviewAgentsRequest
-newPreviewAgentsRequest' _previewAgentsArn customize = (PreviewAgentsRequest <<< customize) { "previewAgentsArn": _previewAgentsArn, "maxResults": (NullOrUndefined Nothing), "nextToken": (NullOrUndefined Nothing) }
+newPreviewAgentsRequest' :: Arn -> ( { "previewAgentsArn" :: (Arn) , "nextToken" :: Maybe (PaginationToken) , "maxResults" :: Maybe (PreviewAgentsMaxResults) } -> {"previewAgentsArn" :: (Arn) , "nextToken" :: Maybe (PaginationToken) , "maxResults" :: Maybe (PreviewAgentsMaxResults) } ) -> PreviewAgentsRequest
+newPreviewAgentsRequest' _previewAgentsArn customize = (PreviewAgentsRequest <<< customize) { "previewAgentsArn": _previewAgentsArn, "maxResults": Nothing, "nextToken": Nothing }
 
 
 
 newtype PreviewAgentsResponse = PreviewAgentsResponse 
   { "agentPreviews" :: (AgentPreviewList)
-  , "nextToken" :: NullOrUndefined (PaginationToken)
+  , "nextToken" :: Maybe (PaginationToken)
   }
 derive instance newtypePreviewAgentsResponse :: Newtype PreviewAgentsResponse _
 derive instance repGenericPreviewAgentsResponse :: Generic PreviewAgentsResponse _
@@ -2300,12 +2299,12 @@ instance encodePreviewAgentsResponse :: Encode PreviewAgentsResponse where encod
 
 -- | Constructs PreviewAgentsResponse from required parameters
 newPreviewAgentsResponse :: AgentPreviewList -> PreviewAgentsResponse
-newPreviewAgentsResponse _agentPreviews = PreviewAgentsResponse { "agentPreviews": _agentPreviews, "nextToken": (NullOrUndefined Nothing) }
+newPreviewAgentsResponse _agentPreviews = PreviewAgentsResponse { "agentPreviews": _agentPreviews, "nextToken": Nothing }
 
 -- | Constructs PreviewAgentsResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newPreviewAgentsResponse' :: AgentPreviewList -> ( { "agentPreviews" :: (AgentPreviewList) , "nextToken" :: NullOrUndefined (PaginationToken) } -> {"agentPreviews" :: (AgentPreviewList) , "nextToken" :: NullOrUndefined (PaginationToken) } ) -> PreviewAgentsResponse
-newPreviewAgentsResponse' _agentPreviews customize = (PreviewAgentsResponse <<< customize) { "agentPreviews": _agentPreviews, "nextToken": (NullOrUndefined Nothing) }
+newPreviewAgentsResponse' :: AgentPreviewList -> ( { "agentPreviews" :: (AgentPreviewList) , "nextToken" :: Maybe (PaginationToken) } -> {"agentPreviews" :: (AgentPreviewList) , "nextToken" :: Maybe (PaginationToken) } ) -> PreviewAgentsResponse
+newPreviewAgentsResponse' _agentPreviews customize = (PreviewAgentsResponse <<< customize) { "agentPreviews": _agentPreviews, "nextToken": Nothing }
 
 
 
@@ -2441,7 +2440,7 @@ instance encodeResourceGroupList :: Encode ResourceGroupList where encode = gene
 -- | <p>This data type is used as one of the elements of the <a>ResourceGroup</a> data type.</p>
 newtype ResourceGroupTag = ResourceGroupTag 
   { "key" :: (TagKey)
-  , "value" :: NullOrUndefined (TagValue)
+  , "value" :: Maybe (TagValue)
   }
 derive instance newtypeResourceGroupTag :: Newtype ResourceGroupTag _
 derive instance repGenericResourceGroupTag :: Generic ResourceGroupTag _
@@ -2451,12 +2450,12 @@ instance encodeResourceGroupTag :: Encode ResourceGroupTag where encode = generi
 
 -- | Constructs ResourceGroupTag from required parameters
 newResourceGroupTag :: TagKey -> ResourceGroupTag
-newResourceGroupTag _key = ResourceGroupTag { "key": _key, "value": (NullOrUndefined Nothing) }
+newResourceGroupTag _key = ResourceGroupTag { "key": _key, "value": Nothing }
 
 -- | Constructs ResourceGroupTag's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newResourceGroupTag' :: TagKey -> ( { "key" :: (TagKey) , "value" :: NullOrUndefined (TagValue) } -> {"key" :: (TagKey) , "value" :: NullOrUndefined (TagValue) } ) -> ResourceGroupTag
-newResourceGroupTag' _key customize = (ResourceGroupTag <<< customize) { "key": _key, "value": (NullOrUndefined Nothing) }
+newResourceGroupTag' :: TagKey -> ( { "key" :: (TagKey) , "value" :: Maybe (TagValue) } -> {"key" :: (TagKey) , "value" :: Maybe (TagValue) } ) -> ResourceGroupTag
+newResourceGroupTag' _key customize = (ResourceGroupTag <<< customize) { "key": _key, "value": Nothing }
 
 
 
@@ -2493,7 +2492,7 @@ newtype RulesPackage = RulesPackage
   , "name" :: (RulesPackageName)
   , "version" :: (Version)
   , "provider" :: (ProviderName)
-  , "description" :: NullOrUndefined (Text)
+  , "description" :: Maybe (Text)
   }
 derive instance newtypeRulesPackage :: Newtype RulesPackage _
 derive instance repGenericRulesPackage :: Generic RulesPackage _
@@ -2503,12 +2502,12 @@ instance encodeRulesPackage :: Encode RulesPackage where encode = genericEncode 
 
 -- | Constructs RulesPackage from required parameters
 newRulesPackage :: Arn -> RulesPackageName -> ProviderName -> Version -> RulesPackage
-newRulesPackage _arn _name _provider _version = RulesPackage { "arn": _arn, "name": _name, "provider": _provider, "version": _version, "description": (NullOrUndefined Nothing) }
+newRulesPackage _arn _name _provider _version = RulesPackage { "arn": _arn, "name": _name, "provider": _provider, "version": _version, "description": Nothing }
 
 -- | Constructs RulesPackage's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newRulesPackage' :: Arn -> RulesPackageName -> ProviderName -> Version -> ( { "arn" :: (Arn) , "name" :: (RulesPackageName) , "version" :: (Version) , "provider" :: (ProviderName) , "description" :: NullOrUndefined (Text) } -> {"arn" :: (Arn) , "name" :: (RulesPackageName) , "version" :: (Version) , "provider" :: (ProviderName) , "description" :: NullOrUndefined (Text) } ) -> RulesPackage
-newRulesPackage' _arn _name _provider _version customize = (RulesPackage <<< customize) { "arn": _arn, "name": _name, "provider": _provider, "version": _version, "description": (NullOrUndefined Nothing) }
+newRulesPackage' :: Arn -> RulesPackageName -> ProviderName -> Version -> ( { "arn" :: (Arn) , "name" :: (RulesPackageName) , "version" :: (Version) , "provider" :: (ProviderName) , "description" :: Maybe (Text) } -> {"arn" :: (Arn) , "name" :: (RulesPackageName) , "version" :: (Version) , "provider" :: (ProviderName) , "description" :: Maybe (Text) } ) -> RulesPackage
+newRulesPackage' _arn _name _provider _version customize = (RulesPackage <<< customize) { "arn": _arn, "name": _name, "provider": _provider, "version": _version, "description": Nothing }
 
 
 
@@ -2541,7 +2540,7 @@ instance encodeServiceName :: Encode ServiceName where encode = genericEncode op
 
 newtype SetTagsForResourceRequest = SetTagsForResourceRequest 
   { "resourceArn" :: (Arn)
-  , "tags" :: NullOrUndefined (TagList)
+  , "tags" :: Maybe (TagList)
   }
 derive instance newtypeSetTagsForResourceRequest :: Newtype SetTagsForResourceRequest _
 derive instance repGenericSetTagsForResourceRequest :: Generic SetTagsForResourceRequest _
@@ -2551,12 +2550,12 @@ instance encodeSetTagsForResourceRequest :: Encode SetTagsForResourceRequest whe
 
 -- | Constructs SetTagsForResourceRequest from required parameters
 newSetTagsForResourceRequest :: Arn -> SetTagsForResourceRequest
-newSetTagsForResourceRequest _resourceArn = SetTagsForResourceRequest { "resourceArn": _resourceArn, "tags": (NullOrUndefined Nothing) }
+newSetTagsForResourceRequest _resourceArn = SetTagsForResourceRequest { "resourceArn": _resourceArn, "tags": Nothing }
 
 -- | Constructs SetTagsForResourceRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSetTagsForResourceRequest' :: Arn -> ( { "resourceArn" :: (Arn) , "tags" :: NullOrUndefined (TagList) } -> {"resourceArn" :: (Arn) , "tags" :: NullOrUndefined (TagList) } ) -> SetTagsForResourceRequest
-newSetTagsForResourceRequest' _resourceArn customize = (SetTagsForResourceRequest <<< customize) { "resourceArn": _resourceArn, "tags": (NullOrUndefined Nothing) }
+newSetTagsForResourceRequest' :: Arn -> ( { "resourceArn" :: (Arn) , "tags" :: Maybe (TagList) } -> {"resourceArn" :: (Arn) , "tags" :: Maybe (TagList) } ) -> SetTagsForResourceRequest
+newSetTagsForResourceRequest' _resourceArn customize = (SetTagsForResourceRequest <<< customize) { "resourceArn": _resourceArn, "tags": Nothing }
 
 
 
@@ -2580,7 +2579,7 @@ instance encodeSeverityList :: Encode SeverityList where encode = genericEncode 
 
 newtype StartAssessmentRunRequest = StartAssessmentRunRequest 
   { "assessmentTemplateArn" :: (Arn)
-  , "assessmentRunName" :: NullOrUndefined (AssessmentRunName)
+  , "assessmentRunName" :: Maybe (AssessmentRunName)
   }
 derive instance newtypeStartAssessmentRunRequest :: Newtype StartAssessmentRunRequest _
 derive instance repGenericStartAssessmentRunRequest :: Generic StartAssessmentRunRequest _
@@ -2590,12 +2589,12 @@ instance encodeStartAssessmentRunRequest :: Encode StartAssessmentRunRequest whe
 
 -- | Constructs StartAssessmentRunRequest from required parameters
 newStartAssessmentRunRequest :: Arn -> StartAssessmentRunRequest
-newStartAssessmentRunRequest _assessmentTemplateArn = StartAssessmentRunRequest { "assessmentTemplateArn": _assessmentTemplateArn, "assessmentRunName": (NullOrUndefined Nothing) }
+newStartAssessmentRunRequest _assessmentTemplateArn = StartAssessmentRunRequest { "assessmentTemplateArn": _assessmentTemplateArn, "assessmentRunName": Nothing }
 
 -- | Constructs StartAssessmentRunRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newStartAssessmentRunRequest' :: Arn -> ( { "assessmentTemplateArn" :: (Arn) , "assessmentRunName" :: NullOrUndefined (AssessmentRunName) } -> {"assessmentTemplateArn" :: (Arn) , "assessmentRunName" :: NullOrUndefined (AssessmentRunName) } ) -> StartAssessmentRunRequest
-newStartAssessmentRunRequest' _assessmentTemplateArn customize = (StartAssessmentRunRequest <<< customize) { "assessmentTemplateArn": _assessmentTemplateArn, "assessmentRunName": (NullOrUndefined Nothing) }
+newStartAssessmentRunRequest' :: Arn -> ( { "assessmentTemplateArn" :: (Arn) , "assessmentRunName" :: Maybe (AssessmentRunName) } -> {"assessmentTemplateArn" :: (Arn) , "assessmentRunName" :: Maybe (AssessmentRunName) } ) -> StartAssessmentRunRequest
+newStartAssessmentRunRequest' _assessmentTemplateArn customize = (StartAssessmentRunRequest <<< customize) { "assessmentTemplateArn": _assessmentTemplateArn, "assessmentRunName": Nothing }
 
 
 
@@ -2630,7 +2629,7 @@ instance encodeStopAction :: Encode StopAction where encode = genericEncode opti
 
 newtype StopAssessmentRunRequest = StopAssessmentRunRequest 
   { "assessmentRunArn" :: (Arn)
-  , "stopAction" :: NullOrUndefined (StopAction)
+  , "stopAction" :: Maybe (StopAction)
   }
 derive instance newtypeStopAssessmentRunRequest :: Newtype StopAssessmentRunRequest _
 derive instance repGenericStopAssessmentRunRequest :: Generic StopAssessmentRunRequest _
@@ -2640,12 +2639,12 @@ instance encodeStopAssessmentRunRequest :: Encode StopAssessmentRunRequest where
 
 -- | Constructs StopAssessmentRunRequest from required parameters
 newStopAssessmentRunRequest :: Arn -> StopAssessmentRunRequest
-newStopAssessmentRunRequest _assessmentRunArn = StopAssessmentRunRequest { "assessmentRunArn": _assessmentRunArn, "stopAction": (NullOrUndefined Nothing) }
+newStopAssessmentRunRequest _assessmentRunArn = StopAssessmentRunRequest { "assessmentRunArn": _assessmentRunArn, "stopAction": Nothing }
 
 -- | Constructs StopAssessmentRunRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newStopAssessmentRunRequest' :: Arn -> ( { "assessmentRunArn" :: (Arn) , "stopAction" :: NullOrUndefined (StopAction) } -> {"assessmentRunArn" :: (Arn) , "stopAction" :: NullOrUndefined (StopAction) } ) -> StopAssessmentRunRequest
-newStopAssessmentRunRequest' _assessmentRunArn customize = (StopAssessmentRunRequest <<< customize) { "assessmentRunArn": _assessmentRunArn, "stopAction": (NullOrUndefined Nothing) }
+newStopAssessmentRunRequest' :: Arn -> ( { "assessmentRunArn" :: (Arn) , "stopAction" :: Maybe (StopAction) } -> {"assessmentRunArn" :: (Arn) , "stopAction" :: Maybe (StopAction) } ) -> StopAssessmentRunRequest
+newStopAssessmentRunRequest' _assessmentRunArn customize = (StopAssessmentRunRequest <<< customize) { "assessmentRunArn": _assessmentRunArn, "stopAction": Nothing }
 
 
 
@@ -2706,7 +2705,7 @@ instance encodeSubscriptionList :: Encode SubscriptionList where encode = generi
 -- | <p>A key and value pair. This data type is used as a request parameter in the <a>SetTagsForResource</a> action and a response element in the <a>ListTagsForResource</a> action.</p>
 newtype Tag = Tag 
   { "key" :: (TagKey)
-  , "value" :: NullOrUndefined (TagValue)
+  , "value" :: Maybe (TagValue)
   }
 derive instance newtypeTag :: Newtype Tag _
 derive instance repGenericTag :: Generic Tag _
@@ -2716,12 +2715,12 @@ instance encodeTag :: Encode Tag where encode = genericEncode options
 
 -- | Constructs Tag from required parameters
 newTag :: TagKey -> Tag
-newTag _key = Tag { "key": _key, "value": (NullOrUndefined Nothing) }
+newTag _key = Tag { "key": _key, "value": Nothing }
 
 -- | Constructs Tag's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newTag' :: TagKey -> ( { "key" :: (TagKey) , "value" :: NullOrUndefined (TagValue) } -> {"key" :: (TagKey) , "value" :: NullOrUndefined (TagValue) } ) -> Tag
-newTag' _key customize = (Tag <<< customize) { "key": _key, "value": (NullOrUndefined Nothing) }
+newTag' :: TagKey -> ( { "key" :: (TagKey) , "value" :: Maybe (TagValue) } -> {"key" :: (TagKey) , "value" :: Maybe (TagValue) } ) -> Tag
+newTag' _key customize = (Tag <<< customize) { "key": _key, "value": Nothing }
 
 
 
@@ -2756,7 +2755,7 @@ instance encodeTagValue :: Encode TagValue where encode = genericEncode options
 newtype TelemetryMetadata = TelemetryMetadata 
   { "messageType" :: (MessageType)
   , "count" :: (Number)
-  , "dataSize" :: NullOrUndefined (Number)
+  , "dataSize" :: Maybe (Number)
   }
 derive instance newtypeTelemetryMetadata :: Newtype TelemetryMetadata _
 derive instance repGenericTelemetryMetadata :: Generic TelemetryMetadata _
@@ -2766,12 +2765,12 @@ instance encodeTelemetryMetadata :: Encode TelemetryMetadata where encode = gene
 
 -- | Constructs TelemetryMetadata from required parameters
 newTelemetryMetadata :: Number -> MessageType -> TelemetryMetadata
-newTelemetryMetadata _count _messageType = TelemetryMetadata { "count": _count, "messageType": _messageType, "dataSize": (NullOrUndefined Nothing) }
+newTelemetryMetadata _count _messageType = TelemetryMetadata { "count": _count, "messageType": _messageType, "dataSize": Nothing }
 
 -- | Constructs TelemetryMetadata's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newTelemetryMetadata' :: Number -> MessageType -> ( { "messageType" :: (MessageType) , "count" :: (Number) , "dataSize" :: NullOrUndefined (Number) } -> {"messageType" :: (MessageType) , "count" :: (Number) , "dataSize" :: NullOrUndefined (Number) } ) -> TelemetryMetadata
-newTelemetryMetadata' _count _messageType customize = (TelemetryMetadata <<< customize) { "count": _count, "messageType": _messageType, "dataSize": (NullOrUndefined Nothing) }
+newTelemetryMetadata' :: Number -> MessageType -> ( { "messageType" :: (MessageType) , "count" :: (Number) , "dataSize" :: Maybe (Number) } -> {"messageType" :: (MessageType) , "count" :: (Number) , "dataSize" :: Maybe (Number) } ) -> TelemetryMetadata
+newTelemetryMetadata' _count _messageType customize = (TelemetryMetadata <<< customize) { "count": _count, "messageType": _messageType, "dataSize": Nothing }
 
 
 
@@ -2795,8 +2794,8 @@ instance encodeText :: Encode Text where encode = genericEncode options
 
 -- | <p>This data type is used in the <a>AssessmentRunFilter</a> data type.</p>
 newtype TimestampRange = TimestampRange 
-  { "beginDate" :: NullOrUndefined (Types.Timestamp)
-  , "endDate" :: NullOrUndefined (Types.Timestamp)
+  { "beginDate" :: Maybe (Types.Timestamp)
+  , "endDate" :: Maybe (Types.Timestamp)
   }
 derive instance newtypeTimestampRange :: Newtype TimestampRange _
 derive instance repGenericTimestampRange :: Generic TimestampRange _
@@ -2806,12 +2805,12 @@ instance encodeTimestampRange :: Encode TimestampRange where encode = genericEnc
 
 -- | Constructs TimestampRange from required parameters
 newTimestampRange :: TimestampRange
-newTimestampRange  = TimestampRange { "beginDate": (NullOrUndefined Nothing), "endDate": (NullOrUndefined Nothing) }
+newTimestampRange  = TimestampRange { "beginDate": Nothing, "endDate": Nothing }
 
 -- | Constructs TimestampRange's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newTimestampRange' :: ( { "beginDate" :: NullOrUndefined (Types.Timestamp) , "endDate" :: NullOrUndefined (Types.Timestamp) } -> {"beginDate" :: NullOrUndefined (Types.Timestamp) , "endDate" :: NullOrUndefined (Types.Timestamp) } ) -> TimestampRange
-newTimestampRange'  customize = (TimestampRange <<< customize) { "beginDate": (NullOrUndefined Nothing), "endDate": (NullOrUndefined Nothing) }
+newTimestampRange' :: ( { "beginDate" :: Maybe (Types.Timestamp) , "endDate" :: Maybe (Types.Timestamp) } -> {"beginDate" :: Maybe (Types.Timestamp) , "endDate" :: Maybe (Types.Timestamp) } ) -> TimestampRange
+newTimestampRange'  customize = (TimestampRange <<< customize) { "beginDate": Nothing, "endDate": Nothing }
 
 
 

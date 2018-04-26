@@ -35,7 +35,7 @@ createResourceGroup :: forall eff. Service -> CreateResourceGroupRequest -> Aff 
 #### `deleteAssessmentRun`
 
 ``` purescript
-deleteAssessmentRun :: forall eff. Service -> DeleteAssessmentRunRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+deleteAssessmentRun :: forall eff. Service -> DeleteAssessmentRunRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Deletes the assessment run that is specified by the ARN of the assessment run.</p>
@@ -43,7 +43,7 @@ deleteAssessmentRun :: forall eff. Service -> DeleteAssessmentRunRequest -> Aff 
 #### `deleteAssessmentTarget`
 
 ``` purescript
-deleteAssessmentTarget :: forall eff. Service -> DeleteAssessmentTargetRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+deleteAssessmentTarget :: forall eff. Service -> DeleteAssessmentTargetRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Deletes the assessment target that is specified by the ARN of the assessment target.</p>
@@ -51,7 +51,7 @@ deleteAssessmentTarget :: forall eff. Service -> DeleteAssessmentTargetRequest -
 #### `deleteAssessmentTemplate`
 
 ``` purescript
-deleteAssessmentTemplate :: forall eff. Service -> DeleteAssessmentTemplateRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+deleteAssessmentTemplate :: forall eff. Service -> DeleteAssessmentTemplateRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Deletes the assessment template that is specified by the ARN of the assessment template.</p>
@@ -203,7 +203,7 @@ previewAgents :: forall eff. Service -> PreviewAgentsRequest -> Aff (exception :
 #### `registerCrossAccountAccessRole`
 
 ``` purescript
-registerCrossAccountAccessRole :: forall eff. Service -> RegisterCrossAccountAccessRoleRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+registerCrossAccountAccessRole :: forall eff. Service -> RegisterCrossAccountAccessRoleRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Registers the IAM role that grants Amazon Inspector access to AWS Services needed to perform security assessments.</p>
@@ -219,7 +219,7 @@ removeAttributesFromFindings :: forall eff. Service -> RemoveAttributesFromFindi
 #### `setTagsForResource`
 
 ``` purescript
-setTagsForResource :: forall eff. Service -> SetTagsForResourceRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+setTagsForResource :: forall eff. Service -> SetTagsForResourceRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Sets tags (key and value pairs) to the assessment template that is specified by the ARN of the assessment template.</p>
@@ -235,7 +235,7 @@ startAssessmentRun :: forall eff. Service -> StartAssessmentRunRequest -> Aff (e
 #### `stopAssessmentRun`
 
 ``` purescript
-stopAssessmentRun :: forall eff. Service -> StopAssessmentRunRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+stopAssessmentRun :: forall eff. Service -> StopAssessmentRunRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Stops the assessment run that is specified by the ARN of the assessment run.</p>
@@ -243,7 +243,7 @@ stopAssessmentRun :: forall eff. Service -> StopAssessmentRunRequest -> Aff (exc
 #### `subscribeToEvent`
 
 ``` purescript
-subscribeToEvent :: forall eff. Service -> SubscribeToEventRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+subscribeToEvent :: forall eff. Service -> SubscribeToEventRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Enables the process of sending Amazon Simple Notification Service (SNS) notifications about a specified event to a specified SNS topic.</p>
@@ -251,7 +251,7 @@ subscribeToEvent :: forall eff. Service -> SubscribeToEventRequest -> Aff (excep
 #### `unsubscribeFromEvent`
 
 ``` purescript
-unsubscribeFromEvent :: forall eff. Service -> UnsubscribeFromEventRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+unsubscribeFromEvent :: forall eff. Service -> UnsubscribeFromEventRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Disables the process of sending Amazon Simple Notification Service (SNS) notifications about a specified event to a specified SNS topic.</p>
@@ -259,7 +259,7 @@ unsubscribeFromEvent :: forall eff. Service -> UnsubscribeFromEventRequest -> Af
 #### `updateAssessmentTarget`
 
 ``` purescript
-updateAssessmentTarget :: forall eff. Service -> UpdateAssessmentTargetRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+updateAssessmentTarget :: forall eff. Service -> UpdateAssessmentTargetRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Updates the assessment target that is specified by the ARN of the assessment target.</p>
